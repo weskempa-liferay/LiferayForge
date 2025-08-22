@@ -1,0 +1,74 @@
+{
+  "fieldSets": [
+    {
+      "fields": [
+        {
+          "dataType": "string",
+          "defaultValue": "horizontal",
+          "label": "Navigation Layout",
+          "name": "navigationLayout",
+          "type": "select",
+          "typeOptions": {
+            "validValues": [
+              {
+                "label": "Horizontal",
+                "value": "horizontal"
+              },
+              {
+                "label": "Vertical Sidebar",
+                "value": "vertical"
+              },
+              {
+                "label": "Dropdown Menu",
+                "value": "dropdown"
+              }
+            ]
+          }
+        },
+        {
+          "dataType": "bool",
+          "defaultValue": true,
+          "label": "Show User Profile",
+          "name": "showUserProfile",
+          "type": "checkbox"
+        },
+        {
+          "dataType": "bool",
+          "defaultValue": true,
+          "label": "Enable Mobile Menu",
+          "name": "enableMobileMenu",
+          "type": "checkbox"
+        },
+        {
+          "dataType": "bool",
+          "defaultValue": true,
+          "label": "Auto-hide on Scroll",
+          "name": "autoHideScroll",
+          "type": "checkbox"
+        },
+        {
+          "dataType": "bool",
+          "defaultValue": true,
+          "label": "Show Section Dividers",
+          "name": "showSectionDividers",
+          "type": "checkbox"
+        },
+        {
+          "dataType": "string",
+          "defaultValue": "3",
+          "label": "Maximum Visible Items",
+          "name": "maxVisibleItems",
+          "type": "text",
+          "typeOptions": {
+            "validation": {
+              "min": 3,
+              "max": 12,
+              "type": "number"
+            }
+          }
+        }
+      ],
+      "label": "Navigation Settings"
+    }
+  ]
+}
