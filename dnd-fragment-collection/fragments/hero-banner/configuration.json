@@ -1,0 +1,60 @@
+{
+  "fieldSets": [
+    {
+      "fields": [
+        {
+          "dataType": "string",
+          "defaultValue": "dark",
+          "label": "Theme Variant",
+          "name": "themeVariant",
+          "type": "select",
+          "typeOptions": {
+            "validValues": [
+              {
+                "label": "Dark (Default)",
+                "value": "dark"
+              },
+              {
+                "label": "Light",
+                "value": "light"
+              },
+              {
+                "label": "Mystical",
+                "value": "mystical"
+              }
+            ]
+          }
+        },
+        {
+          "dataType": "bool",
+          "defaultValue": true,
+          "label": "Enable Parallax Effect",
+          "name": "enableParallax",
+          "type": "checkbox"
+        },
+        {
+          "dataType": "bool",
+          "defaultValue": true,
+          "label": "Enable Magical Effects",
+          "name": "enableMagic",
+          "type": "checkbox"
+        },
+        {
+          "dataType": "int",
+          "defaultValue": 500,
+          "label": "Hero Height (px)",
+          "name": "heroHeight",
+          "type": "text",
+          "typeOptions": {
+            "validation": {
+              "min": 300,
+              "max": 800,
+              "type": "number"
+            }
+          }
+        }
+      ],
+      "label": "Hero Banner Settings"
+    }
+  ]
+}

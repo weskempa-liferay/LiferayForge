@@ -1,0 +1,84 @@
+{
+  "fieldSets": [
+    {
+      "fields": [
+        {
+          "dataType": "string",
+          "defaultValue": "warrior",
+          "label": "Character Archetype",
+          "name": "characterType",
+          "type": "select",
+          "typeOptions": {
+            "validValues": [
+              {
+                "label": "Warrior",
+                "value": "warrior"
+              },
+              {
+                "label": "Mage",
+                "value": "mage"
+              },
+              {
+                "label": "Rogue",
+                "value": "rogue"
+              },
+              {
+                "label": "Cleric",
+                "value": "cleric"
+              },
+              {
+                "label": "Ranger",
+                "value": "ranger"
+              }
+            ]
+          }
+        },
+        {
+          "dataType": "string",
+          "defaultValue": "medium",
+          "label": "Card Size",
+          "name": "cardSize",
+          "type": "select",
+          "typeOptions": {
+            "validValues": [
+              {
+                "label": "Small",
+                "value": "small"
+              },
+              {
+                "label": "Medium",
+                "value": "medium"
+              },
+              {
+                "label": "Large",
+                "value": "large"
+              }
+            ]
+          }
+        },
+        {
+          "dataType": "bool",
+          "defaultValue": true,
+          "label": "Show Stats",
+          "name": "showStats",
+          "type": "checkbox"
+        },
+        {
+          "dataType": "bool",
+          "defaultValue": true,
+          "label": "Show Abilities",
+          "name": "showAbilities",
+          "type": "checkbox"
+        },
+        {
+          "dataType": "bool",
+          "defaultValue": true,
+          "label": "Enable Hover Effects",
+          "name": "enableHoverEffects",
+          "type": "checkbox"
+        }
+      ],
+      "label": "Character Card Settings"
+    }
+  ]
+}

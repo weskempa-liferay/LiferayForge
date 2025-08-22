@@ -1,0 +1,15 @@
+D&D Fragment Collection
+Version: v1.0.0_20250822_185531
+Built: Fri Aug 22 06:55:31 PM UTC 2025
+Description: D&D-themed Liferay DXP fragment collection with fantasy aesthetic
+
+Fragments included:
+- Hero Banner (Section Fragment)
+- Character Card (Component Fragment) 
+- Quest Navigation (Component Fragment)
+
+Each fragment includes:
+- HTML template with editable elements
+- CSS styling with D&D theming
+- JavaScript for interactive features
+- Configuration options for customization
