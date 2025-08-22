@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import theme from './styles/theme';
 import GlobalStyles from './styles/GlobalStyles';
+import HeroBannerPreview from './components/FragmentPreviews/HeroBannerPreview';
+import CharacterCardPreview from './components/FragmentPreviews/CharacterCardPreview';
+import QuestNavigationPreview from './components/FragmentPreviews/QuestNavigationPreview';
 
 const AppContainer = styled.div`
     min-height: 100vh;
@@ -117,6 +120,70 @@ const ContentSection = styled.section`
     box-shadow: ${props => props.theme.shadows.lg};
 `;
 
+const ComponentGrid = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: ${props => props.theme.spacing['2xl']};
+    margin-top: ${props => props.theme.spacing.xl};
+`;
+
+const ComponentSection = styled.div`
+    background: rgba(26, 15, 10, 0.3);
+    border: 1px solid ${props => props.theme.colors.border};
+    border-radius: ${props => props.theme.borderRadius.md};
+    padding: ${props => props.theme.spacing.lg};
+    
+    h4 {
+        color: ${props => props.theme.colors.secondary};
+        margin-bottom: ${props => props.theme.spacing.sm};
+        font-size: ${props => props.theme.fonts.sizes.lg};
+    }
+    
+    p {
+        color: ${props => props.theme.colors.textMuted};
+        margin-bottom: ${props => props.theme.spacing.lg};
+        font-size: ${props => props.theme.fonts.sizes.md};
+    }
+`;
+
+const FragmentGrid = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: ${props => props.theme.spacing['2xl']};
+    margin-top: ${props => props.theme.spacing.xl};
+`;
+
+const FragmentSection = styled.div`
+    background: rgba(26, 15, 10, 0.3);
+    border: 1px solid ${props => props.theme.colors.border};
+    border-radius: ${props => props.theme.borderRadius.md};
+    padding: ${props => props.theme.spacing.lg};
+    
+    h4 {
+        color: ${props => props.theme.colors.secondary};
+        margin-bottom: ${props => props.theme.spacing.sm};
+        font-size: ${props => props.theme.fonts.sizes.lg};
+    }
+`;
+
+const FragmentDetails = styled.div`
+    font-family: ${props => props.theme.fonts.body};
+    color: ${props => props.theme.colors.textMuted};
+    font-size: ${props => props.theme.fonts.sizes.sm};
+    line-height: 1.6;
+    margin-bottom: ${props => props.theme.spacing.lg};
+    padding: ${props => props.theme.spacing.md};
+    background: rgba(42, 31, 26, 0.4);
+    border-radius: ${props => props.theme.borderRadius.sm};
+    border-left: 3px solid ${props => props.theme.colors.secondary};
+`;
+
+const CardContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    margin: ${props => props.theme.spacing.lg} 0;
+`;
+
 const App = () => {
     const [activeTab, setActiveTab] = useState('components');
 
@@ -166,12 +233,28 @@ const App = () => {
                                     fantasy aesthetic. Each component is crafted with attention to detail 
                                     and follows modern React best practices.
                                 </p>
-                                <ul>
-                                    <li>Layout Components (Header, Footer, Navigation)</li>
-                                    <li>Interactive Elements (Buttons, Forms)</li>
-                                    <li>Content Display (Cards, Media galleries)</li>
-                                    <li>Utility Components (Icons, Loading states)</li>
-                                </ul>
+                                
+                                <ComponentGrid>
+                                    <ComponentSection>
+                                        <h4>Hero Banner Component</h4>
+                                        <p>A dramatic hero section perfect for landing pages with call-to-action buttons.</p>
+                                        <HeroBannerPreview />
+                                    </ComponentSection>
+                                    
+                                    <ComponentSection>
+                                        <h4>Character Card Component</h4>
+                                        <p>Display character information with stats, abilities, and interactive elements.</p>
+                                        <CardContainer>
+                                            <CharacterCardPreview />
+                                        </CardContainer>
+                                    </ComponentSection>
+                                    
+                                    <ComponentSection>
+                                        <h4>Quest Navigation Component</h4>
+                                        <p>A fully responsive navigation bar with mobile menu and user profile.</p>
+                                        <QuestNavigationPreview />
+                                    </ComponentSection>
+                                </ComponentGrid>
                             </div>
                         )}
                         
@@ -183,11 +266,40 @@ const App = () => {
                                     your Liferay DXP portal. These fragments are ready for integration 
                                     and customization.
                                 </p>
-                                <ul>
-                                    <li>Basic Fragments (Text, Images, Layouts)</li>
-                                    <li>Content Display Fragments (Articles, Cards)</li>
-                                    <li>Navigation Fragments (Menus, Breadcrumbs)</li>
-                                </ul>
+                                
+                                <FragmentGrid>
+                                    <FragmentSection>
+                                        <h4>🏰 Hero Banner Fragment</h4>
+                                        <FragmentDetails>
+                                            <strong>Type:</strong> Section Fragment<br/>
+                                            <strong>Configuration:</strong> Theme variants, parallax effects, magical animations<br/>
+                                            <strong>Editable Elements:</strong> Title, subtitle, buttons, background image
+                                        </FragmentDetails>
+                                        <HeroBannerPreview />
+                                    </FragmentSection>
+                                    
+                                    <FragmentSection>
+                                        <h4>⚔️ Character Card Fragment</h4>
+                                        <FragmentDetails>
+                                            <strong>Type:</strong> Component Fragment<br/>
+                                            <strong>Configuration:</strong> Character archetypes, card sizes, stat display options<br/>
+                                            <strong>Editable Elements:</strong> Portrait, name, class, stats, abilities, action button
+                                        </FragmentDetails>
+                                        <CardContainer>
+                                            <CharacterCardPreview />
+                                        </CardContainer>
+                                    </FragmentSection>
+                                    
+                                    <FragmentSection>
+                                        <h4>🗺️ Quest Navigation Fragment</h4>
+                                        <FragmentDetails>
+                                            <strong>Type:</strong> Component Fragment<br/>
+                                            <strong>Configuration:</strong> Layout options, mobile menu, scroll behavior<br/>
+                                            <strong>Editable Elements:</strong> Brand, navigation links, user profile, badges
+                                        </FragmentDetails>
+                                        <QuestNavigationPreview />
+                                    </FragmentSection>
+                                </FragmentGrid>
                             </div>
                         )}
                     </ContentSection>
