@@ -43,6 +43,7 @@ module.exports = {
     hot: true,
     open: false,
     historyApiFallback: true,
+    allowedHosts: 'all',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
