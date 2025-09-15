@@ -24,7 +24,7 @@
   pointer-events: none;
 }
 
-.hero-content {
+.hero-banner .hero-content {
   position: relative;
   text-align: center;
   z-index: 2;
@@ -32,7 +32,7 @@
   padding: 3rem 2rem;
 }
 
-.hero-ornament {
+.hero-banner .hero-ornament {
   width: 100px;
   height: 4px;
   background: linear-gradient(90deg, transparent, #D4AF37, transparent);
@@ -40,8 +40,8 @@
   position: relative;
 }
 
-.hero-ornament::before,
-.hero-ornament::after {
+.hero-banner .hero-ornament::before,
+.hero-banner .hero-ornament::after {
   content: '◆';
   position: absolute;
   top: -8px;
@@ -49,23 +49,23 @@
   font-size: 16px;
 }
 
-.hero-ornament::before {
+.hero-banner .hero-ornament::before {
   left: -20px;
 }
 
-.hero-ornament::after {
+.hero-banner .hero-ornament::after {
   right: -20px;
 }
 
-.hero-ornament.top {
+.hero-banner .hero-ornament.top {
   margin-bottom: 2rem;
 }
 
-.hero-ornament.bottom {
+.hero-banner .hero-ornament.bottom {
   margin-top: 2rem;
 }
 
-.hero-title {
+.hero-banner .hero-title {
   font-family: 'Cinzel', serif;
   font-size: 3.5rem;
   font-weight: 700;
@@ -75,7 +75,7 @@
   letter-spacing: 0.05em;
 }
 
-.hero-subtitle {
+.hero-banner .hero-subtitle {
   font-family: 'Crimson Text', serif;
   font-size: 1.25rem;
   color: #E8E3D3;
@@ -84,14 +84,14 @@
   opacity: 0.9;
 }
 
-.hero-actions {
+.hero-banner .hero-actions {
   display: flex;
   gap: 1.5rem;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-.fantasy-btn {
+.hero-banner .fantasy-btn {
   font-family: 'Cinzel', serif;
   font-weight: 600;
   text-transform: uppercase;
@@ -105,7 +105,7 @@
   overflow: hidden;
 }
 
-.fantasy-btn::before {
+.hero-banner .fantasy-btn::before {
   content: '';
   position: absolute;
   top: 0;
@@ -116,36 +116,36 @@
   transition: left 0.6s ease;
 }
 
-.fantasy-btn:hover::before {
+.hero-banner .fantasy-btn:hover::before {
   left: 100%;
 }
 
-.btn-primary {
+.hero-banner .btn-primary {
   background: linear-gradient(135deg, #8B0000, #CD853F);
   color: #E8E3D3;
   border-color: #D4AF37;
 }
 
-.btn-primary:hover {
+.hero-banner .btn-primary:hover {
   background: linear-gradient(135deg, #A0001A, #D4AF37);
   box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
   transform: translateY(-2px);
 }
 
-.btn-secondary {
+.hero-banner .btn-secondary {
   background: transparent;
   color: #D4AF37;
   border-color: #D4AF37;
 }
 
-.btn-secondary:hover {
+.hero-banner .btn-secondary:hover {
   background: #D4AF37;
   color: #1a0f0a;
   box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
   transform: translateY(-2px);
 }
 
-.hero-background {
+.hero-banner .hero-background {
   position: absolute;
   top: 0;
   left: 0;
@@ -154,7 +154,7 @@
   z-index: 1;
 }
 
-.hero-background img {
+.hero-banner .hero-background img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -162,20 +162,20 @@
 }
 
 @media (max-width: 768px) {
-  .hero-title {
+  .hero-banner .hero-title {
     font-size: 2.5rem;
   }
   
-  .hero-subtitle {
+  .hero-banner .hero-subtitle {
     font-size: 1.1rem;
   }
   
-  .hero-actions {
+  .hero-banner .hero-actions {
     flex-direction: column;
     align-items: center;
   }
   
-  .fantasy-btn {
+  .hero-banner .fantasy-btn {
     width: 200px;
   }
 }
