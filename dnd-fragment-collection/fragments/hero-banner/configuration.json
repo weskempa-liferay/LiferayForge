@@ -24,20 +24,6 @@
               }
             ]
           }
-        },
-        {
-          "dataType": "int",
-          "defaultValue": 500,
-          "label": "Hero Height (px)",
-          "name": "heroHeight",
-          "type": "text",
-          "typeOptions": {
-            "validation": {
-              "min": 300,
-              "max": 800,
-              "type": "number"
-            }
-          }
         }
       ],
       "label": "Hero Banner Settings"
