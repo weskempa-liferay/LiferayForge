@@ -26,20 +26,6 @@
           }
         },
         {
-          "dataType": "object",
-          "defaultValue": true,
-          "label": "Enable Parallax Effect",
-          "name": "enableParallax",
-          "type": "checkbox"
-        },
-        {
-          "dataType": "object",
-          "defaultValue": true,
-          "label": "Enable Magical Effects",
-          "name": "enableMagic",
-          "type": "checkbox"
-        },
-        {
           "dataType": "int",
           "defaultValue": 500,
           "label": "Hero Height (px)",
