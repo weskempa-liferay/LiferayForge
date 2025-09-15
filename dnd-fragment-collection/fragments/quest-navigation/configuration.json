@@ -26,28 +26,28 @@
           }
         },
         {
-          "dataType": "bool",
+          "dataType": "object",
           "defaultValue": true,
           "label": "Show User Profile",
           "name": "showUserProfile",
           "type": "checkbox"
         },
         {
-          "dataType": "bool",
+          "dataType": "object",
           "defaultValue": true,
           "label": "Enable Mobile Menu",
           "name": "enableMobileMenu",
           "type": "checkbox"
         },
         {
-          "dataType": "bool",
+          "dataType": "object",
           "defaultValue": true,
           "label": "Auto-hide on Scroll",
           "name": "autoHideScroll",
           "type": "checkbox"
         },
         {
-          "dataType": "bool",
+          "dataType": "object",
           "defaultValue": true,
           "label": "Show Section Dividers",
           "name": "showSectionDividers",

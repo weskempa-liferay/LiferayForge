@@ -57,21 +57,21 @@
           }
         },
         {
-          "dataType": "bool",
+          "dataType": "object",
           "defaultValue": true,
           "label": "Show Stats",
           "name": "showStats",
           "type": "checkbox"
         },
         {
-          "dataType": "bool",
+          "dataType": "object",
           "defaultValue": true,
           "label": "Show Abilities",
           "name": "showAbilities",
           "type": "checkbox"
         },
         {
-          "dataType": "bool",
+          "dataType": "object",
           "defaultValue": true,
           "label": "Enable Hover Effects",
           "name": "enableHoverEffects",
