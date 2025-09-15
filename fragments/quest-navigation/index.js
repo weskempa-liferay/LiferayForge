@@ -4,8 +4,11 @@
 
   // Mobile menu toggle functionality
   function initMobileMenu() {
-    const navToggle = document.getElementById('nav-toggle');
-    const navMenu = document.getElementById('nav-menu');
+    const questNav = document.querySelector('.quest-navigation');
+    if (!questNav) return;
+    
+    const navToggle = questNav.querySelector('#nav-toggle');
+    const navMenu = questNav.querySelector('#nav-menu');
     
     if (!navToggle || !navMenu) return;
     
@@ -20,6 +23,7 @@
     
     // Close menu when clicking outside
     document.addEventListener('click', function(event) {
+      if (questNav.contains(event.target)) return; // Click is within our navigation
       if (!navToggle.contains(event.target) && !navMenu.contains(event.target)) {
         navToggle.classList.remove('active');
         navMenu.classList.remove('active');
@@ -30,7 +34,10 @@
 
   // Add active link highlighting
   function initActiveLinkHighlighting() {
-    const navLinks = document.querySelectorAll('.nav-link');
+    const questNav = document.querySelector('.quest-navigation');
+    if (!questNav) return;
+    
+    const navLinks = questNav.querySelectorAll('.nav-link');
     const currentPath = window.location.pathname;
     
     navLinks.forEach(link => {
@@ -47,7 +54,10 @@
 
   // Smooth scrolling for anchor links
   function initSmoothScrolling() {
-    const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+    const questNav = document.querySelector('.quest-navigation');
+    if (!questNav) return;
+    
+    const navLinks = questNav.querySelectorAll('.nav-link[href^="#"]');
     
     navLinks.forEach(link => {
       link.addEventListener('click', function(e) {
@@ -63,8 +73,8 @@
           });
           
           // Close mobile menu if open
-          const navMenu = document.getElementById('nav-menu');
-          const navToggle = document.getElementById('nav-toggle');
+          const navMenu = questNav.querySelector('#nav-menu');
+          const navToggle = questNav.querySelector('#nav-toggle');
           if (navMenu && navToggle) {
             navMenu.classList.remove('active');
             navToggle.classList.remove('active');
@@ -77,7 +87,10 @@
 
   // Badge animation for notifications
   function initBadgeAnimations() {
-    const badges = document.querySelectorAll('.nav-badge');
+    const questNav = document.querySelector('.quest-navigation');
+    if (!questNav) return;
+    
+    const badges = questNav.querySelectorAll('.nav-badge');
     
     badges.forEach(badge => {
       // Pulse animation for new notifications
@@ -93,12 +106,14 @@
 
   // User avatar hover effect
   function initUserAvatarEffects() {
-    const userAvatar = document.querySelector('.user-avatar');
-    const userInfo = document.querySelector('.user-info');
+    const questNav = document.querySelector('.quest-navigation');
+    if (!questNav) return;
     
-    if (!userAvatar || !userInfo) return;
+    const userAvatar = questNav.querySelector('.user-avatar');
+    const userInfo = questNav.querySelector('.user-info');
+    const navUser = questNav.querySelector('.nav-user');
     
-    const navUser = document.querySelector('.nav-user');
+    if (!userAvatar || !userInfo || !navUser) return;
     
     navUser.addEventListener('mouseenter', function() {
       const img = userAvatar.querySelector('img');
@@ -141,13 +156,16 @@
 
   // Keyboard navigation support
   function initKeyboardNavigation() {
-    const navLinks = document.querySelectorAll('.nav-link');
-    const navToggle = document.getElementById('nav-toggle');
+    const questNav = document.querySelector('.quest-navigation');
+    if (!questNav) return;
+    
+    const navLinks = questNav.querySelectorAll('.nav-link');
+    const navToggle = questNav.querySelector('#nav-toggle');
     
     // Handle keyboard navigation
-    document.addEventListener('keydown', function(e) {
+    questNav.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
-        const navMenu = document.getElementById('nav-menu');
+        const navMenu = questNav.querySelector('#nav-menu');
         if (navMenu && navMenu.classList.contains('active')) {
           navMenu.classList.remove('active');
           navToggle.classList.remove('active');

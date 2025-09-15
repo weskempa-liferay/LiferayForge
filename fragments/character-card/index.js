@@ -169,21 +169,25 @@
 
   // Ability hover effects
   function initAbilityEffects() {
-    const abilities = document.querySelectorAll('.ability');
+    const characterCards = document.querySelectorAll('.character-card');
     
-    abilities.forEach((ability, index) => {
-      ability.addEventListener('mouseenter', function() {
-        this.style.background = 'rgba(212, 175, 55, 0.1)';
-        this.style.borderRadius = '4px';
-        this.style.padding = '0.5rem 1rem';
-        this.style.margin = '0.25rem -1rem';
-      });
-      
-      ability.addEventListener('mouseleave', function() {
-        this.style.background = '';
-        this.style.borderRadius = '';
-        this.style.padding = '0.5rem 0';
-        this.style.margin = '';
+    characterCards.forEach(card => {
+      const abilities = card.querySelectorAll('.ability');
+    
+      abilities.forEach((ability, index) => {
+        ability.addEventListener('mouseenter', function() {
+          this.style.background = 'rgba(212, 175, 55, 0.1)';
+          this.style.borderRadius = '4px';
+          this.style.padding = '0.5rem 1rem';
+          this.style.margin = '0.25rem -1rem';
+        });
+        
+        ability.addEventListener('mouseleave', function() {
+          this.style.background = '';
+          this.style.borderRadius = '';
+          this.style.padding = '0.5rem 0';
+          this.style.margin = '';
+        });
       });
     });
   }

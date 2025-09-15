@@ -80,7 +80,9 @@
 
   // Button hover effects
   function enhanceButtons() {
-    const buttons = document.querySelectorAll('.fantasy-btn');
+    const heroSection = document.querySelector('.hero-banner');
+    if (!heroSection) return;
+    const buttons = heroSection.querySelectorAll('.fantasy-btn');
     
     buttons.forEach(button => {
       button.addEventListener('mouseenter', function() {
