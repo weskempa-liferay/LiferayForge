@@ -1,0 +1,147 @@
+{
+  "fieldSets": [
+    {
+      "fields": [
+        {
+          "name": "guild_name",
+          "label": "Guild Name",
+          "description": "The name of your guild or organization",
+          "type": "text",
+          "typeOptions": {
+            "placeholder": "The Dragon's Keep"
+          },
+          "defaultValue": "The Adventurer's Guild"
+        },
+        {
+          "name": "guild_motto",
+          "label": "Guild Motto",
+          "description": "A short motto or tagline for your guild",
+          "type": "text",
+          "typeOptions": {
+            "placeholder": "Honor, Adventure, Glory"
+          },
+          "defaultValue": "Forging legends, one quest at a time"
+        },
+        {
+          "name": "realm_name",
+          "label": "Realm Name",
+          "description": "The name of your fantasy realm",
+          "type": "text",
+          "typeOptions": {
+            "placeholder": "Aethermoor"
+          },
+          "defaultValue": "the Digital Realm"
+        },
+        {
+          "name": "organization_name",
+          "label": "Organization Name",
+          "description": "Legal organization name for copyright",
+          "type": "text",
+          "typeOptions": {
+            "placeholder": "Your Company Name"
+          },
+          "defaultValue": "Your Organization"
+        }
+      ]
+    },
+    {
+      "label": "Navigation Links",
+      "fields": [
+        {
+          "name": "adventures_link",
+          "label": "Adventures Link",
+          "description": "URL for adventures/campaigns page",
+          "type": "url",
+          "defaultValue": "#adventures"
+        },
+        {
+          "name": "characters_link",
+          "label": "Characters Link",
+          "description": "URL for characters page",
+          "type": "url",
+          "defaultValue": "#characters"
+        },
+        {
+          "name": "tavern_link",
+          "label": "Tavern Link",
+          "description": "URL for community/social page",
+          "type": "url",
+          "defaultValue": "#tavern"
+        },
+        {
+          "name": "treasury_link",
+          "label": "Treasury Link",
+          "description": "URL for shop/marketplace page",
+          "type": "url",
+          "defaultValue": "#treasury"
+        }
+      ]
+    },
+    {
+      "label": "Guild Services",
+      "fields": [
+        {
+          "name": "library_link",
+          "label": "Library Link",
+          "description": "URL for documentation/resources page",
+          "type": "url",
+          "defaultValue": "#library"
+        },
+        {
+          "name": "armory_link",
+          "label": "Armory Link",
+          "description": "URL for tools/equipment page",
+          "type": "url",
+          "defaultValue": "#armory"
+        },
+        {
+          "name": "contact_link",
+          "label": "Contact Link",
+          "description": "URL for contact page",
+          "type": "url",
+          "defaultValue": "#contact"
+        },
+        {
+          "name": "support_link",
+          "label": "Support Link",
+          "description": "URL for help/support page",
+          "type": "url",
+          "defaultValue": "#support"
+        }
+      ]
+    },
+    {
+      "label": "Social Media",
+      "fields": [
+        {
+          "name": "discord_link",
+          "label": "Discord Link",
+          "description": "Discord server invitation link",
+          "type": "url",
+          "defaultValue": "#"
+        },
+        {
+          "name": "twitter_link",
+          "label": "Twitter Link",
+          "description": "Twitter profile link",
+          "type": "url",
+          "defaultValue": "#"
+        },
+        {
+          "name": "reddit_link",
+          "label": "Reddit Link",
+          "description": "Reddit community link",
+          "type": "url",
+          "defaultValue": "#"
+        },
+        {
+          "name": "youtube_link",
+          "label": "YouTube Link",
+          "description": "YouTube channel link",
+          "type": "url",
+          "defaultValue": "#"
+        }
+      ]
+    }
+  ]
+}
