@@ -1,0 +1,88 @@
+<div class="dm-chat fantasy-chat">
+  <div class="chat-header">
+    <div class="dm-avatar">
+      <span class="dm-icon">🧙‍♂️</span>
+    </div>
+    <div class="chat-title">
+      <h3 data-lfr-editable-id="chat-title" data-lfr-editable-type="rich-text">
+        Consult the Dungeon Master
+      </h3>
+      <p class="chat-subtitle" data-lfr-editable-id="chat-subtitle" data-lfr-editable-type="rich-text">
+        Ask questions about rules, lore, or your adventure
+      </p>
+    </div>
+    <div class="chat-status">
+      <span class="status-indicator online"></span>
+      <span class="status-text">DM Available</span>
+    </div>
+  </div>
+
+  <div class="chat-input-section">
+    <div class="input-container">
+      <input 
+        type="text" 
+        id="dm-chat-input" 
+        class="chat-input"
+        placeholder="Ask the DM a question..."
+        maxlength="500"
+      />
+      <button 
+        id="dm-send-button" 
+        class="send-button fantasy-btn"
+        aria-label="Send message to DM"
+      >
+        <span class="send-icon">📜</span>
+        <span class="send-text">Send</span>
+      </button>
+    </div>
+    <div class="input-helper">
+      <span class="character-count">
+        <span id="char-count">0</span>/500
+      </span>
+      <div class="quick-actions">
+        <button class="quick-btn" data-question="What are the rules for...">Rules</button>
+        <button class="quick-btn" data-question="Tell me about the lore of...">Lore</button>
+        <button class="quick-btn" data-question="How should I handle...">Advice</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-log-container">
+    <div class="chat-log" id="dm-chat-log">
+      <div class="welcome-message">
+        <div class="message dm-message">
+          <div class="message-avatar">
+            <span class="avatar-icon">🧙‍♂️</span>
+          </div>
+          <div class="message-content">
+            <div class="message-header">
+              <span class="sender-name">Dungeon Master</span>
+              <span class="message-time">Now</span>
+            </div>
+            <div class="message-text">
+              Greetings, brave adventurer! I am your AI Dungeon Master, ready to assist you with rules clarifications, lore questions, character advice, and creative inspiration for your D&D journey. What can I help you with today?
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="chat-actions">
+      <button class="action-btn" id="clear-chat">
+        <span class="action-icon">🗑️</span>
+        Clear Chat
+      </button>
+      <button class="action-btn" id="export-chat">
+        <span class="action-icon">💾</span>
+        Export Log
+      </button>
+    </div>
+  </div>
+
+  <div class="loading-indicator" id="dm-loading" style="display: none;">
+    <div class="loading-animation">
+      <span class="dice-icon">🎲</span>
+      <span class="loading-text">The DM is thinking...</span>
+    </div>
+  </div>
+</div>

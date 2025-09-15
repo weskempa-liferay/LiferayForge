@@ -1,0 +1,60 @@
+{
+  "fieldSets": [
+    {
+      "fields": [
+        {
+          "dataType": "string",
+          "defaultValue": "standard",
+          "label": "Chat Theme",
+          "name": "chatTheme",
+          "type": "select",
+          "typeOptions": {
+            "validValues": [
+              {
+                "label": "Standard DM",
+                "value": "standard"
+              },
+              {
+                "label": "Friendly Guide",
+                "value": "friendly"
+              },
+              {
+                "label": "Stern Master",
+                "value": "stern"
+              }
+            ]
+          }
+        },
+        {
+          "dataType": "object",
+          "defaultValue": true,
+          "label": "Show Quick Actions",
+          "name": "showQuickActions",
+          "type": "checkbox"
+        },
+        {
+          "dataType": "object",
+          "defaultValue": true,
+          "label": "Enable Chat Export",
+          "name": "enableExport",
+          "type": "checkbox"
+        },
+        {
+          "dataType": "int",
+          "defaultValue": 400,
+          "label": "Chat Height (px)",
+          "name": "chatHeight",
+          "type": "text",
+          "typeOptions": {
+            "validation": {
+              "min": 200,
+              "max": 600,
+              "type": "number"
+            }
+          }
+        }
+      ],
+      "label": "DM Chat Settings"
+    }
+  ]
+}
