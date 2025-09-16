@@ -1,0 +1,639 @@
+/* Character Header Fragment - D&D Fantasy Styling */
+
+.character-header {
+  position: relative;
+  background: linear-gradient(135deg, #2a1f1a 0%, #1a0f0a 100%);
+  border: 3px solid #8B4513;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 1rem 0;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(212, 175, 55, 0.2);
+  overflow: hidden;
+}
+
+.character-header .header-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.15;
+  z-index: 1;
+}
+
+.character-header .parchment-texture {
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(139, 69, 19, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(160, 82, 45, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(205, 133, 63, 0.2) 0%, transparent 50%);
+}
+
+.character-header .header-content {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* Portrait Section */
+.character-header .character-portrait-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.character-header .portrait-frame {
+  position: relative;
+  width: 200px;
+  height: 240px;
+  border: 4px solid #D4AF37;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #2a1f1a, #1a0f0a);
+  box-shadow: 
+    0 0 20px rgba(212, 175, 55, 0.4),
+    inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.character-header .portrait-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.character-header .portrait-border-decoration {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  pointer-events: none;
+}
+
+.character-header .corner-ornament {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #D4AF37;
+  background: #2a1f1a;
+}
+
+.character-header .corner-ornament.top-left {
+  top: -2px;
+  left: -2px;
+  border-right: none;
+  border-bottom: none;
+  border-radius: 8px 0 0 0;
+}
+
+.character-header .corner-ornament.top-right {
+  top: -2px;
+  right: -2px;
+  border-left: none;
+  border-bottom: none;
+  border-radius: 0 8px 0 0;
+}
+
+.character-header .corner-ornament.bottom-left {
+  bottom: -2px;
+  left: -2px;
+  border-right: none;
+  border-top: none;
+  border-radius: 0 0 0 8px;
+}
+
+.character-header .corner-ornament.bottom-right {
+  bottom: -2px;
+  right: -2px;
+  border-left: none;
+  border-top: none;
+  border-radius: 0 0 8px 0;
+}
+
+.character-header .level-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(139, 0, 0, 0.1));
+  border: 2px solid #D4AF37;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  padding: 0.5rem;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+  justify-content: center;
+}
+
+.character-header .level-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  color: #D4AF37;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.character-header .level-value {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #FFD700;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* Character Info Section */
+.character-header .character-info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.character-header .character-title {
+  border-bottom: 2px solid #8B4513;
+  padding-bottom: 1rem;
+}
+
+.character-header .character-name {
+  font-family: 'Cinzel', serif;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #FFD700;
+  margin: 0;
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.8),
+    0 0 20px rgba(255, 215, 0, 0.3);
+  line-height: 1.2;
+}
+
+.character-header .character-subtitle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  font-family: 'Crimson Text', serif;
+  font-size: 1.1rem;
+  color: #D4AF37;
+}
+
+.character-header .character-class {
+  font-weight: bold;
+  color: #CD853F;
+}
+
+.character-header .title-separator {
+  color: #8B4513;
+}
+
+.character-header .character-subclass {
+  font-style: italic;
+  color: #DEB887;
+}
+
+/* Level Progress Section */
+.character-header .level-progress-section {
+  background: rgba(42, 31, 26, 0.6);
+  border: 1px solid #8B4513;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.character-header .progress-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-family: 'Crimson Text', serif;
+  font-size: 0.9rem;
+  color: #DEB887;
+}
+
+.character-header .xp-values {
+  font-weight: bold;
+  color: #D4AF37;
+}
+
+.character-header .progress-bar {
+  position: relative;
+  width: 100%;
+  height: 12px;
+  background: #1a0f0a;
+  border: 1px solid #8B4513;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.character-header .progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #8B4513 0%, #D4AF37 50%, #FFD700 100%);
+  border-radius: 5px;
+  transition: width 0.5s ease;
+  position: relative;
+}
+
+.character-header .progress-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 215, 0, 0.3) 50%, transparent 100%);
+  animation: progressGlow 2s ease-in-out infinite;
+}
+
+@keyframes progressGlow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.7; }
+}
+
+/* Character Details Grid */
+.character-header .character-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.character-header .detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  background: rgba(42, 31, 26, 0.4);
+  border: 1px solid #8B4513;
+  border-radius: 6px;
+  padding: 0.75rem;
+}
+
+.character-header .detail-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.8rem;
+  color: #D4AF37;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.character-header .detail-value {
+  font-family: 'Crimson Text', serif;
+  font-size: 1rem;
+  color: #DEB887;
+  font-weight: 500;
+}
+
+/* Character Story Section */
+.character-header .character-story {
+  background: rgba(42, 31, 26, 0.6);
+  border: 2px solid #8B4513;
+  border-radius: 8px;
+  padding: 1.5rem;
+  position: relative;
+}
+
+.character-header .story-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  color: #D4AF37;
+  margin: 0 0 0.75rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.character-header .story-text {
+  font-family: 'Crimson Text', serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #DEB887;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Action Buttons */
+.character-header .action-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.character-header .fantasy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #8B4513;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #2a1f1a, #1a0f0a);
+  color: #DEB887;
+  text-decoration: none;
+  font-family: 'Crimson Text', serif;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.character-header .fantasy-btn.btn-primary {
+  border-color: #D4AF37;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(139, 69, 19, 0.3));
+  color: #FFD700;
+}
+
+.character-header .fantasy-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(212, 175, 55, 0.3);
+  border-color: #FFD700;
+}
+
+.character-header .btn-icon {
+  font-size: 1.1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .character-header .header-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  
+  .character-header .character-name {
+    font-size: 2rem;
+  }
+  
+  .character-header .character-details-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .character-header .action-buttons {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .character-header {
+    padding: 1rem;
+  }
+  
+  .character-header .portrait-frame {
+    width: 150px;
+    height: 180px;
+  }
+  
+  .character-header .character-name {
+    font-size: 1.75rem;
+  }
+}
+
+/* Configuration Options Styles */
+
+/* Compact Mode */
+.character-header.compact-mode {
+  padding: 1rem;
+  margin: 0.5rem 0;
+}
+
+.character-header.compact-mode .header-content {
+  gap: 1rem;
+}
+
+.character-header.compact-mode .portrait-frame {
+  width: 120px;
+  height: 144px;
+}
+
+.character-header.compact-mode .level-indicator {
+  width: 60px;
+  height: 60px;
+}
+
+.character-header.compact-mode .character-name {
+  font-size: 1.8rem;
+}
+
+.character-header.compact-mode .character-details-grid {
+  gap: 0.5rem;
+}
+
+.character-header.compact-mode .detail-item {
+  padding: 0.5rem;
+}
+
+.character-header.compact-mode .character-story {
+  padding: 1rem;
+}
+
+.character-header.compact-mode .action-buttons {
+  margin-top: 1rem;
+}
+
+/* Theme Variations */
+
+/* Dark Fantasy Theme */
+.character-header.theme-dark {
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+  border-color: #4a4a4a;
+}
+
+.character-header.theme-dark .portrait-frame {
+  border-color: #8B0000;
+  box-shadow: 
+    0 0 20px rgba(139, 0, 0, 0.4),
+    inset 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.character-header.theme-dark .level-indicator {
+  background: linear-gradient(135deg, rgba(139, 0, 0, 0.2), rgba(0, 0, 0, 0.3));
+  border-color: #8B0000;
+  box-shadow: 0 0 15px rgba(139, 0, 0, 0.3);
+}
+
+.character-header.theme-dark .level-label {
+  color: #8B0000;
+}
+
+.character-header.theme-dark .level-value {
+  color: #FF4500;
+  text-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+}
+
+.character-header.theme-dark .character-name {
+  color: #FF4500;
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.8),
+    0 0 20px rgba(255, 69, 0, 0.3);
+}
+
+.character-header.theme-dark .character-class {
+  color: #CD5C5C;
+}
+
+.character-header.theme-dark .character-subclass {
+  color: #F5DEB3;
+}
+
+.character-header.theme-dark .progress-fill {
+  background: linear-gradient(90deg, #4a4a4a 0%, #8B0000 50%, #FF4500 100%);
+}
+
+.character-header.theme-dark .detail-label {
+  color: #8B0000;
+}
+
+.character-header.theme-dark .story-title {
+  color: #8B0000;
+}
+
+.character-header.theme-dark .fantasy-btn.btn-primary {
+  border-color: #8B0000;
+  background: linear-gradient(135deg, rgba(139, 0, 0, 0.2), rgba(0, 0, 0, 0.3));
+  color: #FF4500;
+}
+
+/* Noble Knight Theme */
+.character-header.theme-noble {
+  background: linear-gradient(135deg, #2F4F4F 0%, #1C1C1C 100%);
+  border-color: #C0C0C0;
+}
+
+.character-header.theme-noble .portrait-frame {
+  border-color: #C0C0C0;
+  box-shadow: 
+    0 0 20px rgba(192, 192, 192, 0.4),
+    inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.character-header.theme-noble .level-indicator {
+  background: linear-gradient(135deg, rgba(192, 192, 192, 0.2), rgba(47, 79, 79, 0.3));
+  border-color: #C0C0C0;
+  box-shadow: 0 0 15px rgba(192, 192, 192, 0.3);
+}
+
+.character-header.theme-noble .level-label {
+  color: #C0C0C0;
+}
+
+.character-header.theme-noble .level-value {
+  color: #E6E6FA;
+  text-shadow: 0 0 10px rgba(230, 230, 250, 0.5);
+}
+
+.character-header.theme-noble .character-name {
+  color: #E6E6FA;
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.8),
+    0 0 20px rgba(230, 230, 250, 0.3);
+}
+
+.character-header.theme-noble .character-class {
+  color: #B0C4DE;
+}
+
+.character-header.theme-noble .character-subclass {
+  color: #D3D3D3;
+}
+
+.character-header.theme-noble .progress-fill {
+  background: linear-gradient(90deg, #2F4F4F 0%, #C0C0C0 50%, #E6E6FA 100%);
+}
+
+.character-header.theme-noble .detail-label {
+  color: #C0C0C0;
+}
+
+.character-header.theme-noble .story-title {
+  color: #C0C0C0;
+}
+
+.character-header.theme-noble .fantasy-btn.btn-primary {
+  border-color: #C0C0C0;
+  background: linear-gradient(135deg, rgba(192, 192, 192, 0.2), rgba(47, 79, 79, 0.3));
+  color: #E6E6FA;
+}
+
+/* Mystical Mage Theme */
+.character-header.theme-mystical {
+  background: linear-gradient(135deg, #191970 0%, #4B0082 100%);
+  border-color: #9370DB;
+}
+
+.character-header.theme-mystical .portrait-frame {
+  border-color: #9370DB;
+  box-shadow: 
+    0 0 20px rgba(147, 112, 219, 0.4),
+    inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.character-header.theme-mystical .level-indicator {
+  background: linear-gradient(135deg, rgba(147, 112, 219, 0.2), rgba(75, 0, 130, 0.3));
+  border-color: #9370DB;
+  box-shadow: 0 0 15px rgba(147, 112, 219, 0.3);
+}
+
+.character-header.theme-mystical .level-label {
+  color: #9370DB;
+}
+
+.character-header.theme-mystical .level-value {
+  color: #DA70D6;
+  text-shadow: 0 0 10px rgba(218, 112, 214, 0.5);
+}
+
+.character-header.theme-mystical .character-name {
+  color: #DA70D6;
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.8),
+    0 0 20px rgba(218, 112, 214, 0.3);
+}
+
+.character-header.theme-mystical .character-class {
+  color: #DDA0DD;
+}
+
+.character-header.theme-mystical .character-subclass {
+  color: #E6E6FA;
+}
+
+.character-header.theme-mystical .progress-fill {
+  background: linear-gradient(90deg, #191970 0%, #9370DB 50%, #DA70D6 100%);
+}
+
+.character-header.theme-mystical .detail-label {
+  color: #9370DB;
+}
+
+.character-header.theme-mystical .story-title {
+  color: #9370DB;
+}
+
+.character-header.theme-mystical .fantasy-btn.btn-primary {
+  border-color: #9370DB;
+  background: linear-gradient(135deg, rgba(147, 112, 219, 0.2), rgba(75, 0, 130, 0.3));
+  color: #DA70D6;
+}
+
+/* Compact mode responsive adjustments */
+@media (max-width: 768px) {
+  .character-header.compact-mode .portrait-frame {
+    width: 100px;
+    height: 120px;
+  }
+  
+  .character-header.compact-mode .level-indicator {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .character-header.compact-mode .character-name {
+    font-size: 1.5rem;
+  }
+}

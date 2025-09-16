@@ -1,0 +1,49 @@
+{
+  "fieldSets": [
+    {
+      "fields": [
+        {
+          "name": "showLevelProgress",
+          "label": "Show Level Progress Bar",
+          "description": "Display the experience progress bar",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "showDetailButtons",
+          "label": "Show Action Buttons", 
+          "description": "Display the view sheet and edit character buttons",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "showCharacterStory",
+          "label": "Show Character Story",
+          "description": "Display the character backstory section",
+          "type": "checkbox", 
+          "defaultValue": true
+        },
+        {
+          "name": "compactMode",
+          "label": "Compact Mode",
+          "description": "Use a more condensed layout for the character header",
+          "type": "checkbox",
+          "defaultValue": false
+        },
+        {
+          "name": "headerTheme",
+          "label": "Header Theme",
+          "description": "Choose the visual theme for the character header",
+          "type": "select",
+          "defaultValue": "classic",
+          "options": [
+            {"value": "classic", "label": "Classic D&D"},
+            {"value": "dark", "label": "Dark Fantasy"},
+            {"value": "noble", "label": "Noble Knight"},
+            {"value": "mystical", "label": "Mystical Mage"}
+          ]
+        }
+      ]
+    }
+  ]
+}
