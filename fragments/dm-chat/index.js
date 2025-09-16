@@ -272,11 +272,11 @@
         overflow: visible;
       }
       
-      .chat-input:focus {
+      .dm-chat .chat-input:focus {
         box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
       }
       
-      .send-button:hover .send-icon {
+      .dm-chat .send-button:hover .send-icon {
         animation: bounce 0.5s ease-in-out;
       }
       
@@ -285,7 +285,7 @@
         50% { transform: translateY(-3px); }
       }
       
-      .message {
+      .dm-chat .message {
         animation: messageSlide 0.3s ease-out;
       }
       
@@ -300,11 +300,11 @@
         }
       }
       
-      .quick-btn:active {
+      .dm-chat .quick-btn:active {
         transform: scale(0.95);
       }
       
-      .action-btn:active {
+      .dm-chat .action-btn:active {
         transform: scale(0.95);
       }
     `;

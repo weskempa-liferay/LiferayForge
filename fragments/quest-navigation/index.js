@@ -217,14 +217,14 @@
         transition: transform 0.3s ease;
       }
       
-      .nav-link.active {
+      .quest-navigation .nav-link.active {
         background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(139, 0, 0, 0.15)) !important;
         border-color: #D4AF37 !important;
         color: #FFD700 !important;
         box-shadow: 0 0 20px rgba(212, 175, 55, 0.3) !important;
       }
       
-      .nav-link.active .nav-link-icon {
+      .quest-navigation .nav-link.active .nav-link-icon {
         filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.6));
       }
       
