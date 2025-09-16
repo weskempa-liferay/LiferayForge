@@ -1,0 +1,865 @@
+/* Combat Statistics Fragment - D&D Fantasy Styling */
+
+.combat-stats {
+  position: relative;
+  background: linear-gradient(135deg, #2a1f1a 0%, #1a0f0a 100%);
+  border: 3px solid #8B4513;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 1rem 0;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(212, 175, 55, 0.2);
+  overflow: hidden;
+}
+
+.combat-stats .stats-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.1;
+  z-index: 1;
+}
+
+.combat-stats .parchment-texture {
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(139, 69, 19, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(160, 82, 45, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(205, 133, 63, 0.2) 0%, transparent 50%);
+}
+
+/* Header */
+.combat-stats .stats-header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #8B4513;
+  padding-bottom: 1rem;
+}
+
+.combat-stats .stats-title {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #FFD700;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
+.combat-stats .stats-decoration {
+  font-size: 1.5rem;
+  opacity: 0.8;
+}
+
+/* Content Layout */
+.combat-stats .stats-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Primary Stats Section */
+.combat-stats .primary-stats-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.combat-stats .stat-card {
+  background: rgba(42, 31, 26, 0.8);
+  border: 2px solid #8B4513;
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.combat-stats .stat-card:hover {
+  border-color: #D4AF37;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+  transform: translateY(-2px);
+}
+
+.combat-stats .stat-icon {
+  font-size: 2rem;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(139, 0, 0, 0.1));
+  border: 2px solid #D4AF37;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.combat-stats .stat-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.combat-stats .stat-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem;
+  color: #D4AF37;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: bold;
+}
+
+.combat-stats .stat-value {
+  font-family: 'Cinzel', serif;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #FFD700;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+.combat-stats .stat-detail {
+  font-family: 'Crimson Text', serif;
+  font-size: 0.8rem;
+  color: #DEB887;
+  font-style: italic;
+}
+
+/* Hit Points Specific */
+.combat-stats .hp-display {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.combat-stats .hp-separator {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  color: #8B4513;
+}
+
+.combat-stats .current-hp {
+  color: #32CD32;
+}
+
+.combat-stats .max-hp {
+  color: #FFD700;
+}
+
+.combat-stats .hp-bar {
+  width: 100%;
+  height: 8px;
+  background: #1a0f0a;
+  border: 1px solid #8B4513;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.combat-stats .hp-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #DC143C 0%, #FF6347 50%, #32CD32 100%);
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+/* Ability Scores Section */
+.combat-stats .ability-scores-section {
+  background: rgba(42, 31, 26, 0.6);
+  border: 2px solid #8B4513;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.combat-stats .section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  color: #D4AF37;
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+  border-bottom: 1px solid #8B4513;
+  padding-bottom: 0.5rem;
+}
+
+.combat-stats .ability-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+}
+
+.combat-stats .ability-score {
+  background: rgba(42, 31, 26, 0.8);
+  border: 2px solid #8B4513;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.combat-stats .ability-score:hover {
+  border-color: #D4AF37;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+  transform: scale(1.05);
+}
+
+.combat-stats .ability-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.8rem;
+  color: #D4AF37;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.combat-stats .ability-value {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #FFD700;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.combat-stats .ability-modifier {
+  font-family: 'Crimson Text', serif;
+  font-size: 1rem;
+  color: #DEB887;
+  font-weight: bold;
+}
+
+/* Ability Score Colors */
+.combat-stats .ability-score.str { border-color: #DC143C; }
+.combat-stats .ability-score.dex { border-color: #32CD32; }
+.combat-stats .ability-score.con { border-color: #8B4513; }
+.combat-stats .ability-score.int { border-color: #4169E1; }
+.combat-stats .ability-score.wis { border-color: #FFD700; }
+.combat-stats .ability-score.cha { border-color: #FF69B4; }
+
+/* Saving Throws Section */
+.combat-stats .saving-throws-section {
+  background: rgba(42, 31, 26, 0.6);
+  border: 2px solid #8B4513;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.combat-stats .saves-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.combat-stats .save-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: rgba(42, 31, 26, 0.4);
+  border: 1px solid #8B4513;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.combat-stats .save-item:hover {
+  border-color: #D4AF37;
+  background: rgba(42, 31, 26, 0.6);
+}
+
+.combat-stats .save-item.proficient {
+  border-color: #D4AF37;
+  background: rgba(212, 175, 55, 0.1);
+}
+
+.combat-stats .proficiency-indicator {
+  font-size: 1.2rem;
+  color: #D4AF37;
+  font-weight: bold;
+  width: 20px;
+  text-align: center;
+}
+
+.combat-stats .save-item:not(.proficient) .proficiency-indicator {
+  color: #8B4513;
+}
+
+.combat-stats .save-name {
+  font-family: 'Crimson Text', serif;
+  font-size: 1rem;
+  color: #DEB887;
+  flex: 1;
+}
+
+.combat-stats .save-value {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #FFD700;
+  min-width: 2rem;
+  text-align: right;
+}
+
+/* Combat Modifiers Section */
+.combat-stats .combat-modifiers-section {
+  background: rgba(42, 31, 26, 0.6);
+  border: 2px solid #8B4513;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.combat-stats .modifiers-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.combat-stats .modifier-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: rgba(42, 31, 26, 0.4);
+  border: 1px solid #8B4513;
+  border-radius: 6px;
+}
+
+.combat-stats .modifier-label {
+  font-family: 'Crimson Text', serif;
+  font-size: 0.9rem;
+  color: #DEB887;
+}
+
+.combat-stats .modifier-value {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #FFD700;
+}
+
+/* Resistances Section */
+.combat-stats .resistances-section {
+  background: rgba(42, 31, 26, 0.6);
+  border: 2px solid #8B4513;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.combat-stats .resistance-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.combat-stats .resistance-tag {
+  font-family: 'Crimson Text', serif;
+  font-size: 0.85rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.combat-stats .damage-resistance {
+  background: rgba(255, 165, 0, 0.2);
+  border: 1px solid #FFA500;
+  color: #FFA500;
+}
+
+.combat-stats .damage-immunity {
+  background: rgba(50, 205, 50, 0.2);
+  border: 1px solid #32CD32;
+  color: #32CD32;
+}
+
+.combat-stats .condition-immunity {
+  background: rgba(138, 43, 226, 0.2);
+  border: 1px solid #8A2BE2;
+  color: #8A2BE2;
+}
+
+/* Death Saves Section */
+.combat-stats .death-saves-section {
+  background: rgba(42, 31, 26, 0.6);
+  border: 2px solid #DC143C;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.combat-stats .death-saves-tracker {
+  display: flex;
+  justify-content: space-around;
+  gap: 2rem;
+}
+
+.combat-stats .death-save-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.combat-stats .death-save-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem;
+  color: #D4AF37;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: bold;
+}
+
+.combat-stats .death-save-dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.combat-stats .death-dot {
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.combat-stats .death-dot.empty {
+  color: #8B4513;
+}
+
+.combat-stats .death-dot.filled {
+  color: #FFD700;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.combat-stats .successes .death-dot.filled {
+  color: #32CD32;
+  text-shadow: 0 0 10px rgba(50, 205, 50, 0.5);
+}
+
+.combat-stats .failures .death-dot.filled {
+  color: #DC143C;
+  text-shadow: 0 0 10px rgba(220, 20, 60, 0.5);
+}
+
+.combat-stats .death-dot:hover {
+  transform: scale(1.2);
+}
+
+/* Stats Actions */
+.combat-stats .stats-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.combat-stats .fantasy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #8B4513;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #2a1f1a, #1a0f0a);
+  color: #DEB887;
+  text-decoration: none;
+  font-family: 'Crimson Text', serif;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.combat-stats .fantasy-btn.btn-primary {
+  border-color: #D4AF37;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(139, 69, 19, 0.3));
+  color: #FFD700;
+}
+
+.combat-stats .fantasy-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(212, 175, 55, 0.3);
+  border-color: #FFD700;
+}
+
+.combat-stats .btn-icon {
+  font-size: 1.1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .combat-stats .primary-stats-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .combat-stats .ability-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .combat-stats .saves-grid,
+  .combat-stats .modifiers-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .combat-stats .stats-actions {
+    flex-direction: column;
+  }
+  
+  .combat-stats .death-saves-tracker {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .combat-stats {
+    padding: 1rem;
+  }
+  
+  .combat-stats .primary-stats-section {
+    grid-template-columns: 1fr;
+  }
+  
+  .combat-stats .ability-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .combat-stats .stat-card {
+    padding: 1rem;
+  }
+  
+  .combat-stats .stats-title {
+    font-size: 1.5rem;
+  }
+}
+
+/* HP Manager Modal Styles */
+.hp-manager-content {
+  background: linear-gradient(135deg, #2a1f1a, #1a0f0a);
+  border: 3px solid #D4AF37;
+  border-radius: 12px;
+  padding: 2rem;
+  color: #DEB887;
+  font-family: 'Crimson Text', serif;
+  min-width: 400px;
+  max-width: 500px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+.hp-manager-content h3 {
+  color: #FFD700;
+  font-family: 'Cinzel', serif;
+  margin: 0 0 1.5rem 0;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.hp-controls {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.hp-input-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.hp-input-group label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem;
+  color: #D4AF37;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: bold;
+}
+
+.hp-input {
+  padding: 0.75rem;
+  border: 2px solid #8B4513;
+  border-radius: 6px;
+  background: rgba(42, 31, 26, 0.8);
+  color: #DEB887;
+  font-family: 'Crimson Text', serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.hp-input:focus {
+  outline: none;
+  border-color: #D4AF37;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+.hp-quick-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+  justify-content: center;
+}
+
+.hp-btn {
+  padding: 0.5rem 1rem;
+  border: 2px solid #8B4513;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #2a1f1a, #1a0f0a);
+  color: #DEB887;
+  font-family: 'Crimson Text', serif;
+  font-weight: bold;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.hp-btn:hover {
+  border-color: #D4AF37;
+  color: #FFD700;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.hp-btn.heal {
+  border-color: #32CD32;
+  color: #90EE90;
+}
+
+.hp-btn.heal:hover {
+  border-color: #32CD32;
+  color: #32CD32;
+  box-shadow: 0 0 15px rgba(50, 205, 50, 0.3);
+}
+
+.hp-btn.damage {
+  border-color: #DC143C;
+  color: #FF6347;
+}
+
+.hp-btn.damage:hover {
+  border-color: #DC143C;
+  color: #DC143C;
+  box-shadow: 0 0 15px rgba(220, 20, 60, 0.3);
+}
+
+.hp-btn.temp-hp {
+  border-color: #FFD700;
+  color: #FFFF00;
+}
+
+.hp-btn.temp-hp:hover {
+  border-color: #FFD700;
+  color: #FFD700;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+.hp-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.fantasy-btn.btn-secondary {
+  border-color: #8B4513;
+  background: linear-gradient(135deg, rgba(139, 69, 19, 0.2), rgba(26, 15, 10, 0.3));
+  color: #DEB887;
+}
+
+.fantasy-btn.btn-secondary:hover {
+  border-color: #D4AF37;
+  color: #FFD700;
+}
+
+/* Dice Result Modal Styles */
+.dice-result-content {
+  background: linear-gradient(135deg, #2a1f1a, #1a0f0a);
+  border: 3px solid #D4AF37;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  color: #DEB887;
+  font-family: 'Crimson Text', serif;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  min-width: 300px;
+  max-width: 400px;
+}
+
+.dice-result-content h3 {
+  color: #FFD700;
+  font-family: 'Cinzel', serif;
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+}
+
+.dice-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.dice-icon {
+  font-size: 3rem;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.dice-breakdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dice-roll {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #FFD700;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.dice-modifier {
+  font-size: 1.2rem;
+  color: #D4AF37;
+  font-weight: bold;
+}
+
+.dice-total {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #32CD32;
+  border-top: 2px solid #8B4513;
+  padding-top: 0.5rem;
+  text-shadow: 0 0 10px rgba(50, 205, 50, 0.3);
+}
+
+/* Tooltip Styles */
+.combat-tooltip {
+  position: absolute;
+  background: linear-gradient(135deg, #2a1f1a, #1a0f0a);
+  border: 2px solid #D4AF37;
+  border-radius: 8px;
+  padding: 1rem;
+  color: #DEB887;
+  font-family: 'Crimson Text', serif;
+  font-size: 0.9rem;
+  z-index: 1000;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  min-width: 200px;
+  max-width: 300px;
+  pointer-events: none;
+}
+
+.ability-tooltip h4 {
+  color: #FFD700;
+  font-family: 'Cinzel', serif;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.tooltip-stat {
+  margin: 0.25rem 0;
+  font-weight: bold;
+}
+
+.tooltip-hint {
+  font-style: italic;
+  color: #D4AF37;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+/* Animation for ability and save rolls */
+@keyframes abilityRoll {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.1) rotate(-5deg); }
+  75% { transform: scale(1.1) rotate(5deg); }
+}
+
+@keyframes saveRoll {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateX(-50%) translateY(10px); }
+  20%, 80% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+}
+
+/* Theme Variants */
+.combat-stats.theme-heroic {
+  border-color: #FFD700;
+  background: linear-gradient(135deg, #1a2f1a 0%, #0f1a0f 100%);
+}
+
+.combat-stats.theme-heroic .stat-card {
+  border-color: #FFD700;
+}
+
+.combat-stats.theme-mystical {
+  border-color: #8A2BE2;
+  background: linear-gradient(135deg, #2a1a2f 0%, #1a0f1a 100%);
+}
+
+.combat-stats.theme-mystical .stat-card {
+  border-color: #9370DB;
+}
+
+.combat-stats.theme-combat {
+  border-color: #DC143C;
+  background: linear-gradient(135deg, #2f1a1a 0%, #1a0f0f 100%);
+}
+
+.combat-stats.theme-combat .stat-card {
+  border-color: #CD5C5C;
+}
+
+/* Compact Mode */
+.combat-stats.compact-mode {
+  padding: 1rem;
+}
+
+.combat-stats.compact-mode .stat-card {
+  padding: 1rem;
+}
+
+.combat-stats.compact-mode .ability-score {
+  padding: 0.75rem;
+}
+
+.combat-stats.compact-mode .section-title {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}

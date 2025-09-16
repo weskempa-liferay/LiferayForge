@@ -1,0 +1,56 @@
+{
+  "fieldSets": [
+    {
+      "fields": [
+        {
+          "name": "showAbilityScores",
+          "label": "Show Ability Scores",
+          "description": "Display the six core ability scores grid",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "showSavingThrows", 
+          "label": "Show Saving Throws",
+          "description": "Display the saving throws section",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "showDeathSaves",
+          "label": "Show Death Saves",
+          "description": "Display the death saving throws tracker",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "showResistances",
+          "label": "Show Resistances & Immunities",
+          "description": "Display damage/condition resistances and immunities",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "compactMode",
+          "label": "Compact Mode",
+          "description": "Use a more condensed layout for the combat statistics",
+          "type": "checkbox",
+          "defaultValue": false
+        },
+        {
+          "name": "statsTheme",
+          "label": "Statistics Theme",
+          "description": "Choose the visual theme for the combat statistics",
+          "type": "select",
+          "defaultValue": "classic",
+          "options": [
+            {"value": "classic", "label": "Classic D&D"},
+            {"value": "combat", "label": "Combat Focus"},
+            {"value": "heroic", "label": "Heroic Warrior"},
+            {"value": "mystical", "label": "Mystical Powers"}
+          ]
+        }
+      ]
+    }
+  ]
+}

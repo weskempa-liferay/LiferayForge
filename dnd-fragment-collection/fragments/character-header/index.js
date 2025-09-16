@@ -3,21 +3,27 @@
  * D&D-themed character display with level progression and visual effects
  */
 
-// Export init function for Liferay Fragment lifecycle
-function init(fragmentElement, configuration = {}) {
+export default function ({ fragmentElement, configuration = {} }) {
     'use strict';
     
     let cleanupFunctions = [];
     
+    // Find the actual character header element
+    const characterHeader = fragmentElement.querySelector('.character-header');
+    if (!characterHeader) {
+        console.warn('Character header element not found');
+        return () => {};
+    }
+    
     // Apply configuration options
-    applyConfiguration(fragmentElement, configuration);
+    applyConfiguration(characterHeader, configuration);
     
     // Initialize interactive features
-    const cleanup1 = setupProgressAnimation(fragmentElement);
-    const cleanup2 = setupPortraitEffects(fragmentElement);
-    const cleanup3 = setupButtonInteractions(fragmentElement);
-    const cleanup4 = setupLevelIndicatorEffects(fragmentElement);
-    const cleanup5 = setupResponsiveHandling(fragmentElement);
+    const cleanup1 = setupProgressAnimation(characterHeader);
+    const cleanup2 = setupPortraitEffects(characterHeader);
+    const cleanup3 = setupButtonInteractions(characterHeader);
+    const cleanup4 = setupLevelIndicatorEffects(characterHeader);
+    const cleanup5 = setupResponsiveHandling(characterHeader);
     
     cleanupFunctions.push(cleanup1, cleanup2, cleanup3, cleanup4, cleanup5);
     
@@ -26,33 +32,33 @@ function init(fragmentElement, configuration = {}) {
         cleanupFunctions.forEach(fn => fn && fn());
     };
     
-    function applyConfiguration(fragmentElement, config) {
+    function applyConfiguration(headerElement, config) {
         // Show/hide level progress
         if (config.showLevelProgress === false) {
-            const progressSection = fragmentElement.querySelector('.level-progress-section');
+            const progressSection = headerElement.querySelector('.level-progress-section');
             if (progressSection) progressSection.style.display = 'none';
         }
         
         // Show/hide action buttons
         if (config.showDetailButtons === false) {
-            const actionButtons = fragmentElement.querySelector('.action-buttons');
+            const actionButtons = headerElement.querySelector('.action-buttons');
             if (actionButtons) actionButtons.style.display = 'none';
         }
         
         // Show/hide character story
         if (config.showCharacterStory === false) {
-            const characterStory = fragmentElement.querySelector('.character-story');
+            const characterStory = headerElement.querySelector('.character-story');
             if (characterStory) characterStory.style.display = 'none';
         }
         
-        // Apply compact mode
+        // Apply compact mode to the character header element
         if (config.compactMode === true) {
-            fragmentElement.classList.add('compact-mode');
+            headerElement.classList.add('compact-mode');
         }
         
-        // Apply theme
+        // Apply theme to the character header element
         if (config.headerTheme && config.headerTheme !== 'classic') {
-            fragmentElement.classList.add(`theme-${config.headerTheme}`);
+            headerElement.classList.add(`theme-${config.headerTheme}`);
         }
     }
     
@@ -521,20 +527,9 @@ function init(fragmentElement, configuration = {}) {
     }
 }
 
-// Auto-initialize for standalone testing
-if (typeof module === 'undefined' && typeof window !== 'undefined') {
-    // Fallback for non-Liferay environments
-    document.addEventListener('DOMContentLoaded', function() {
-        const characterHeaders = document.querySelectorAll('.character-header');
-        characterHeaders.forEach(header => {
-            init(header, {});
-        });
-    });
-}
-
-// Export for Liferay Fragment
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { init };
-} else if (typeof window !== 'undefined') {
-    window.CharacterHeaderFragment = { init };
+// Fallback for non-Liferay environments (development/testing)
+if (typeof window !== 'undefined' && !window.Liferay) {
+    window.CharacterHeaderFragment = { init: function(fragmentElement, configuration) {
+        return exports.default({ fragmentElement, configuration });
+    }};
 }
