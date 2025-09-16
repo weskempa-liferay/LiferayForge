@@ -38,20 +38,6 @@
           "label": "Enable Chat Export",
           "name": "enableExport",
           "type": "checkbox"
-        },
-        {
-          "dataType": "string",
-          "defaultValue": "400",
-          "label": "Chat Height (px)",
-          "name": "chatHeight",
-          "type": "text",
-          "typeOptions": {
-            "validation": {
-              "min": 200,
-              "max": 600,
-              "type": "number"
-            }
-          }
         }
       ],
       "label": "DM Chat Settings"
