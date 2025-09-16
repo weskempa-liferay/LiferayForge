@@ -10,9 +10,8 @@ VERSION="v1.0.0_$TIMESTAMP"
 # Create collection directory if it doesn't exist
 mkdir -p dnd-fragment-collection
 
-# Copy fragments and collection metadata
-echo "Copying fragment files..."
-cp -r fragments dnd-fragment-collection/
+# Fragment files are already in place in dnd-fragment-collection/fragments/
+echo "Fragment files ready for packaging..."
 
 # Create version info file in root
 cat > version.txt << EOF
