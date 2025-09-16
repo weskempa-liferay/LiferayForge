@@ -1,4 +1,4 @@
-<div class="dm-chat fantasy-chat">
+<div class="dm-chat fantasy-chat theme-${configuration.chatTheme}">
   <div class="chat-header">
     <div class="dm-avatar">
       <span class="dm-icon">🧙‍♂️</span>
@@ -39,11 +39,13 @@
       <span class="character-count">
         <span id="char-count">0</span>/500
       </span>
+      <#if configuration.showQuickActions == "true">
       <div class="quick-actions">
         <button class="quick-btn" data-question="What are the rules for...">Rules</button>
         <button class="quick-btn" data-question="Tell me about the lore of...">Lore</button>
         <button class="quick-btn" data-question="How should I handle...">Advice</button>
       </div>
+      </#if>
     </div>
   </div>
 
@@ -72,10 +74,12 @@
         <span class="action-icon">🗑️</span>
         Clear Chat
       </button>
+      <#if configuration.enableExport == "true">
       <button class="action-btn" id="export-chat">
         <span class="action-icon">💾</span>
         Export Log
       </button>
+      </#if>
     </div>
   </div>
 
