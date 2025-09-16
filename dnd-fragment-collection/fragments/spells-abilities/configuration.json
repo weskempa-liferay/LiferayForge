@@ -1,0 +1,63 @@
+{
+  "fieldSets": [
+    {
+      "fields": [
+        {
+          "name": "showSpellSlots",
+          "label": "Show Spell Slots",
+          "description": "Display spell slot tracking with visual indicators",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "showSpellcastingInfo",
+          "label": "Show Spellcasting Information",
+          "description": "Display spell attack bonus, save DC, and spellcasting ability",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "showKnownSpells",
+          "label": "Show Known Spells",
+          "description": "Display spell cards organized by level with casting functionality",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "showClassFeatures",
+          "label": "Show Class Features",
+          "description": "Display class features with usage tracking and activation",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "showRestTracking",
+          "label": "Show Rest & Recovery",
+          "description": "Display short and long rest options with recovery benefits",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "compactMode",
+          "label": "Compact Mode",
+          "description": "Use a more condensed layout for the spells and abilities display",
+          "type": "checkbox",
+          "defaultValue": false
+        },
+        {
+          "name": "spellsTheme",
+          "label": "Spells Theme",
+          "description": "Choose the visual theme for the spells display",
+          "type": "select",
+          "defaultValue": "classic",
+          "options": [
+            {"value": "classic", "label": "Classic Arcane"},
+            {"value": "arcane", "label": "Arcane Wizard"},
+            {"value": "divine", "label": "Divine Cleric"},
+            {"value": "nature", "label": "Nature Druid"}
+          ]
+        }
+      ]
+    }
+  ]
+}

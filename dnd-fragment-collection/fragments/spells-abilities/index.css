@@ -1,0 +1,849 @@
+/* Spells & Abilities Fragment - D&D Fantasy Styling */
+
+.spells-abilities {
+  position: relative;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border: 3px solid #4A90E2;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 1rem 0;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(74, 144, 226, 0.2);
+  overflow: hidden;
+}
+
+.spells-abilities .spells-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.1;
+  z-index: 1;
+}
+
+.spells-abilities .arcane-texture {
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(74, 144, 226, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(138, 43, 226, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(75, 0, 130, 0.2) 0%, transparent 50%);
+}
+
+/* Header */
+.spells-abilities .spells-header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #4A90E2;
+  padding-bottom: 1rem;
+}
+
+.spells-abilities .spells-title {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #87CEEB;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
+.spells-abilities .spells-decoration {
+  font-size: 1.5rem;
+  opacity: 0.8;
+  color: #87CEEB;
+}
+
+/* Content Layout */
+.spells-abilities .spells-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Section Titles */
+.spells-abilities .section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.3rem;
+  color: #87CEEB;
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+  border-bottom: 2px solid #4A90E2;
+  padding-bottom: 0.5rem;
+  position: relative;
+}
+
+.spells-abilities .section-title::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -2px;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: #87CEEB;
+}
+
+/* Spell Slots Section */
+.spells-abilities .spell-slots-section {
+  background: rgba(26, 26, 46, 0.6);
+  border: 2px solid #4A90E2;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.spells-abilities .spell-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.spells-abilities .spell-level-group {
+  background: rgba(26, 26, 46, 0.4);
+  border: 2px solid #4A90E2;
+  border-radius: 8px;
+  padding: 1rem;
+  transition: all 0.3s ease;
+}
+
+.spells-abilities .spell-level-group:hover {
+  border-color: #87CEEB;
+  box-shadow: 0 0 15px rgba(135, 206, 235, 0.3);
+  transform: translateY(-2px);
+}
+
+.spells-abilities .spell-level-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.spells-abilities .spell-level-label {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  color: #87CEEB;
+  font-weight: bold;
+}
+
+.spells-abilities .spell-level-number {
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #FFD700;
+  background: rgba(74, 144, 226, 0.2);
+  border: 1px solid #4A90E2;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spells-abilities .spell-count {
+  font-family: 'Crimson Text', serif;
+  font-size: 0.9rem;
+  color: #B0C4DE;
+  text-align: center;
+  font-style: italic;
+}
+
+.spells-abilities .spell-slots {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.spells-abilities .slot-tracker {
+  display: flex;
+  gap: 0.25rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.spells-abilities .slot {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid #4A90E2;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.spells-abilities .slot.available {
+  background: linear-gradient(135deg, #4A90E2, #87CEEB);
+  box-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
+}
+
+.spells-abilities .slot.used {
+  background: #333;
+  border-color: #666;
+  opacity: 0.5;
+}
+
+.spells-abilities .slot:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(135, 206, 235, 0.7);
+}
+
+.spells-abilities .slot-count {
+  font-family: 'Crimson Text', serif;
+  font-size: 0.8rem;
+  color: #B0C4DE;
+  text-align: center;
+}
+
+/* Spellcasting Info Section */
+.spells-abilities .spellcasting-info-section {
+  background: rgba(26, 26, 46, 0.6);
+  border: 2px solid #4A90E2;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.spells-abilities .spellcasting-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.spells-abilities .spellcasting-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: rgba(26, 26, 46, 0.4);
+  border: 1px solid #4A90E2;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.spells-abilities .spellcasting-stat:hover {
+  border-color: #87CEEB;
+  background: rgba(26, 26, 46, 0.6);
+  transform: scale(1.02);
+}
+
+.spells-abilities .stat-label {
+  font-family: 'Crimson Text', serif;
+  font-size: 0.9rem;
+  color: #B0C4DE;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.spells-abilities .stat-value {
+  font-family: 'Cinzel', serif;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #FFD700;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+/* Known Spells Section */
+.spells-abilities .known-spells-section {
+  background: rgba(26, 26, 46, 0.6);
+  border: 2px solid #4A90E2;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.spells-abilities .spell-list-category {
+  margin-bottom: 2rem;
+}
+
+.spells-abilities .spell-category-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  color: #87CEEB;
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  border-bottom: 1px solid #4A90E2;
+  padding-bottom: 0.5rem;
+}
+
+.spells-abilities .spells-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.spells-abilities .spell-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(26, 26, 46, 0.4);
+  border: 2px solid #4A90E2;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.spells-abilities .spell-card:hover {
+  border-color: #87CEEB;
+  background: rgba(26, 26, 46, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(135, 206, 235, 0.3);
+}
+
+.spells-abilities .spell-card.cantrip {
+  border-left-color: #32CD32;
+  border-left-width: 4px;
+}
+
+.spells-abilities .spell-card.level-1 {
+  border-left-color: #87CEEB;
+  border-left-width: 4px;
+}
+
+.spells-abilities .spell-card.level-2 {
+  border-left-color: #FFD700;
+  border-left-width: 4px;
+}
+
+.spells-abilities .spell-card.level-3 {
+  border-left-color: #FF6347;
+  border-left-width: 4px;
+}
+
+.spells-abilities .spell-card.level-4 {
+  border-left-color: #8A2BE2;
+  border-left-width: 4px;
+}
+
+.spells-abilities .spell-icon {
+  font-size: 2rem;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(74, 144, 226, 0.2), rgba(138, 43, 226, 0.1));
+  border: 2px solid #4A90E2;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.spells-abilities .spell-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.spells-abilities .spell-name {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #87CEEB;
+  text-shadow: 0 0 10px rgba(135, 206, 235, 0.3);
+}
+
+.spells-abilities .spell-school {
+  font-family: 'Crimson Text', serif;
+  font-size: 0.8rem;
+  color: #B0C4DE;
+  font-style: italic;
+}
+
+.spells-abilities .spell-casting-time {
+  font-family: 'Crimson Text', serif;
+  font-size: 0.8rem;
+  color: #A0A0A0;
+}
+
+.spells-abilities .spell-cast-btn {
+  padding: 0.5rem 1rem;
+  border: 2px solid #4A90E2;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  color: #87CEEB;
+  font-family: 'Crimson Text', serif;
+  font-weight: bold;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  min-width: 60px;
+}
+
+.spells-abilities .spell-cast-btn:hover {
+  border-color: #87CEEB;
+  background: linear-gradient(135deg, rgba(74, 144, 226, 0.2), rgba(138, 43, 226, 0.1));
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(135, 206, 235, 0.5);
+}
+
+.spells-abilities .spell-cast-btn.cantrip-btn {
+  border-color: #32CD32;
+  color: #90EE90;
+}
+
+.spells-abilities .spell-cast-btn.level-1-btn {
+  border-color: #87CEEB;
+  color: #87CEEB;
+}
+
+.spells-abilities .spell-cast-btn.level-2-btn {
+  border-color: #FFD700;
+  color: #FFD700;
+}
+
+.spells-abilities .spell-cast-btn.level-3-btn {
+  border-color: #FF6347;
+  color: #FF6347;
+}
+
+/* Class Features Section */
+.spells-abilities .class-features-section {
+  background: rgba(26, 26, 46, 0.6);
+  border: 2px solid #4A90E2;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.spells-abilities .features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.spells-abilities .feature-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(26, 26, 46, 0.4);
+  border: 2px solid #4A90E2;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.spells-abilities .feature-card:hover {
+  border-color: #87CEEB;
+  background: rgba(26, 26, 46, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(135, 206, 235, 0.3);
+}
+
+.spells-abilities .feature-card.limited-use {
+  border-left-color: #FFD700;
+  border-left-width: 4px;
+}
+
+.spells-abilities .feature-icon {
+  font-size: 2rem;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(74, 144, 226, 0.2), rgba(138, 43, 226, 0.1));
+  border: 2px solid #4A90E2;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.spells-abilities .feature-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.spells-abilities .feature-name {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #87CEEB;
+  text-shadow: 0 0 10px rgba(135, 206, 235, 0.3);
+}
+
+.spells-abilities .feature-description {
+  font-family: 'Crimson Text', serif;
+  font-size: 0.9rem;
+  color: #B0C4DE;
+  line-height: 1.3;
+}
+
+.spells-abilities .feature-uses {
+  font-family: 'Crimson Text', serif;
+  font-size: 0.8rem;
+  color: #A0A0A0;
+  font-style: italic;
+}
+
+.spells-abilities .uses-current {
+  color: #FFD700;
+  font-weight: bold;
+}
+
+.spells-abilities .uses-max {
+  color: #87CEEB;
+  font-weight: bold;
+}
+
+.spells-abilities .feature-use-btn {
+  padding: 0.5rem 1rem;
+  border: 2px solid #4A90E2;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  color: #87CEEB;
+  font-family: 'Crimson Text', serif;
+  font-weight: bold;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  min-width: 70px;
+}
+
+.spells-abilities .feature-use-btn:hover {
+  border-color: #87CEEB;
+  background: linear-gradient(135deg, rgba(74, 144, 226, 0.2), rgba(138, 43, 226, 0.1));
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(135, 206, 235, 0.5);
+}
+
+/* Rest Tracking Section */
+.spells-abilities .rest-tracking-section {
+  background: rgba(26, 26, 46, 0.6);
+  border: 2px solid #4A90E2;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.spells-abilities .rest-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.spells-abilities .rest-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: rgba(26, 26, 46, 0.4);
+  border: 2px solid #4A90E2;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.spells-abilities .rest-card:hover {
+  border-color: #87CEEB;
+  background: rgba(26, 26, 46, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(135, 206, 235, 0.3);
+}
+
+.spells-abilities .rest-card.short-rest {
+  border-left-color: #FFD700;
+  border-left-width: 4px;
+}
+
+.spells-abilities .rest-card.long-rest {
+  border-left-color: #32CD32;
+  border-left-width: 4px;
+}
+
+.spells-abilities .rest-icon {
+  font-size: 3rem;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(74, 144, 226, 0.2), rgba(138, 43, 226, 0.1));
+  border: 2px solid #4A90E2;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.spells-abilities .rest-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.spells-abilities .rest-name {
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #87CEEB;
+  text-shadow: 0 0 10px rgba(135, 206, 235, 0.3);
+}
+
+.spells-abilities .rest-description {
+  font-family: 'Crimson Text', serif;
+  font-size: 0.9rem;
+  color: #B0C4DE;
+  margin-bottom: 0.5rem;
+}
+
+.spells-abilities .rest-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.spells-abilities .benefit {
+  font-family: 'Crimson Text', serif;
+  font-size: 0.8rem;
+  color: #A0A0A0;
+  font-style: italic;
+}
+
+.spells-abilities .rest-btn {
+  padding: 1rem 1.5rem;
+  font-size: 0.9rem;
+  min-width: 120px;
+  align-self: flex-start;
+}
+
+/* Spells Actions */
+.spells-abilities .spells-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.spells-abilities .fantasy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #4A90E2;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  color: #B0C4DE;
+  text-decoration: none;
+  font-family: 'Crimson Text', serif;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.spells-abilities .fantasy-btn.btn-primary {
+  border-color: #87CEEB;
+  background: linear-gradient(135deg, rgba(135, 206, 235, 0.2), rgba(74, 144, 226, 0.3));
+  color: #87CEEB;
+}
+
+.spells-abilities .fantasy-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(135, 206, 235, 0.3);
+  border-color: #87CEEB;
+}
+
+.spells-abilities .btn-icon {
+  font-size: 1.1rem;
+}
+
+/* Theme Variants */
+.spells-abilities.theme-arcane {
+  border-color: #8A2BE2;
+}
+
+.spells-abilities.theme-arcane .section-title {
+  color: #DA70D6;
+}
+
+.spells-abilities.theme-arcane .spell-level-group:hover {
+  border-color: #8A2BE2;
+}
+
+.spells-abilities.theme-divine {
+  border-color: #FFD700;
+}
+
+.spells-abilities.theme-divine .section-title {
+  color: #FFD700;
+}
+
+.spells-abilities.theme-divine .spell-level-group:hover {
+  border-color: #FFD700;
+}
+
+.spells-abilities.theme-nature {
+  border-color: #32CD32;
+}
+
+.spells-abilities.theme-nature .section-title {
+  color: #90EE90;
+}
+
+.spells-abilities.theme-nature .spell-level-group:hover {
+  border-color: #32CD32;
+}
+
+/* Compact Mode */
+.spells-abilities.compact-mode {
+  padding: 1rem;
+}
+
+.spells-abilities.compact-mode .spells-title {
+  font-size: 1.5rem;
+}
+
+.spells-abilities.compact-mode .section-title {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.spells-abilities.compact-mode .spell-slots-grid {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.75rem;
+}
+
+.spells-abilities.compact-mode .spells-grid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0.75rem;
+}
+
+.spells-abilities.compact-mode .features-grid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0.75rem;
+}
+
+.spells-abilities.compact-mode .rest-options {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .spells-abilities .spell-slots-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .spells-abilities .spellcasting-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .spells-abilities .spells-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .spells-abilities .features-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .spells-abilities .rest-options {
+    grid-template-columns: 1fr;
+  }
+  
+  .spells-abilities .spells-actions {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .spells-abilities {
+    padding: 1rem;
+  }
+  
+  .spells-abilities .spells-title {
+    font-size: 1.5rem;
+  }
+  
+  .spells-abilities .section-title {
+    font-size: 1rem;
+  }
+  
+  .spells-abilities .spell-slots-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .spells-abilities .spell-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .spells-abilities .feature-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .spells-abilities .rest-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .spells-abilities .spell-cast-btn,
+  .spells-abilities .feature-use-btn,
+  .spells-abilities .rest-btn {
+    margin-top: 0.75rem;
+  }
+}
+
+/* Animation Effects */
+@keyframes spellCast {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.1) rotate(-3deg); }
+  75% { transform: scale(1.1) rotate(3deg); }
+}
+
+@keyframes slotUse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 0.5; }
+}
+
+@keyframes featureActivate {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); box-shadow: 0 0 20px rgba(135, 206, 235, 0.5); }
+}
+
+@keyframes restComplete {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Spell Effect Animations */
+.spell-casting {
+  animation: spellCast 0.8s ease-in-out;
+}
+
+.slot-using {
+  animation: slotUse 0.6s ease-in-out;
+}
+
+.feature-activating {
+  animation: featureActivate 0.5s ease-in-out;
+}
+
+.rest-completing {
+  animation: restComplete 1s ease-in-out;
+}
