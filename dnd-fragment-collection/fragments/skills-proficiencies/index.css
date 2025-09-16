@@ -1,0 +1,957 @@
+/* Skills & Proficiencies Fragment - D&D Fantasy Styling */
+
+.skills-proficiencies {
+  position: relative;
+  background: linear-gradient(135deg, #2a1f1a 0%, #1a0f0a 100%);
+  border: 3px solid #8B4513;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 1rem 0;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(212, 175, 55, 0.2);
+  overflow: hidden;
+}
+
+.skills-proficiencies .skills-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.1;
+  z-index: 1;
+}
+
+.skills-proficiencies .parchment-texture {
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(139, 69, 19, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(160, 82, 45, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(205, 133, 63, 0.2) 0%, transparent 50%);
+}
+
+/* Header */
+.skills-proficiencies .skills-header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #8B4513;
+  padding-bottom: 1rem;
+}
+
+.skills-proficiencies .skills-title {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #FFD700;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
+.skills-proficiencies .skills-decoration {
+  font-size: 1.5rem;
+  opacity: 0.8;
+}
+
+/* Content Layout */
+.skills-proficiencies .skills-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Section Titles */
+.skills-proficiencies .section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.3rem;
+  color: #D4AF37;
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+  border-bottom: 2px solid #8B4513;
+  padding-bottom: 0.5rem;
+  position: relative;
+}
+
+.skills-proficiencies .section-title::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -2px;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: #D4AF37;
+}
+
+/* Core Skills Section */
+.skills-proficiencies .core-skills-section {
+  background: rgba(42, 31, 26, 0.6);
+  border: 2px solid #8B4513;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.skills-proficiencies .skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.75rem;
+}
+
+.skills-proficiencies .skill-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: rgba(42, 31, 26, 0.4);
+  border: 1px solid #8B4513;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.skills-proficiencies .skill-item:hover {
+  border-color: #D4AF37;
+  background: rgba(42, 31, 26, 0.6);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.2);
+}
+
+.skills-proficiencies .skill-item.proficient {
+  border-color: #D4AF37;
+  background: rgba(212, 175, 55, 0.1);
+}
+
+.skills-proficiencies .skill-item.proficient:hover {
+  background: rgba(212, 175, 55, 0.2);
+}
+
+.skills-proficiencies .proficiency-indicator {
+  font-size: 1.2rem;
+  width: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.skills-proficiencies .skill-item .proficiency-indicator {
+  color: #D4AF37;
+}
+
+.skills-proficiencies .skill-item:not(.proficient) .proficiency-indicator {
+  color: #8B4513;
+}
+
+.skills-proficiencies .skill-item .proficiency-indicator.expertise {
+  color: #FFD700;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  animation: expertiseGlow 2s ease-in-out infinite;
+}
+
+@keyframes expertiseGlow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.skills-proficiencies .skill-name {
+  font-family: 'Crimson Text', serif;
+  font-size: 1rem;
+  color: #DEB887;
+  flex: 1;
+  font-weight: 500;
+}
+
+.skills-proficiencies .skill-ability {
+  font-family: 'Crimson Text', serif;
+  font-size: 0.85rem;
+  color: #A0A0A0;
+  font-style: italic;
+  min-width: 45px;
+}
+
+.skills-proficiencies .skill-value {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #FFD700;
+  min-width: 2.5rem;
+  text-align: right;
+}
+
+/* Tool Proficiencies Section */
+.skills-proficiencies .tool-proficiencies-section {
+  background: rgba(42, 31, 26, 0.6);
+  border: 2px solid #8B4513;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.skills-proficiencies .proficiency-categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.skills-proficiencies .proficiency-category {
+  background: rgba(42, 31, 26, 0.4);
+  border: 1px solid #8B4513;
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.skills-proficiencies .category-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  color: #D4AF37;
+  margin: 0 0 0.75rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #8B4513;
+  padding-bottom: 0.5rem;
+}
+
+.skills-proficiencies .proficiency-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.skills-proficiencies .proficiency-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.skills-proficiencies .proficiency-item:hover {
+  background: rgba(42, 31, 26, 0.6);
+  transform: translateX(5px);
+}
+
+.skills-proficiencies .proficiency-item.proficient {
+  background: rgba(212, 175, 55, 0.1);
+}
+
+.skills-proficiencies .proficiency-name {
+  font-family: 'Crimson Text', serif;
+  font-size: 0.9rem;
+  color: #DEB887;
+  flex: 1;
+}
+
+.skills-proficiencies .proficiency-bonus {
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #FFD700;
+  min-width: 2rem;
+  text-align: right;
+}
+
+/* Weapon Proficiencies Section */
+.skills-proficiencies .weapon-proficiencies-section {
+  background: rgba(42, 31, 26, 0.6);
+  border: 2px solid #8B4513;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.skills-proficiencies .weapon-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.skills-proficiencies .weapon-category {
+  background: rgba(42, 31, 26, 0.4);
+  border: 1px solid #8B4513;
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.skills-proficiencies .weapon-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skills-proficiencies .weapon-tag {
+  font-family: 'Crimson Text', serif;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.skills-proficiencies .weapon-tag.proficient {
+  background: rgba(212, 175, 55, 0.2);
+  border-color: #D4AF37;
+  color: #FFD700;
+}
+
+.skills-proficiencies .weapon-tag:not(.proficient) {
+  background: rgba(139, 69, 19, 0.2);
+  border-color: #8B4513;
+  color: #DEB887;
+}
+
+.skills-proficiencies .weapon-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Languages Section */
+.skills-proficiencies .languages-section {
+  background: rgba(42, 31, 26, 0.6);
+  border: 2px solid #8B4513;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.skills-proficiencies .language-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0.75rem;
+}
+
+.skills-proficiencies .language-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: rgba(42, 31, 26, 0.4);
+  border: 1px solid #8B4513;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.skills-proficiencies .language-item:hover {
+  border-color: #D4AF37;
+  background: rgba(42, 31, 26, 0.6);
+  transform: translateY(-1px);
+}
+
+.skills-proficiencies .language-item.known {
+  border-color: #D4AF37;
+  background: rgba(212, 175, 55, 0.1);
+}
+
+.skills-proficiencies .language-item.partial {
+  border-color: #A0522D;
+  background: rgba(160, 82, 45, 0.1);
+}
+
+.skills-proficiencies .language-fluency {
+  font-size: 1.2rem;
+  width: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.skills-proficiencies .language-item.known .language-fluency {
+  color: #32CD32;
+}
+
+.skills-proficiencies .language-item.partial .language-fluency {
+  color: #FFA500;
+}
+
+.skills-proficiencies .language-name {
+  font-family: 'Crimson Text', serif;
+  font-size: 1rem;
+  color: #DEB887;
+  flex: 1;
+  font-weight: 500;
+}
+
+.skills-proficiencies .language-type {
+  font-family: 'Crimson Text', serif;
+  font-size: 0.85rem;
+  color: #A0A0A0;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* Expertise Section */
+.skills-proficiencies .expertise-section {
+  background: rgba(42, 31, 26, 0.6);
+  border: 2px solid #8B4513;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.skills-proficiencies .expertise-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.skills-proficiencies .expertise-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(42, 31, 26, 0.4);
+  border: 1px solid #8B4513;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.skills-proficiencies .expertise-item:hover {
+  border-color: #D4AF37;
+  background: rgba(42, 31, 26, 0.6);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.2);
+}
+
+.skills-proficiencies .expertise-icon {
+  font-size: 1.5rem;
+  width: 2rem;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.skills-proficiencies .expertise-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.skills-proficiencies .expertise-name {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  color: #FFD700;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+.skills-proficiencies .expertise-description {
+  font-family: 'Crimson Text', serif;
+  font-size: 0.9rem;
+  color: #DEB887;
+  line-height: 1.4;
+  font-style: italic;
+}
+
+/* Skills Actions */
+.skills-proficiencies .skills-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.skills-proficiencies .fantasy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #8B4513;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #2a1f1a, #1a0f0a);
+  color: #DEB887;
+  text-decoration: none;
+  font-family: 'Crimson Text', serif;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.skills-proficiencies .fantasy-btn.btn-primary {
+  border-color: #D4AF37;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(139, 69, 19, 0.3));
+  color: #FFD700;
+}
+
+.skills-proficiencies .fantasy-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(212, 175, 55, 0.3);
+  border-color: #FFD700;
+}
+
+.skills-proficiencies .btn-icon {
+  font-size: 1.1rem;
+}
+
+/* Theme Variants */
+.skills-proficiencies.theme-scholar {
+  border-color: #4169E1;
+}
+
+.skills-proficiencies.theme-scholar .section-title {
+  color: #87CEEB;
+}
+
+.skills-proficiencies.theme-scholar .skill-item.proficient {
+  border-color: #4169E1;
+  background: rgba(65, 105, 225, 0.1);
+}
+
+.skills-proficiencies.theme-rogue {
+  border-color: #2F4F4F;
+}
+
+.skills-proficiencies.theme-rogue .section-title {
+  color: #696969;
+}
+
+.skills-proficiencies.theme-rogue .skill-item.proficient {
+  border-color: #2F4F4F;
+  background: rgba(47, 79, 79, 0.1);
+}
+
+.skills-proficiencies.theme-bard {
+  border-color: #FF69B4;
+}
+
+.skills-proficiencies.theme-bard .section-title {
+  color: #FFB6C1;
+}
+
+.skills-proficiencies.theme-bard .skill-item.proficient {
+  border-color: #FF69B4;
+  background: rgba(255, 105, 180, 0.1);
+}
+
+/* Compact Mode */
+.skills-proficiencies.compact-mode {
+  padding: 1rem;
+}
+
+.skills-proficiencies.compact-mode .skills-title {
+  font-size: 1.5rem;
+}
+
+.skills-proficiencies.compact-mode .section-title {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.skills-proficiencies.compact-mode .skills-grid {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.5rem;
+}
+
+.skills-proficiencies.compact-mode .skill-item {
+  padding: 0.5rem;
+}
+
+.skills-proficiencies.compact-mode .proficiency-categories {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.skills-proficiencies.compact-mode .weapon-categories {
+  gap: 1rem;
+}
+
+.skills-proficiencies.compact-mode .language-grid {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.5rem;
+}
+
+.skills-proficiencies.compact-mode .expertise-list {
+  gap: 0.75rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .skills-proficiencies .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .skills-proficiencies .proficiency-categories {
+    grid-template-columns: 1fr;
+  }
+  
+  .skills-proficiencies .language-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .skills-proficiencies .skills-actions {
+    flex-direction: column;
+  }
+  
+  .skills-proficiencies .weapon-tags {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-proficiencies {
+    padding: 1rem;
+  }
+  
+  .skills-proficiencies .skills-title {
+    font-size: 1.5rem;
+  }
+  
+  .skills-proficiencies .section-title {
+    font-size: 1rem;
+  }
+  
+  .skills-proficiencies .skill-item {
+    padding: 0.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .skills-proficiencies .skill-ability {
+    order: 3;
+    min-width: auto;
+  }
+  
+  .skills-proficiencies .skill-value {
+    order: 2;
+    min-width: auto;
+  }
+}
+
+/* Missing Animations */
+@keyframes skillRoll {
+  0% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.1) rotate(-5deg); }
+  50% { transform: scale(1.2) rotate(5deg); }
+  75% { transform: scale(1.1) rotate(-3deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+@keyframes toolRoll {
+  0% { transform: scale(1) rotateY(0deg); }
+  25% { transform: scale(1.05) rotateY(90deg); }
+  50% { transform: scale(1.1) rotateY(180deg); }
+  75% { transform: scale(1.05) rotateY(270deg); }
+  100% { transform: scale(1) rotateY(360deg); }
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-10px); }
+  50% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Modal Styles */
+.weapon-details-modal, .language-details-modal, .expertise-details-modal, .proficiency-manager, .dice-result, .multiple-rolls-result {
+  background: linear-gradient(135deg, #2a1f1a 0%, #1a0f0a 100%);
+  border: 3px solid #8B4513;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+  color: #DEB887;
+  font-family: 'Crimson Text', serif;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.weapon-details-content, .language-details-content, .expertise-details-content, .proficiency-manager-content, .dice-result-content, .multiple-rolls-content {
+  text-align: center;
+}
+
+.weapon-details-content h3, .language-details-content h3, .expertise-details-content h3, .proficiency-manager-content h3, .dice-result-content h3, .multiple-rolls-content h3 {
+  font-family: 'Cinzel', serif;
+  color: #FFD700;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.weapon-stats, .language-info, .expertise-description-full {
+  text-align: left;
+  margin: 1.5rem 0;
+}
+
+.weapon-stat, .language-detail, .expertise-mechanics {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  background: rgba(42, 31, 26, 0.4);
+  border: 1px solid #8B4513;
+  border-radius: 4px;
+}
+
+.stat-label, .detail-label {
+  font-weight: bold;
+  color: #D4AF37;
+}
+
+.stat-value, .detail-value {
+  color: #DEB887;
+}
+
+/* Dice Result Styles */
+.dice-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  font-size: 1.5rem;
+}
+
+.dice-icon {
+  font-size: 3rem;
+  animation: spin 0.5s ease-in-out;
+}
+
+.dice-breakdown {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Cinzel', serif;
+  font-weight: bold;
+}
+
+.dice-roll {
+  color: #FFD700;
+  font-size: 2rem;
+}
+
+.dice-modifier {
+  color: #D4AF37;
+  font-size: 1.5rem;
+}
+
+.dice-total {
+  color: #32CD32;
+  font-size: 2rem;
+}
+
+.ability-indicator {
+  font-size: 0.9rem;
+  color: #A0A0A0;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.roll-interpretation {
+  margin: 1.5rem 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.roll-interpretation .critical-success {
+  color: #FFD700;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.roll-interpretation .critical-fail {
+  color: #DC143C;
+  text-shadow: 0 0 10px rgba(220, 20, 60, 0.5);
+}
+
+.roll-interpretation .high-success {
+  color: #32CD32;
+}
+
+.roll-interpretation .success {
+  color: #90EE90;
+}
+
+.roll-interpretation .partial {
+  color: #FFA500;
+}
+
+.roll-interpretation .failure {
+  color: #FF6347;
+}
+
+/* Proficiency Manager Styles */
+.proficiency-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  justify-content: center;
+}
+
+.tab-btn {
+  padding: 0.5rem 1rem;
+  border: 2px solid #8B4513;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #2a1f1a, #1a0f0a);
+  color: #DEB887;
+  cursor: pointer;
+  font-family: 'Crimson Text', serif;
+  transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+  border-color: #D4AF37;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(139, 69, 19, 0.3));
+  color: #FFD700;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.skill-manager-list, .tool-manager-list, .language-manager-list {
+  text-align: left;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.skill-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  background: rgba(42, 31, 26, 0.4);
+  border: 1px solid #8B4513;
+  border-radius: 4px;
+}
+
+.toggle-btn {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #D4AF37;
+  border-radius: 4px;
+  background: rgba(212, 175, 55, 0.1);
+  color: #D4AF37;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.manager-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/* Multiple Rolls Result */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.result-item {
+  background: rgba(42, 31, 26, 0.6);
+  border: 1px solid #8B4513;
+  border-radius: 6px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.result-name {
+  font-weight: bold;
+  color: #D4AF37;
+  margin-bottom: 0.5rem;
+}
+
+.result-dice {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.result-modifier {
+  color: #FFD700;
+  margin: 0.5rem 0;
+}
+
+.result-total {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #32CD32;
+  margin-top: 0.5rem;
+}
+
+/* Tooltip Styles */
+.skills-tooltip {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.skills-tooltip h4 {
+  margin: 0 0 0.5rem 0;
+  color: #FFD700;
+  font-family: 'Cinzel', serif;
+}
+
+.tooltip-stat {
+  margin: 0.25rem 0;
+}
+
+.tooltip-expertise {
+  color: #FFD700;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.tooltip-hint {
+  margin-top: 0.5rem;
+  font-style: italic;
+  color: #A0A0A0;
+  font-size: 0.8rem;
+}
+
+/* Modal Responsive Design */
+@media (max-width: 768px) {
+  .weapon-details-modal, .language-details-modal, .expertise-details-modal, .proficiency-manager, .dice-result, .multiple-rolls-result {
+    margin: 1rem;
+    padding: 1rem;
+    max-width: calc(100vw - 2rem);
+  }
+  
+  .dice-display {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .dice-breakdown {
+    justify-content: center;
+  }
+  
+  .proficiency-tabs {
+    flex-wrap: wrap;
+  }
+  
+  .manager-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -413,8 +413,8 @@ export default function ({ fragmentElement, configuration }) {
         
         setTimeout(() => {
             const roll = Math.floor(Math.random() * 20) + 1;
-            const modifier = parseInt(saveValue.replace('+', '').replace('-', '')) || 0;
-            const total = roll + modifier;
+            const modifierValue = parseInt(saveValue.replace('+', '').replace('-', '')) || 0;
+            const total = roll + (saveValue.includes('-') ? -modifierValue : modifierValue);
             
             showDiceResult(`${saveName} Save`, roll, saveValue, total);
             saveElement.style.animation = '';
@@ -429,8 +429,10 @@ export default function ({ fragmentElement, configuration }) {
         const initiativeModifier = initiativeElement?.textContent || '+0';
         
         const roll = Math.floor(Math.random() * 20) + 1;
-        const modifier = parseInt(initiativeModifier.replace('+', '').replace('-', '')) || 0;
-        const total = roll + modifier;
+        const raw = initiativeModifier.trim();
+        const n = parseInt(raw.replace(/[+\-]/g, '')) || 0;
+        const modifierValue = raw.includes('-') ? -n : n;
+        const total = roll + modifierValue;
         
         showDiceResult('Initiative', roll, initiativeModifier, total);
         
@@ -539,6 +541,27 @@ export default function ({ fragmentElement, configuration }) {
         if (configuration.showResistances === false) {
             const section = combatStats.querySelector('.resistances-section');
             if (section) section.style.display = 'none';
+        }
+        
+        // Apply default values when configuration is incomplete
+        if (configuration.showAbilityScores !== false) {
+            const section = combatStats.querySelector('.ability-scores-section');
+            if (section) section.style.display = '';
+        }
+        
+        if (configuration.showSavingThrows !== false) {
+            const section = combatStats.querySelector('.saving-throws-section');
+            if (section) section.style.display = '';
+        }
+        
+        if (configuration.showDeathSaves !== false) {
+            const section = combatStats.querySelector('.death-saves-section');
+            if (section) section.style.display = '';
+        }
+        
+        if (configuration.showResistances !== false) {
+            const section = combatStats.querySelector('.resistances-section');
+            if (section) section.style.display = '';
         }
     }
     

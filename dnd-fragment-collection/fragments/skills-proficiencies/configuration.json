@@ -1,0 +1,63 @@
+{
+  "fieldSets": [
+    {
+      "fields": [
+        {
+          "name": "showCoreSkills",
+          "label": "Show Core Skills",
+          "description": "Display the main skills section with all ability-based skills",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "showToolProficiencies",
+          "label": "Show Tool Proficiencies",
+          "description": "Display tool proficiencies including artisan tools, gaming sets, and instruments",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "showWeaponProficiencies",
+          "label": "Show Weapon Proficiencies",
+          "description": "Display weapon and armor proficiencies",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "showLanguages",
+          "label": "Show Languages",
+          "description": "Display known languages and fluency levels",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "showExpertise",
+          "label": "Show Expertise & Special Abilities",
+          "description": "Display expertise abilities and special character features",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "compactMode",
+          "label": "Compact Mode",
+          "description": "Use a more condensed layout for the skills and proficiencies",
+          "type": "checkbox",
+          "defaultValue": false
+        },
+        {
+          "name": "skillsTheme",
+          "label": "Skills Theme",
+          "description": "Choose the visual theme for the skills display",
+          "type": "select",
+          "defaultValue": "classic",
+          "options": [
+            {"value": "classic", "label": "Classic D&D"},
+            {"value": "scholar", "label": "Scholar/Wizard"},
+            {"value": "rogue", "label": "Rogue/Stealth"},
+            {"value": "bard", "label": "Bard/Performance"}
+          ]
+        }
+      ]
+    }
+  ]
+}
