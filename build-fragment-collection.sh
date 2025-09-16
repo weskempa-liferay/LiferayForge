@@ -10,12 +10,12 @@ VERSION="v1.0.0_$TIMESTAMP"
 # Create collection directory if it doesn't exist
 mkdir -p dnd-fragment-collection
 
-# Copy latest fragments with collection metadata inside fragments directory
+# Copy fragments and collection metadata
 echo "Copying fragment files..."
 cp -r fragments dnd-fragment-collection/
 
-# Create version info file
-cat > dnd-fragment-collection/version.txt << EOF
+# Create version info file in root
+cat > version.txt << EOF
 D&D Fragment Collection
 Version: $VERSION
 Built: $(date)
@@ -33,8 +33,8 @@ Each fragment includes:
 - Configuration options for customization
 EOF
 
-# Create README for the collection
-cat > dnd-fragment-collection/README.md << EOF
+# Create README for the collection in root
+cat > README.md << EOF
 # D&D Fragment Collection for Liferay DXP
 
 A collection of D&D-themed fragments designed for Liferay DXP portals, featuring medieval fantasy aesthetics with dark color schemes, ornate styling, and interactive elements.
