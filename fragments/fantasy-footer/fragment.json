@@ -1,5 +1,8 @@
 {
-  "fragmentEntryKey": "fantasy-footer",
+  "jsPath": "index.js",
+  "htmlPath": "index.html",
+  "cssPath": "index.css",
+  "icon": "code",
   "name": "Fantasy Footer",
   "type": "section"
 }

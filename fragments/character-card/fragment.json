@@ -1,8 +1,9 @@
 {
-  "cssPath": "index.css",
-  "htmlPath": "index.html",
+  "configurationPath": "configuration.json",
   "jsPath": "index.js",
+  "htmlPath": "index.html",
+  "cssPath": "index.css",
+  "icon": "code",
   "name": "Character Card",
-  "type": "component",
-  "configurationPath": "configuration.json"
+  "type": "component"
 }

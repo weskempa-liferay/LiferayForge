@@ -1,8 +1,9 @@
 {
-  "cssPath": "index.css",
-  "htmlPath": "index.html",
+  "configurationPath": "configuration.json",
   "jsPath": "index.js",
+  "htmlPath": "index.html",
+  "cssPath": "index.css",
+  "icon": "code",
   "name": "Quest Navigation",
-  "type": "component",
-  "configurationPath": "configuration.json"
+  "type": "component"
 }
