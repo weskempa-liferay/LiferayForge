@@ -11,7 +11,7 @@
         },
         {
           "name": "showDetailButtons",
-          "label": "Show Action Buttons", 
+          "label": "Show Action Buttons",
           "description": "Display the view sheet and edit character buttons",
           "type": "checkbox",
           "defaultValue": true
@@ -20,7 +20,7 @@
           "name": "showCharacterStory",
           "label": "Show Character Story",
           "description": "Display the character backstory section",
-          "type": "checkbox", 
+          "type": "checkbox",
           "defaultValue": true
         },
         {
@@ -38,10 +38,10 @@
           "defaultValue": "classic",
           "typeOptions": {
             "validValues": [
-              {"value": "classic", "label": "Classic D&D"},
-              {"value": "dark", "label": "Dark Fantasy"},
-              {"value": "noble", "label": "Noble Knight"},
-              {"value": "mystical", "label": "Mystical Mage"}
+              { "value": "classic", "label": "Classic D&D" },
+              { "value": "dark", "label": "Dark Fantasy" },
+              { "value": "noble", "label": "Noble Knight" },
+              { "value": "mystical", "label": "Mystical Mage" }
             ]
           }
         }
