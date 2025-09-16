@@ -27,21 +27,21 @@
         },
         {
           "dataType": "object",
-          "defaultValue": true,
+          "defaultValue": "true",
           "label": "Show Quick Actions",
           "name": "showQuickActions",
           "type": "checkbox"
         },
         {
           "dataType": "object",
-          "defaultValue": true,
+          "defaultValue": "true",
           "label": "Enable Chat Export",
           "name": "enableExport",
           "type": "checkbox"
         },
         {
-          "dataType": "int",
-          "defaultValue": 400,
+          "dataType": "string",
+          "defaultValue": "400",
           "label": "Chat Height (px)",
           "name": "chatHeight",
           "type": "text",
