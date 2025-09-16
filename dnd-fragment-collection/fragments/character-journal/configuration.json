@@ -1,0 +1,63 @@
+{
+  "fieldSets": [
+    {
+      "fields": [
+        {
+          "name": "showBackstory",
+          "label": "Show Character Backstory",
+          "description": "Display character backstory with expandable details and family information",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "showPersonality",
+          "label": "Show Personality Traits",
+          "description": "Display personality traits, ideals, bonds, and flaws with interactive editing",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "showGoals",
+          "label": "Show Goals & Motivations",
+          "description": "Display short-term and long-term goals with progress tracking",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "showSessionNotes",
+          "label": "Show Session Notes",
+          "description": "Display session history with filtering, tagging, and detailed notes",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "showRelationships",
+          "label": "Show Character Relationships",
+          "description": "Display relationships with party members, NPCs, family, and friends",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "compactMode",
+          "label": "Compact Mode",
+          "description": "Use a more condensed layout for the character journal display",
+          "type": "checkbox",
+          "defaultValue": false
+        },
+        {
+          "name": "journalTheme",
+          "label": "Journal Theme",
+          "description": "Choose the visual theme for the character journal",
+          "type": "select",
+          "defaultValue": "classic",
+          "options": [
+            {"value": "classic", "label": "Classic Parchment"},
+            {"value": "scholar", "label": "Scholar's Tome"},
+            {"value": "rogue", "label": "Rogue's Notes"},
+            {"value": "noble", "label": "Noble's Memoir"}
+          ]
+        }
+      ]
+    }
+  ]
+}
