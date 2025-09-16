@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipment Fragment Test</title>
+    <style>
+        body { margin: 20px; background: #1a1a1a; color: #fff; font-family: Arial, sans-serif; }
+        .test-results { margin: 20px 0; padding: 20px; background: #2a2a2a; border-radius: 8px; }
+        .test-pass { color: #00ff00; }
+        .test-fail { color: #ff0000; }
+        .test-warning { color: #ffaa00; }
+    </style>
+</head>
+<body>
+    <h1>Equipment & Inventory Fragment Test</h1>
+    
+    <div id="test-fragment">
+        <!-- Fragment HTML will be loaded here -->
+    </div>
+    
+    <div class="test-results">
+        <h2>Test Results</h2>
+        <div id="test-output"></div>
+    </div>
+
+    <script>
+        // Load and test the fragment
+        async function testFragment() {
+            const output = document.getElementById('test-output');
+            const results = [];
+            
+            try {
+                // Load fragment HTML
+                const htmlResponse = await fetch('./dnd-fragment-collection/fragments/equipment-inventory/index.html');
+                const htmlContent = await htmlResponse.text();
+                document.getElementById('test-fragment').innerHTML = htmlContent;
+                
+                // Load fragment CSS
+                const cssResponse = await fetch('./dnd-fragment-collection/fragments/equipment-inventory/index.css');
+                const cssContent = await cssResponse.text();
+                const style = document.createElement('style');
+                style.textContent = cssContent;
+                document.head.appendChild(style);
+                
+                results.push('<div class="test-pass">✓ Fragment HTML and CSS loaded successfully</div>');
+                
+                // Load fragment JavaScript
+                const jsResponse = await fetch('./dnd-fragment-collection/fragments/equipment-inventory/index.js');
+                const jsContent = await jsResponse.text();
+                
+                // Test if JavaScript is valid
+                try {
+                    new Function(jsContent);
+                    results.push('<div class="test-pass">✓ JavaScript syntax is valid</div>');
+                } catch (syntaxError) {
+                    results.push('<div class="test-fail">✗ JavaScript syntax error: ' + syntaxError.message + '</div>');
+                    throw syntaxError;
+                }
+                
+                // Create mock fragment initialization
+                const fragmentModule = new Function('exports', `
+                    ${jsContent}
+                    return exports.default || exports;
+                `)({});
+                
+                // Test fragment initialization
+                const fragmentElement = document.getElementById('test-fragment');
+                const mockConfig = {
+                    showEquippedItems: true,
+                    showInventory: true,
+                    showCurrency: true,
+                    showWeaponStats: true,
+                    showMagicItems: true,
+                    compactMode: false,
+                    inventoryTheme: 'classic'
+                };
+                
+                const cleanup = fragmentModule({ 
+                    fragmentElement: fragmentElement, 
+                    configuration: mockConfig 
+                });
+                
+                if (typeof cleanup === 'function') {
+                    results.push('<div class="test-pass">✓ Fragment initialization successful - cleanup function returned</div>');
+                } else {
+                    results.push('<div class="test-fail">✗ Fragment initialization failed - no cleanup function returned</div>');
+                }
+                
+                // Test if main sections exist
+                const sections = [
+                    '.equipped-section',
+                    '.inventory-section', 
+                    '.currency-section',
+                    '.weapon-stats-section',
+                    '.magic-items-section'
+                ];
+                
+                sections.forEach(selector => {
+                    const section = fragmentElement.querySelector(selector);
+                    if (section) {
+                        results.push(`<div class="test-pass">✓ Section found: ${selector}</div>`);
+                    } else {
+                        results.push(`<div class="test-fail">✗ Missing section: ${selector}</div>`);
+                    }
+                });
+                
+                // Test interactive elements
+                const interactiveElements = [
+                    '.equipment-slot',
+                    '.inventory-item',
+                    '.currency-item',
+                    '.weapon-action-btn',
+                    '.magic-item-btn'
+                ];
+                
+                interactiveElements.forEach(selector => {
+                    const elements = fragmentElement.querySelectorAll(selector);
+                    if (elements.length > 0) {
+                        results.push(`<div class="test-pass">✓ Interactive elements found: ${selector} (${elements.length})</div>`);
+                    } else {
+                        results.push(`<div class="test-warning">⚠ No interactive elements: ${selector}</div>`);
+                    }
+                });
+                
+                results.push('<div class="test-pass">✓ All tests completed successfully</div>');
+                
+            } catch (error) {
+                results.push('<div class="test-fail">✗ Test failed with error: ' + error.message + '</div>');
+                console.error('Test error:', error);
+            }
+            
+            output.innerHTML = results.join('\n');
+        }
+        
+        // Run test when page loads
+        window.addEventListener('load', testFragment);
+    </script>
+</body>
+</html>

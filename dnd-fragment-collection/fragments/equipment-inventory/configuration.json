@@ -1,0 +1,63 @@
+{
+  "fieldSets": [
+    {
+      "fields": [
+        {
+          "name": "showEquippedItems",
+          "label": "Show Equipped Items",
+          "description": "Display the currently equipped items section",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "showInventory",
+          "label": "Show Inventory Grid",
+          "description": "Display the inventory items grid with weight tracking",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "showCurrency",
+          "label": "Show Currency",
+          "description": "Display currency tracking and total value calculation",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "showWeaponStats",
+          "label": "Show Weapon Statistics",
+          "description": "Display detailed weapon stats with attack roll functionality",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "showMagicItems",
+          "label": "Show Magic Items",
+          "description": "Display magic items with rarity indicators and detailed descriptions",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "compactMode",
+          "label": "Compact Mode",
+          "description": "Use a more condensed layout for the equipment display",
+          "type": "checkbox",
+          "defaultValue": false
+        },
+        {
+          "name": "inventoryTheme",
+          "label": "Equipment Theme",
+          "description": "Choose the visual theme for the equipment display",
+          "type": "select",
+          "defaultValue": "classic",
+          "options": [
+            {"value": "classic", "label": "Classic D&D"},
+            {"value": "treasure", "label": "Treasure Hunter"},
+            {"value": "warfare", "label": "Warrior's Arsenal"},
+            {"value": "mystical", "label": "Mystical Items"}
+          ]
+        }
+      ]
+    }
+  ]
+}
