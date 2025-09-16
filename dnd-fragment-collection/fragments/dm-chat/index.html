@@ -39,7 +39,7 @@
       <span class="character-count">
         <span id="char-count">0</span>/500
       </span>
-      [#if configuration.showQuickActions == "true"]
+      [#if configuration.showQuickActions == true]
       <div class="quick-actions">
         <button class="quick-btn" data-question="What are the rules for...">Rules</button>
         <button class="quick-btn" data-question="Tell me about the lore of...">Lore</button>
@@ -74,7 +74,7 @@
         <span class="action-icon">🗑️</span>
         Clear Chat
       </button>
-      [#if configuration.enableExport == "true"]
+      [#if configuration.enableExport == true]
       <button class="action-btn" id="export-chat">
         <span class="action-icon">💾</span>
         Export Log
