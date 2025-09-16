@@ -50,12 +50,14 @@
           "description": "Choose the visual theme for the spells display",
           "type": "select",
           "defaultValue": "classic",
-          "options": [
-            {"value": "classic", "label": "Classic Arcane"},
-            {"value": "arcane", "label": "Arcane Wizard"},
-            {"value": "divine", "label": "Divine Cleric"},
-            {"value": "nature", "label": "Nature Druid"}
-          ]
+          "typeOptions": {
+            "validValues": [
+              {"value": "classic", "label": "Classic Arcane"},
+              {"value": "arcane", "label": "Arcane Wizard"},
+              {"value": "divine", "label": "Divine Cleric"},
+              {"value": "nature", "label": "Nature Druid"}
+            ]
+          }
         }
       ]
     }

@@ -50,12 +50,14 @@
           "description": "Choose the visual theme for the equipment display",
           "type": "select",
           "defaultValue": "classic",
-          "options": [
-            {"value": "classic", "label": "Classic D&D"},
-            {"value": "treasure", "label": "Treasure Hunter"},
-            {"value": "warfare", "label": "Warrior's Arsenal"},
-            {"value": "mystical", "label": "Mystical Items"}
-          ]
+          "typeOptions": {
+            "validValues": [
+              {"value": "classic", "label": "Classic D&D"},
+              {"value": "treasure", "label": "Treasure Hunter"},
+              {"value": "warfare", "label": "Warrior's Arsenal"},
+              {"value": "mystical", "label": "Mystical Items"}
+            ]
+          }
         }
       ]
     }

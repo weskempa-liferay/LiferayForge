@@ -50,12 +50,14 @@
           "description": "Choose the visual theme for the character journal",
           "type": "select",
           "defaultValue": "classic",
-          "options": [
-            {"value": "classic", "label": "Classic Parchment"},
-            {"value": "scholar", "label": "Scholar's Tome"},
-            {"value": "rogue", "label": "Rogue's Notes"},
-            {"value": "noble", "label": "Noble's Memoir"}
-          ]
+          "typeOptions": {
+            "validValues": [
+              {"value": "classic", "label": "Classic Parchment"},
+              {"value": "scholar", "label": "Scholar's Tome"},
+              {"value": "rogue", "label": "Rogue's Notes"},
+              {"value": "noble", "label": "Noble's Memoir"}
+            ]
+          }
         }
       ]
     }

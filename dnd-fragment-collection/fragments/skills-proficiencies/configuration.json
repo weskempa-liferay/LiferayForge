@@ -50,12 +50,14 @@
           "description": "Choose the visual theme for the skills display",
           "type": "select",
           "defaultValue": "classic",
-          "options": [
-            {"value": "classic", "label": "Classic D&D"},
-            {"value": "scholar", "label": "Scholar/Wizard"},
-            {"value": "rogue", "label": "Rogue/Stealth"},
-            {"value": "bard", "label": "Bard/Performance"}
-          ]
+          "typeOptions": {
+            "validValues": [
+              {"value": "classic", "label": "Classic D&D"},
+              {"value": "scholar", "label": "Scholar/Wizard"},
+              {"value": "rogue", "label": "Rogue/Stealth"},
+              {"value": "bard", "label": "Bard/Performance"}
+            ]
+          }
         }
       ]
     }
