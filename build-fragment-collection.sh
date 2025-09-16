@@ -10,9 +10,8 @@ VERSION="v1.0.0_$TIMESTAMP"
 # Create collection directory if it doesn't exist
 mkdir -p dnd-fragment-collection
 
-# Copy latest fragments and collection metadata
+# Copy latest fragments with collection metadata inside fragments directory
 echo "Copying fragment files..."
-cp fragment-collection.json dnd-fragment-collection/
 cp -r fragments dnd-fragment-collection/
 
 # Create version info file
