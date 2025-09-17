@@ -798,7 +798,7 @@
   justify-content: center;
 }
 
-.tab-btn {
+.skills-proficiencies .tab-btn {
   padding: 0.5rem 1rem;
   border: 2px solid #8B4513;
   border-radius: 6px;
@@ -809,17 +809,17 @@
   transition: all 0.3s ease;
 }
 
-.tab-btn.active {
+.skills-proficiencies .tab-btn.active {
   border-color: #D4AF37;
   background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(139, 69, 19, 0.3));
   color: #FFD700;
 }
 
-.tab-content {
+.skills-proficiencies .tab-content {
   display: none;
 }
 
-.tab-content.active {
+.skills-proficiencies .tab-content.active {
   display: block;
 }
 

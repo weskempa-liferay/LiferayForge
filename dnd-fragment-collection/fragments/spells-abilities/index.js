@@ -1163,7 +1163,7 @@ export default function ({ fragmentElement, configuration }) {
                 border-radius: 6px;
             }
             
-            .tab-btn {
+            .spells-abilities .tab-btn {
                 background: rgba(26, 26, 46, 0.6);
                 border: 1px solid #4A90E2;
                 color: #B0C4DE;
@@ -1172,13 +1172,13 @@ export default function ({ fragmentElement, configuration }) {
                 border-radius: 4px 4px 0 0;
             }
             
-            .tab-btn.active {
+            .spells-abilities .tab-btn.active {
                 background: rgba(135, 206, 235, 0.2);
                 border-color: #87CEEB;
                 color: #87CEEB;
             }
             
-            .tab-content {
+            .spells-abilities .tab-content {
                 display: none;
                 padding: 1rem;
                 border: 1px solid #4A90E2;
@@ -1186,7 +1186,7 @@ export default function ({ fragmentElement, configuration }) {
                 background: rgba(26, 26, 46, 0.4);
             }
             
-            .tab-content.active {
+            .spells-abilities .tab-content.active {
                 display: block;
             }
             

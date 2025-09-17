@@ -1234,7 +1234,7 @@ export default function ({ fragmentElement, configuration }) {
                 padding-top: 0.5rem;
             }
             
-            .tab-btn {
+            .equipment-inventory .tab-btn {
                 background: rgba(42, 31, 26, 0.6);
                 border: 1px solid #8B4513;
                 color: #DEB887;
@@ -1243,13 +1243,13 @@ export default function ({ fragmentElement, configuration }) {
                 border-radius: 4px 4px 0 0;
             }
             
-            .tab-btn.active {
+            .equipment-inventory .tab-btn.active {
                 background: rgba(212, 175, 55, 0.2);
                 border-color: #D4AF37;
                 color: #FFD700;
             }
             
-            .tab-content {
+            .equipment-inventory .tab-content {
                 display: none;
                 padding: 1rem;
                 border: 1px solid #8B4513;
@@ -1257,7 +1257,7 @@ export default function ({ fragmentElement, configuration }) {
                 background: rgba(42, 31, 26, 0.4);
             }
             
-            .tab-content.active {
+            .equipment-inventory .tab-content.active {
                 display: block;
             }
         `;

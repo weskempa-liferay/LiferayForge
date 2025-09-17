@@ -1713,7 +1713,7 @@ export default function ({ fragmentElement, configuration }) {
                 gap: 1rem;
             }
             
-            .tab-btn {
+            .character-journal .tab-btn {
                 background: rgba(45, 27, 27, 0.6);
                 border: 1px solid #CD853F;
                 color: #F5DEB3;
@@ -1722,13 +1722,13 @@ export default function ({ fragmentElement, configuration }) {
                 border-radius: 4px 4px 0 0;
             }
             
-            .tab-btn.active {
+            .character-journal .tab-btn.active {
                 background: rgba(222, 184, 135, 0.2);
                 border-color: #DEB887;
                 color: #DEB887;
             }
             
-            .tab-content {
+            .character-journal .tab-content {
                 display: none;
                 padding: 1rem;
                 border: 1px solid #CD853F;
@@ -1736,7 +1736,7 @@ export default function ({ fragmentElement, configuration }) {
                 background: rgba(45, 27, 27, 0.4);
             }
             
-            .tab-content.active {
+            .character-journal .tab-content.active {
                 display: block;
             }
         `;
