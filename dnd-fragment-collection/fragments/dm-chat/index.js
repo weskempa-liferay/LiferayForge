@@ -1,6 +1,6 @@
 // DM Chat Interactive Features
 (function() {
-  'use strict';
+  //'use strict';
 
   // Chat state management
   let chatHistory = [];
@@ -69,6 +69,20 @@
     function sendMessage() {
       const message = chatInput.value.trim();
       if (!message || isWaitingForResponse) return;
+
+      Liferay.Util.fetch('/o/c/playeractions', {
+        method: 'POST',
+        headers: {
+					'Content-Type': 'application/json' 
+        },
+        body: JSON.stringify(
+          {
+            "r_userToPlayerAction_userId": Liferay.ThemeDisplay.getUserId(),
+            "message": message,
+            "characterID": 123
+          }
+        ),
+      });
 
       // Add user message to chat
       addMessageToChat('user', message);

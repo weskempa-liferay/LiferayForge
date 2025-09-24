@@ -1,6 +1,6 @@
 // Quest Navigation Interactive Features
 (function() {
-  'use strict';
+  //'use strict';
 
   // Mobile menu toggle functionality
   function initMobileMenu() {

@@ -4,7 +4,7 @@
  */
 
 export default function ({ fragmentElement, configuration }) {
-    'use strict';
+    //'use strict';
     
     const combatStats = fragmentElement.querySelector('.combat-stats');
     if (!combatStats) return () => {};

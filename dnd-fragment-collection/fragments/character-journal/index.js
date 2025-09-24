@@ -4,7 +4,7 @@
  */
 
 export default function ({ fragmentElement, configuration }) {
-    'use strict';
+    //'use strict';
     
     const journalContainer = fragmentElement.querySelector('.character-journal');
     if (!journalContainer) return () => {};

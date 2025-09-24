@@ -1,6 +1,6 @@
 // Character Card Interactive Features
 (function() {
-  'use strict';
+  //'use strict';
 
   // Animate stats on hover
   function initStatAnimations() {

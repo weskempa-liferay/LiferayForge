@@ -4,7 +4,7 @@
  */
 
 export default function ({ fragmentElement, configuration }) {
-    'use strict';
+    //'use strict';
     
     const spellsContainer = fragmentElement.querySelector('.spells-abilities');
     if (!spellsContainer) return () => {};

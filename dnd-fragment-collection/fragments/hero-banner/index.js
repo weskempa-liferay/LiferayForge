@@ -1,6 +1,6 @@
 // Hero Banner Interactive Features
 (function() {
-  'use strict';
+  //'use strict';
 
   // Parallax effect for hero background
   function initParallax() {

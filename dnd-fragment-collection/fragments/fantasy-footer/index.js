@@ -1,6 +1,6 @@
 // Fantasy Footer JavaScript
 (function() {
-  'use strict';
+  //'use strict';
 
   // Initialize footer functionality when DOM is ready
   document.addEventListener('DOMContentLoaded', function() {
