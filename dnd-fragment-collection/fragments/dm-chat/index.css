@@ -115,6 +115,54 @@
   font-weight: 600;
 }
 
+/* Character Selector */
+.dm-chat .character-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-right: 1rem;
+}
+
+.dm-chat .character-label {
+  color: #C4A977;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.dm-chat .character-dropdown {
+  padding: 0.5rem 0.75rem;
+  background: linear-gradient(135deg, rgba(42, 31, 26, 0.8), rgba(26, 15, 10, 0.8));
+  border: 2px solid #8B4513;
+  border-radius: 6px;
+  color: #D4AF37;
+  font-family: 'Crimson Text', serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 180px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.dm-chat .character-dropdown:hover {
+  border-color: #D4AF37;
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
+}
+
+.dm-chat .character-dropdown:focus {
+  outline: none;
+  border-color: #D4AF37;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+}
+
+.dm-chat .character-dropdown option {
+  background: #2a1f1a;
+  color: #D4AF37;
+  padding: 0.5rem;
+}
+
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.5; }

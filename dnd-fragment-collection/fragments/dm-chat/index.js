@@ -5,6 +5,7 @@
   // Chat state management
   let chatHistory = [];
   let isWaitingForResponse = false;
+  let selectedCharacterId = null;
 
   // Initialize chat functionality
   function initDMChat() {
@@ -16,8 +17,20 @@
     const chatLog = dmChat.querySelector('#dm-chat-log');
     const loadingIndicator = dmChat.querySelector('#dm-loading');
     const charCount = dmChat.querySelector('#char-count');
+    const characterSelect = dmChat.querySelector('#character-select');
     
     if (!chatInput || !sendButton || !chatLog) return;
+
+    // Load user's characters
+    loadUserCharacters();
+
+    // Character selection handler
+    if (characterSelect) {
+      characterSelect.addEventListener('change', function() {
+        selectedCharacterId = this.value ? parseInt(this.value) : null;
+        console.log('Selected character ID:', selectedCharacterId);
+      });
+    }
 
     // Input character counting
     chatInput.addEventListener('input', function() {
@@ -70,16 +83,22 @@
       const message = chatInput.value.trim();
       if (!message || isWaitingForResponse) return;
 
+      // Check if character is selected
+      if (!selectedCharacterId) {
+        alert('Please select a character before sending a message.');
+        return;
+      }
+
       let playerMessage = Liferay.Util.fetch('/o/c/playeractions', {
         method: 'POST',
         headers: {
-					'Content-Type': 'application/json' 
+                                        'Content-Type': 'application/json' 
         },
         body: JSON.stringify(
           {
             "r_userToPlayerAction_userId": Liferay.ThemeDisplay.getUserId(),
             "message": message,
-            "characterID": 123
+            "characterID": selectedCharacterId
           }
         ),
       }).then(response => response.json())
@@ -313,6 +332,62 @@
       if (statusIndicator && statusText) {
         statusIndicator.className = `status-indicator ${online ? 'online' : 'offline'}`;
         statusText.textContent = online ? 'DM Available' : 'DM Offline';
+      }
+    }
+
+    // Load user's characters from Liferay Objects
+    async function loadUserCharacters() {
+      try {
+        // Fetch characters for the current user
+        const response = await Liferay.Util.fetch('/o/c/characters?filter=r_userToCharacter_userId eq ' + Liferay.ThemeDisplay.getUserId(), {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        
+        const data = await response.json();
+        
+        if (characterSelect && data.items && data.items.length > 0) {
+          // Clear loading message
+          characterSelect.innerHTML = '';
+          
+          // Add placeholder option
+          const placeholderOption = document.createElement('option');
+          placeholderOption.value = '';
+          placeholderOption.textContent = 'Select a character...';
+          characterSelect.appendChild(placeholderOption);
+          
+          // Add character options
+          data.items.forEach(character => {
+            const option = document.createElement('option');
+            option.value = character.id;
+            option.textContent = `${character.name || 'Unnamed Character'} (Level ${character.level || 1})`;
+            characterSelect.appendChild(option);
+          });
+          
+          // Auto-select first character if only one exists
+          if (data.items.length === 1) {
+            characterSelect.value = data.items[0].id;
+            selectedCharacterId = data.items[0].id;
+          }
+        } else {
+          // No characters found
+          if (characterSelect) {
+            characterSelect.innerHTML = '<option value="">No characters found</option>';
+          }
+        }
+      } catch (error) {
+        console.error('Error loading characters:', error);
+        // Fallback to sample characters for development/testing
+        if (characterSelect) {
+          characterSelect.innerHTML = `
+            <option value="">Select a character...</option>
+            <option value="1">Thorin Ironforge (Level 5)</option>
+            <option value="2">Lyra Moonwhisper (Level 3)</option>
+            <option value="3">Grog the Mighty (Level 7)</option>
+          `;
+        }
       }
     }
 
