@@ -70,7 +70,7 @@
       const message = chatInput.value.trim();
       if (!message || isWaitingForResponse) return;
 
-      Liferay.Util.fetch('/o/c/playeractions', {
+      let playerMessage = Liferay.Util.fetch('/o/c/playeractions', {
         method: 'POST',
         headers: {
 					'Content-Type': 'application/json' 
@@ -82,18 +82,24 @@
             "characterID": 123
           }
         ),
-      });
+      }).then(response => response.json())
+        .then(data => {
+          console.log(data)
+          getDMResponse(data);
+        })
+        .catch(error => {
+          console.error('Error fetching DM response:', error);
+        });
 
-      // Add user message to chat
-      addMessageToChat('user', message);
-      
       // Clear input
       chatInput.value = '';
       if (charCount) charCount.textContent = '0';
       
-      // Show loading and get AI response
+      //Show loading and get AI response
       showLoading(true);
-      getDMResponse(message);
+
+      // Add user message to chat
+      addMessageToChat('user', message);
     }
 
     // Add message to chat display
@@ -134,6 +140,7 @@
     }
 
     // Get AI DM response
+    
     async function getDMResponse(userMessage) {
       isWaitingForResponse = true;
       updateSendButton();
@@ -141,14 +148,50 @@
       try {
         // This is where OpenAI integration would be implemented
         // For now, we'll simulate an AI response
-        const response = await simulateDMResponse(userMessage);
-        
+        //const response = await simulateDMResponse(userMessage);
+          
+        let responseCheck = setInterval(() => {
+          Liferay.Util.fetch('/o/c/playeractions/'+userMessage.id, {
+              method: 'GET',
+              headers: {
+                'Content-Type': 'application/json' 
+              }
+            }
+          ).then(response => response.json())
+          .then(data => {
+
+            if(data.response && data.response.trim() !== "") {
+                clearInterval(responseCheck);
+                showLoading(false);
+                addMessageToChat('dm', data.response.trim(), new Date(data.dateModified).toLocaleTimeString([], { 
+                  hour: '2-digit', 
+                  minute: '2-digit' 
+                }));
+                isWaitingForResponse = false;
+                updateSendButton();
+              }
+            }
+
+          )
+          .catch(error => {
+            console.error('Error fetching DM response:', error);
+            clearInterval(responseCheck);
+            showLoading(false);
+            addMessageToChat('dm', "Apologies, adventurer. I seem to be having trouble accessing my magical knowledge at the moment. Please try your question again.");
+            isWaitingForResponse = false;
+            updateSendButton();
+          });
+            
+        }, 3000); // Check every 3 seconds
+
+        /*
         setTimeout(() => {
           showLoading(false);
           addMessageToChat('dm', response);
           isWaitingForResponse = false;
           updateSendButton();
         }, 1500 + Math.random() * 2000); // Simulate thinking time
+        */
         
       } catch (error) {
         console.error('Error getting DM response:', error);
@@ -158,8 +201,10 @@
         updateSendButton();
       }
     }
+    
 
     // Simulate AI DM response (placeholder for OpenAI integration)
+    /*
     async function simulateDMResponse(userMessage) {
       const responses = {
         rules: [
@@ -197,6 +242,7 @@
       
       return responseArray[Math.floor(Math.random() * responseArray.length)];
     }
+  */
 
     // Show/hide loading indicator
     function showLoading(show) {
