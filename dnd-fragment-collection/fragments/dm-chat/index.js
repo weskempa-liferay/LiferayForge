@@ -83,12 +83,6 @@
       const message = chatInput.value.trim();
       if (!message || isWaitingForResponse) return;
 
-      // Check if character is selected
-      if (!selectedCharacterId) {
-        alert('Please select a character before sending a message.');
-        return;
-      }
-
       let playerMessage = Liferay.Util.fetch('/o/c/playeractions', {
         method: 'POST',
         headers: {
@@ -220,48 +214,6 @@
         updateSendButton();
       }
     }
-    
-
-    // Simulate AI DM response (placeholder for OpenAI integration)
-    /*
-    async function simulateDMResponse(userMessage) {
-      const responses = {
-        rules: [
-          "According to D&D 5e rules, you can move up to your speed and take one action on your turn. Actions include Attack, Cast a Spell, Dash, Disengage, Dodge, Help, Hide, Ready, Search, or Use an Object.",
-          "Remember that opportunity attacks occur when you move out of an enemy's reach without taking the Disengage action first.",
-          "For ability checks, you roll a d20 and add your relevant ability modifier plus your proficiency bonus if you're proficient in that skill."
-        ],
-        lore: [
-          "The Forgotten Realms is a vast world filled with ancient magic and forgotten kingdoms. The city of Waterdeep stands as a beacon of civilization on the Sword Coast.",
-          "Dragons in D&D are categorized by color and type - chromatic dragons tend to be evil while metallic dragons are typically good. Each has unique breath weapons and abilities.",
-          "The Weave is the source of all magic in the Realms, overseen by Mystra, the goddess of magic. When spellcasters use magic, they tap into this mystical force."
-        ],
-        advice: [
-          "Consider your party's composition when making decisions. A balanced approach often works best, but sometimes bold action is required.",
-          "Don't forget to use your character's unique abilities and background features - they often provide creative solutions to problems.",
-          "Remember that D&D is about collaborative storytelling. The most memorable moments often come from unexpected character interactions and creative problem-solving."
-        ],
-        default: [
-          "That's an interesting question, adventurer. Could you provide more specific details so I can give you the most helpful guidance?",
-          "Let me consult my magical tomes... Could you elaborate on your situation or question?",
-          "As your DM, I want to help you have the best adventure possible. What specific aspect would you like me to address?"
-        ]
-      };
-
-      const message = userMessage.toLowerCase();
-      let responseArray = responses.default;
-      
-      if (message.includes('rule') || message.includes('mechanic') || message.includes('how do')) {
-        responseArray = responses.rules;
-      } else if (message.includes('lore') || message.includes('story') || message.includes('world') || message.includes('history')) {
-        responseArray = responses.lore;
-      } else if (message.includes('advice') || message.includes('help') || message.includes('should') || message.includes('what if')) {
-        responseArray = responses.advice;
-      }
-      
-      return responseArray[Math.floor(Math.random() * responseArray.length)];
-    }
-  */
 
     // Show/hide loading indicator
     function showLoading(show) {

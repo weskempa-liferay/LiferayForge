@@ -3,9 +3,40 @@
   //'use strict';
 
   // Animate stats on hover
-  function initStatAnimations() {
+  function addCharacterImage() {
+
     const characterCards = document.querySelectorAll('.character-card');
     
+    characterCards.forEach(card => {
+      const characterDef = card.querySelectorAll('div.character-class');
+      console.log(characterDef);
+			var sex = characterDef[0].querySelector(".character-class.sex").innerHTML.trim().toLowerCase();
+			var race = characterDef[0].querySelector(".character-class.race").innerHTML.trim().toLowerCase();
+			var playerclass = characterDef[0].querySelector(".character-class.class").innerHTML.trim().toLowerCase();
+      
+      if(playerclass == "mage"){ playerclass = "wizard" }
+      if(playerclass == "sorcerer"){ playerclass = "wizard" }
+      if(playerclass == "warrior"){ playerclass = "fighter" }
+      if(playerclass == "thief"){ playerclass = "rouge" }
+      if(race == "half-elf"){ race = "elf" }
+      
+      var imageName = race + "-" + playerclass + "-" + sex;
+      console.log(imageName);
+
+      var characterImg = card.querySelectorAll('.character-portrait img');
+      console.log(characterImg);
+			characterImg[0].src = "/documents/d/global/" + imageName + "?download=true";
+      
+		});
+	
+  }
+
+  // Animate stats on hover
+  function initStatAnimations() {
+    const characterCards = document.querySelectorAll('.character-card');
+
+    //character-portrait
+
     characterCards.forEach(card => {
       const statValues = card.querySelectorAll('.stat-value');
       
@@ -16,7 +47,7 @@
           let startValue = Math.max(0, targetValue - 20);
           
           // Animate number counting up
-          const duration = 500;
+          const duration = 500; 
           const startTime = Date.now();
           
           function updateValue() {
@@ -195,6 +226,7 @@
   // Initialize all effects
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function() {
+      addCharacterImage();
       addAnimationStyles();
       initStatAnimations();
       initParticleEffect();
@@ -202,6 +234,7 @@
       initAbilityEffects();
     });
   } else {
+    addCharacterImage();
     addAnimationStyles();
     initStatAnimations();
     initParticleEffect();
