@@ -184,6 +184,7 @@
 
 .character-header .character-subtitle .character-class {
   font-weight: 600;
+	text-transform:capitalize;
 }
 
 .character-header .character-subtitle .character-class:not(:last-of-type)::after {

@@ -3,9 +3,10 @@
  * D&D-themed character display with level progression and visual effects
  */
 
-export default function ({ fragmentElement, configuration = {} }) {
-    //'use strict';
-    
+(function({ fragmentElement, configuration = {} }) {
+
+    console.log("testA");
+
     let cleanupFunctions = [];
     
     // Find the actual character header element
@@ -40,7 +41,9 @@ export default function ({ fragmentElement, configuration = {} }) {
      */
     function addCharacterImage(header) {
         const characterDef = header.querySelector('.character-subtitle');
+        console.log("test1");
         if (!characterDef) return;
+        console.log("test2");
         
         const sexElement = characterDef.querySelector('.character-class.sex');
         const raceElement = characterDef.querySelector('.character-class.race');

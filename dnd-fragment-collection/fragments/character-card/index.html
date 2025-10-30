@@ -1,64 +1,244 @@
-<div class="character-card fantasy-card">
-  <div class="card-header">
-    <div class="character-portrait">
-      <img data-lfr-editable-id="portrait" data-lfr-editable-type="image" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjMmExZjFhIi8+CjxjaXJjbGUgY3g9IjUwIiBjeT0iNDAiIHI9IjE1IiBmaWxsPSIjRDRBRjM3Ii8+CjxwYXRoIGQ9Ik0zMCA3MEMzMCA2NSA0MCA2MCA1MCA2MEM2MCA2MCA3MCA2NSA3MCA3MEg3MEg2MEg0MEgzMFoiIGZpbGw9IiNEREREREQiLz4KPC9zdmc+" alt="Character Portrait" />
-      <div class="portrait-border"></div>
-    </div>
-    <div class="character-rank" data-lfr-editable-id="rank" data-lfr-editable-type="rich-text">
-      ⭐⭐⭐
-    </div>
-  </div>
-  
-  <div class="card-body">
-    <h3 class="character-name" data-lfr-editable-id="name" data-lfr-editable-type="rich-text">
-      Aragorn the Brave
-    </h3>
-    <div class="character-class">
-			<span class="character-class sex" data-lfr-editable-id="sex" data-lfr-editable-type="rich-text">
-				Male
-			</span>
-			<span class="character-class race" data-lfr-editable-id="race" data-lfr-editable-type="rich-text">
-				Human
-			</span>
-			<span class="character-class class" data-lfr-editable-id="class" data-lfr-editable-type="rich-text">
-				Fighter
-			</span>
-		</div>
-    <p class="character-description" data-lfr-editable-id="description" data-lfr-editable-type="rich-text">
-      A skilled ranger from the northern kingdoms, wielding both sword and bow with legendary precision.
-    </p>
+// Character Card Interactive Features
+(function() {
+  //'use strict';
+
+  // Animate stats on hover
+  function addCharacterImage() {
+
+    const characterCards = document.querySelectorAll('.character-card');
     
-    <div class="character-stats">
-      <div class="stat-group">
-        <span class="stat-label">Level</span>
-        <span class="stat-value" data-lfr-editable-id="level" data-lfr-editable-type="rich-text">15</span>
-      </div>
-      <div class="stat-group">
-        <span class="stat-label">HP</span>
-        <span class="stat-value" data-lfr-editable-id="hp" data-lfr-editable-type="rich-text">120</span>
-      </div>
-      <div class="stat-group">
-        <span class="stat-label">Spells</span>
-        <span class="stat-value" data-lfr-editable-id="mp" data-lfr-editable-type="rich-text">80</span>
-      </div>
-    </div>
+    characterCards.forEach(card => {
+      const characterDef = card.querySelectorAll('div.character-class');
+      console.log(characterDef);
+			var sex = characterDef[0].querySelector(".character-class.sex").innerHTML.trim().toLowerCase();
+			var race = characterDef[0].querySelector(".character-class.race").innerHTML.trim().toLowerCase();
+			var playerclass = characterDef[0].querySelector(".character-class.class").innerHTML.trim().toLowerCase();
+      
+      if(playerclass == "mage"){ playerclass = "wizard" }
+      if(playerclass == "sorcerer"){ playerclass = "wizard" }
+      if(playerclass == "warrior"){ playerclass = "fighter" }
+      if(playerclass == "thief"){ playerclass = "rouge" }
+      if(race == "half-elf"){ race = "elf" }
+      
+      var imageName = race + "-" + playerclass + "-" + sex;
+      console.log(imageName);
+
+      var characterImg = card.querySelectorAll('.character-portrait img');
+      console.log(characterImg);
+			characterImg[0].src = "/documents/d/global/" + imageName + "?download=true";
+      
+		});
+	
+  }
+
+  // Animate stats on hover
+  function initStatAnimations() {
+    const characterCards = document.querySelectorAll('.character-card');
+
+    //character-portrait
+
+    characterCards.forEach(card => {
+      const statValues = card.querySelectorAll('.stat-value');
+      
+      card.addEventListener('mouseenter', function() {
+        statValues.forEach((stat, index) => {
+          const currentValue = parseInt(stat.textContent) || 0;
+          const targetValue = currentValue;
+          let startValue = Math.max(0, targetValue - 20);
+          
+          // Animate number counting up
+          const duration = 500; 
+          const startTime = Date.now();
+          
+          function updateValue() {
+            const elapsed = Date.now() - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const easedProgress = easeOutCubic(progress);
+            
+            const currentAnimValue = Math.round(startValue + (targetValue - startValue) * easedProgress);
+            stat.textContent = currentAnimValue;
+            
+            if (progress < 1) {
+              requestAnimationFrame(updateValue);
+            } else {
+              stat.textContent = targetValue;
+            }
+          }
+          
+          setTimeout(() => updateValue(), index * 100);
+        });
+      });
+      
+      card.addEventListener('mouseleave', function() {
+        // Reset to original values (they should already be correct)
+        statValues.forEach(stat => {
+          // Values are maintained by the animation end state
+        });
+      });
+    });
+  }
+
+  // Easing function for smooth animation
+  function easeOutCubic(t) {
+    return 1 - Math.pow(1 - t, 3);
+  }
+
+  // Add floating particles effect
+  function initParticleEffect() {
+    const characterCards = document.querySelectorAll('.character-card');
     
-    <div class="character-abilities">
-      <div class="ability" data-lfr-editable-id="ability1" data-lfr-editable-type="rich-text">
-        🏹 Master Archer
-      </div>
-      <div class="ability" data-lfr-editable-id="ability2" data-lfr-editable-type="rich-text">
-        🗡️ Sword Mastery
-      </div>
-      <div class="ability" data-lfr-editable-id="ability3" data-lfr-editable-type="rich-text">
-        🌲 Forest Guardian
-      </div>
-    </div>
-  </div>
-  
-  <div class="card-footer">
-    <a href="#" class="btn btn-primary character-btn" data-lfr-editable-id="action-button" data-lfr-editable-type="link">
-      View Details
-    </a>
-  </div>
-</div>
+    characterCards.forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        createParticles(this);
+      });
+    });
+  }
+
+  function createParticles(card) {
+    const particleCount = 5;
+    
+    for (let i = 0; i < particleCount; i++) {
+      setTimeout(() => {
+        const particle = document.createElement('div');
+        particle.className = 'card-particle';
+        particle.style.cssText = `
+          position: absolute;
+          width: 4px;
+          height: 4px;
+          background: #D4AF37;
+          border-radius: 50%;
+          pointer-events: none;
+          z-index: 10;
+          box-shadow: 0 0 6px #D4AF37;
+          left: ${Math.random() * 100}%;
+          top: ${Math.random() * 100}%;
+          animation: floatParticle 2s ease-out forwards;
+        `;
+        
+        card.appendChild(particle);
+        
+        setTimeout(() => {
+          particle.remove();
+        }, 2000);
+      }, i * 200);
+    }
+  }
+
+  // Portrait glow effect
+  function initPortraitGlow() {
+    const portraits = document.querySelectorAll('.character-portrait');
+    
+    portraits.forEach(portrait => {
+      const img = portrait.querySelector('img');
+      
+      portrait.addEventListener('mouseenter', function() {
+        img.style.boxShadow = '0 0 25px rgba(212, 175, 55, 0.8)';
+        img.style.transform = 'scale(1.05)';
+      });
+      
+      portrait.addEventListener('mouseleave', function() {
+        img.style.boxShadow = '';
+        img.style.transform = 'scale(1)';
+      });
+    });
+  }
+
+  // Add required CSS animations
+  function addAnimationStyles() {
+    if (document.querySelector('#character-card-styles')) return;
+    
+    const style = document.createElement('style');
+    style.id = 'character-card-styles';
+    style.textContent = `
+      @keyframes floatParticle {
+        0% {
+          opacity: 0;
+          transform: translateY(0) scale(0);
+        }
+        20% {
+          opacity: 1;
+          transform: translateY(-10px) scale(1);
+        }
+        80% {
+          opacity: 1;
+          transform: translateY(-40px) scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(-60px) scale(0);
+        }
+      }
+      
+      .character-portrait img {
+        transition: all 0.3s ease;
+      }
+      
+      .stat-value {
+        transition: color 0.3s ease;
+      }
+      
+      .character-card:hover .stat-value {
+        color: #FFD700;
+      }
+      
+      .ability {
+        transition: all 0.3s ease;
+      }
+      
+      .character-card:hover .ability {
+        color: #D4AF37;
+        padding-left: 1rem;
+      }
+      
+      .character-card {
+        position: relative;
+        overflow: visible;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  // Ability hover effects
+  function initAbilityEffects() {
+    const characterCards = document.querySelectorAll('.character-card');
+    
+    characterCards.forEach(card => {
+      const abilities = card.querySelectorAll('.ability');
+    
+      abilities.forEach((ability, index) => {
+        ability.addEventListener('mouseenter', function() {
+          this.style.background = 'rgba(212, 175, 55, 0.1)';
+          this.style.borderRadius = '4px';
+          this.style.padding = '0.5rem 1rem';
+          this.style.margin = '0.25rem -1rem';
+        });
+        
+        ability.addEventListener('mouseleave', function() {
+          this.style.background = '';
+          this.style.borderRadius = '';
+          this.style.padding = '0.5rem 0';
+          this.style.margin = '';
+        });
+      });
+    });
+  }
+
+  // Initialize all effects
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      addCharacterImage();
+      addAnimationStyles();
+      initStatAnimations();
+      initParticleEffect();
+      initPortraitGlow();
+      initAbilityEffects();
+    });
+  } else {
+    addCharacterImage();
+    addAnimationStyles();
+    initStatAnimations();
+    initParticleEffect();
+    initPortraitGlow();
+    initAbilityEffects();
+  }
+})();
