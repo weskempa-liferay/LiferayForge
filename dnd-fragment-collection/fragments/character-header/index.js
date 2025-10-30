@@ -18,6 +18,9 @@ export default function ({ fragmentElement, configuration = {} }) {
     // Apply configuration options
     applyConfiguration(characterHeader, configuration);
     
+    // Load character image based on attributes
+    addCharacterImage(characterHeader);
+    
     // Initialize interactive features
     const cleanup1 = setupProgressAnimation(characterHeader);
     const cleanup2 = setupPortraitEffects(characterHeader);
@@ -31,6 +34,42 @@ export default function ({ fragmentElement, configuration = {} }) {
     return function cleanup() {
         cleanupFunctions.forEach(fn => fn && fn());
     };
+    
+    /**
+     * Load character image based on sex, race, and class attributes
+     */
+    function addCharacterImage(header) {
+        const characterDef = header.querySelector('.character-subtitle');
+        if (!characterDef) return;
+        
+        const sexElement = characterDef.querySelector('.character-class.sex');
+        const raceElement = characterDef.querySelector('.character-class.race');
+        const classElement = characterDef.querySelector('.character-class.class');
+        
+        if (!sexElement || !raceElement || !classElement) return;
+        
+        let sex = sexElement.textContent.trim().toLowerCase();
+        let race = raceElement.textContent.trim().toLowerCase();
+        let playerclass = classElement.textContent.trim().toLowerCase();
+        
+        // Map class aliases
+        if (playerclass === 'mage') playerclass = 'wizard';
+        if (playerclass === 'sorcerer') playerclass = 'wizard';
+        if (playerclass === 'warrior') playerclass = 'fighter';
+        if (playerclass === 'thief') playerclass = 'rouge';
+        if (playerclass === 'cleric') playerclass = 'claric';
+        
+        // Map race aliases
+        if (race === 'half-elf') race = 'elf';
+        
+        const imageName = race + '-' + playerclass + '-' + sex;
+        console.log('Loading character image:', imageName);
+        
+        const characterImg = header.querySelector('.portrait-frame img');
+        if (characterImg) {
+            characterImg.src = '/documents/d/global/' + imageName + '?download=true';
+        }
+    }
     
     function applyConfiguration(headerElement, config) {
         // Show/hide level progress

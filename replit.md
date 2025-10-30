@@ -2,6 +2,27 @@
 
 This is a D&D-themed component library and Liferay fragment reference application built with React. The project serves as a showcase and documentation tool for reusable UI components designed with a fantasy/medieval aesthetic, featuring dark browns, gold accents, and ornate styling. The application displays both standalone React components and Liferay fragment collections that can be used in Liferay portal development.
 
+## Recent Updates (October 30, 2025)
+
+### Dynamic Character Portrait Loading
+- **Character Card & Character Header** fragments now automatically load character portraits based on character attributes
+- Images are dynamically selected using the pattern: `{race}-{class}-{sex}.png`
+- Supports class aliases (mage→wizard, warrior→fighter, etc.) and race aliases (half-elf→elf)
+- Portrait images stored in `resources/` folder and served via Liferay Documents & Media
+
+### DM Chat Enhancements
+- Added character selection dropdown integrated with Liferay Objects
+- Dynamically loads user's characters from `/o/c/characters` API
+- Associates chat messages with selected character via `characterID` field
+- Auto-selects single character when user has only one character
+- Persistent chat history via Liferay Objects (`/o/c/playeractions`)
+
+### Character Portrait Library
+11 character portrait images added to support various race/class/gender combinations:
+- Dwarf: Cleric (M), Fighter (M)
+- Elf: Bard (M), Druid (M/F), Rogue (M/F), Wizard (M/F)
+- Human: Fighter (M), Wizard (M)
+
 # User Preferences
 
 Preferred communication style: Simple, everyday language.

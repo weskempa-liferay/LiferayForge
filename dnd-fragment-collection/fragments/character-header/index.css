@@ -182,6 +182,14 @@
   color: #D4AF37;
 }
 
+.character-header .character-subtitle .character-class {
+  font-weight: 600;
+}
+
+.character-header .character-subtitle .character-class:not(:last-of-type)::after {
+  content: " ";
+}
+
 .character-header .character-class {
   font-weight: bold;
   color: #CD853F;
