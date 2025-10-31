@@ -141,6 +141,9 @@
       const avatar = sender === 'dm' ? '🧙‍♂️' : '🎭';
       const senderName = sender === 'dm' ? 'Dungeon Master' : 'You';
       
+      // Format message: DM messages support markdown bold, user messages are escaped only
+      const formattedMessage = sender === 'dm' ? formatDMMessage(message) : escapeHtml(message);
+      
       messageElement.innerHTML = `
         <div class="message-avatar">
           <span class="avatar-icon">${avatar}</span>
@@ -150,7 +153,7 @@
             <span class="sender-name">${senderName}</span>
             <span class="message-time">${messageTime}</span>
           </div>
-          <div class="message-text">${escapeHtml(message)}</div>
+          <div class="message-text">${formattedMessage}</div>
         </div>
       `;
       
@@ -357,6 +360,18 @@
       const div = document.createElement('div');
       div.textContent = text;
       return div.innerHTML;
+    }
+    
+    // Format DM message with markdown-style bold support
+    function formatDMMessage(text) {
+      // First escape HTML to prevent XSS
+      let escaped = escapeHtml(text);
+      
+      // Then convert **text** to <strong>text</strong>
+      // Using regex to match **text** pattern (non-greedy)
+      escaped = escaped.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+      
+      return escaped;
     }
 
     // Status indicator management

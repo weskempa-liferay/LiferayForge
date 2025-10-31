@@ -10,6 +10,9 @@ This is a D&D-themed component library and Liferay fragment reference applicatio
 - **Auto-restore**: Switching characters automatically loads their chat history
 - **Character Selection Memory**: Last selected character remembered across sessions
 - **Fixed OData Filter**: Corrected user filter query syntax for proper character loading
+- **Markdown Bold Support**: DM responses with `**text**` syntax automatically render as **bold text**
+  - Security-first: HTML escaping prevents XSS, then markdown parsing applied
+  - Only DM messages support markdown (user messages remain plain text for safety)
 
 ### Visual Improvements
 - **Friendlier Player Avatar**: Changed from crossed swords (⚔️) on red to theater masks (🎭) on teal/blue-green
