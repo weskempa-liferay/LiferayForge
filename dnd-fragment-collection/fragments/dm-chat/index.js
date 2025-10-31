@@ -138,7 +138,7 @@
       const messageElement = document.createElement('div');
       messageElement.className = `message ${sender}-message`;
       
-      const avatar = sender === 'dm' ? '🧙‍♂️' : '🎭';
+      const avatar = sender === 'dm' ? '🧙‍♂️' : '📝';
       const senderName = sender === 'dm' ? 'Dungeon Master' : 'You';
       
       // Format message: DM messages support markdown bold, user messages are escaped only
