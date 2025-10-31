@@ -362,7 +362,7 @@
       return div.innerHTML;
     }
     
-    // Format DM message with markdown-style bold support
+    // Format DM message with markdown-style bold support and line breaks
     function formatDMMessage(text) {
       // First escape HTML to prevent XSS
       let escaped = escapeHtml(text);
@@ -370,6 +370,9 @@
       // Then convert **text** to <strong>text</strong>
       // Using regex to match **text** pattern (non-greedy)
       escaped = escaped.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+      
+      // Convert \n line breaks to <br> tags
+      escaped = escaped.replace(/\n/g, '<br>');
       
       return escaped;
     }
