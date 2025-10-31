@@ -2,7 +2,19 @@
 
 This is a D&D-themed component library and Liferay fragment reference application built with React. The project serves as a showcase and documentation tool for reusable UI components designed with a fantasy/medieval aesthetic, featuring dark browns, gold accents, and ornate styling. The application displays both standalone React components and Liferay fragment collections that can be used in Liferay portal development.
 
-## Recent Updates (October 30, 2025)
+## Recent Updates (October 31, 2025)
+
+### DM Chat - Persistent Conversation System ⭐
+- **Character-based Chat History**: Each character maintains separate conversation history
+- **Browser Storage Persistence**: Chat logs stored in localStorage and persist across page refreshes
+- **Auto-restore**: Switching characters automatically loads their chat history
+- **Character Selection Memory**: Last selected character remembered across sessions
+- **Fixed OData Filter**: Corrected user filter query syntax for proper character loading
+
+### Visual Improvements
+- **Friendlier Player Avatar**: Changed from crossed swords (⚔️) on red to theater masks (🎭) on teal/blue-green
+- **Color Psychology**: Teal background conveys creativity and roleplay vs. red combat intensity
+- **Context-appropriate**: Better suited for non-combat DM consultations
 
 ### Dynamic Character Portrait Loading
 - **Character Card & Character Header** fragments now automatically load character portraits based on character attributes
@@ -10,17 +22,11 @@ This is a D&D-themed component library and Liferay fragment reference applicatio
 - Supports class aliases (mage→wizard, warrior→fighter, etc.) and race aliases (half-elf→elf)
 - Portrait images stored in `resources/` folder and served via Liferay Documents & Media
 
-### DM Chat Enhancements
-- Added character selection dropdown integrated with Liferay Objects
-- Dynamically loads user's characters from `/o/c/characters` API
-- Associates chat messages with selected character via `characterID` field
-- Auto-selects single character when user has only one character
-- Persistent chat history via Liferay Objects (`/o/c/playeractions`)
-
 ### Character Portrait Library
-11 character portrait images added to support various race/class/gender combinations:
+15 character portrait images added to support various race/class/gender combinations:
 - Dwarf: Cleric (M), Fighter (M)
 - Elf: Bard (M), Druid (M/F), Rogue (M/F), Wizard (M/F)
+- Halfling: Rogue (M/F)
 - Human: Fighter (M), Wizard (M)
 
 # User Preferences

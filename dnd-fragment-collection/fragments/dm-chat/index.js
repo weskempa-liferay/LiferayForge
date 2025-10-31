@@ -6,6 +6,8 @@
   let chatHistory = [];
   let isWaitingForResponse = false;
   let selectedCharacterId = null;
+  const STORAGE_KEY_PREFIX = 'dm_chat_';
+  const SELECTED_CHARACTER_KEY = 'dm_chat_selected_character';
 
   // Initialize chat functionality
   function initDMChat() {
@@ -28,6 +30,17 @@
     if (characterSelect) {
       characterSelect.addEventListener('change', function() {
         selectedCharacterId = this.value ? parseInt(this.value) : null;
+        
+        // Save selection to localStorage
+        if (selectedCharacterId) {
+          localStorage.setItem(SELECTED_CHARACTER_KEY, selectedCharacterId);
+        } else {
+          localStorage.removeItem(SELECTED_CHARACTER_KEY);
+        }
+        
+        // Load chat history for this character
+        loadChatHistory(selectedCharacterId);
+        
         console.log('Selected character ID:', selectedCharacterId);
       });
     }
@@ -125,7 +138,7 @@
       const messageElement = document.createElement('div');
       messageElement.className = `message ${sender}-message`;
       
-      const avatar = sender === 'dm' ? '🧙‍♂️' : '⚔️';
+      const avatar = sender === 'dm' ? '🧙‍♂️' : '🎭';
       const senderName = sender === 'dm' ? 'Dungeon Master' : 'You';
       
       messageElement.innerHTML = `
@@ -145,11 +158,15 @@
       scrollToBottom();
       
       // Store in history
-      chatHistory.push({
+      const historyEntry = {
         sender: sender,
         message: message,
         timestamp: messageTime
-      });
+      };
+      chatHistory.push(historyEntry);
+      
+      // Save to localStorage for persistence
+      saveChatHistory(selectedCharacterId);
     }
 
     // Get AI DM response
@@ -233,10 +250,76 @@
       chatLog.scrollTop = chatLog.scrollHeight;
     }
 
+    // Save chat history to localStorage
+    function saveChatHistory(characterId) {
+      if (!characterId) return;
+      const storageKey = STORAGE_KEY_PREFIX + characterId;
+      try {
+        localStorage.setItem(storageKey, JSON.stringify(chatHistory));
+      } catch (error) {
+        console.error('Error saving chat history:', error);
+      }
+    }
+    
+    // Load chat history from localStorage
+    function loadChatHistory(characterId) {
+      if (!characterId) {
+        // Clear chat if no character selected
+        chatHistory = [];
+        const welcomeMessage = chatLog.querySelector('.welcome-message');
+        chatLog.innerHTML = '';
+        if (welcomeMessage) {
+          chatLog.appendChild(welcomeMessage);
+        }
+        return;
+      }
+      
+      const storageKey = STORAGE_KEY_PREFIX + characterId;
+      try {
+        const savedHistory = localStorage.getItem(storageKey);
+        if (savedHistory) {
+          chatHistory = JSON.parse(savedHistory);
+          
+          // Clear chat log and rebuild
+          const welcomeMessage = chatLog.querySelector('.welcome-message');
+          chatLog.innerHTML = '';
+          if (welcomeMessage) {
+            chatLog.appendChild(welcomeMessage);
+          }
+          
+          // Restore all messages
+          chatHistory.forEach(entry => {
+            addMessageToChat(entry.sender, entry.message, entry.timestamp);
+          });
+          
+          // Remove duplicates from chatHistory array since addMessageToChat adds them
+          chatHistory = chatHistory.slice(0, chatHistory.length / 2);
+          
+        } else {
+          // No saved history, start fresh
+          chatHistory = [];
+          const welcomeMessage = chatLog.querySelector('.welcome-message');
+          chatLog.innerHTML = '';
+          if (welcomeMessage) {
+            chatLog.appendChild(welcomeMessage);
+          }
+        }
+      } catch (error) {
+        console.error('Error loading chat history:', error);
+        chatHistory = [];
+      }
+    }
+
     // Clear chat history
     function clearChat() {
-      if (confirm('Are you sure you want to clear the chat history?')) {
+      if (confirm('Are you sure you want to clear the chat history for this character?')) {
         chatHistory = [];
+        
+        // Clear from localStorage
+        if (selectedCharacterId) {
+          const storageKey = STORAGE_KEY_PREFIX + selectedCharacterId;
+          localStorage.removeItem(storageKey);
+        }
         
         // Keep only the welcome message
         const welcomeMessage = chatLog.querySelector('.welcome-message');
@@ -318,10 +401,23 @@
             characterSelect.appendChild(option);
           });
           
-          // Auto-select first character if only one exists
-          if (data.items.length === 1) {
+          // Restore previously selected character from localStorage
+          const savedCharacterId = localStorage.getItem(SELECTED_CHARACTER_KEY);
+          if (savedCharacterId) {
+            const matchingCharacter = data.items.find(char => char.id == savedCharacterId);
+            if (matchingCharacter) {
+              characterSelect.value = savedCharacterId;
+              selectedCharacterId = parseInt(savedCharacterId);
+              loadChatHistory(selectedCharacterId);
+            }
+          }
+          
+          // Auto-select first character if only one exists and no saved selection
+          if (data.items.length === 1 && !selectedCharacterId) {
             characterSelect.value = data.items[0].id;
             selectedCharacterId = data.items[0].id;
+            localStorage.setItem(SELECTED_CHARACTER_KEY, selectedCharacterId);
+            loadChatHistory(selectedCharacterId);
           }
         } else {
           // No characters found
