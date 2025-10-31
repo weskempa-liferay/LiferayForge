@@ -86,7 +86,7 @@
       let playerMessage = Liferay.Util.fetch('/o/c/playeractions', {
         method: 'POST',
         headers: {
-                                        'Content-Type': 'application/json' 
+          'Content-Type': 'application/json' 
         },
         body: JSON.stringify(
           {
@@ -291,7 +291,7 @@
     async function loadUserCharacters() {
       try {
         // Fetch characters for the current user
-        const response = await Liferay.Util.fetch('/o/c/characters?filter=r_userToCharacter_userId eq ' + Liferay.ThemeDisplay.getUserId(), {
+        const response = await Liferay.Util.fetch("/o/c/characters?filter=r_userToCharacter_userId eq '" + Liferay.ThemeDisplay.getUserId() +"'", {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'

@@ -9,7 +9,7 @@
     
     characterCards.forEach(card => {
       const characterDef = card.querySelectorAll('div.character-class');
-      console.log(characterDef);
+      
 			var sex = characterDef[0].querySelector(".character-class.sex").innerHTML.trim().toLowerCase();
 			var race = characterDef[0].querySelector(".character-class.race").innerHTML.trim().toLowerCase();
 			var playerclass = characterDef[0].querySelector(".character-class.class").innerHTML.trim().toLowerCase();
@@ -21,11 +21,9 @@
       if(race == "half-elf"){ race = "elf" }
       
       var imageName = race + "-" + playerclass + "-" + sex;
-      console.log(imageName);
-
+      
       var characterImg = card.querySelectorAll('.character-portrait img');
-      console.log(characterImg);
-			characterImg[0].src = "/documents/d/global/" + imageName + "?download=true";
+      characterImg[0].src = "/documents/d/global/" + imageName + "?download=true";
       
 		});
 	
