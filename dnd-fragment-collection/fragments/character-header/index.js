@@ -568,10 +568,3 @@
         };
     }
 }
-
-// Fallback for non-Liferay environments (development/testing)
-if (typeof window !== 'undefined' && !window.Liferay) {
-    window.CharacterHeaderFragment = { init: function(fragmentElement, configuration) {
-        return exports.default({ fragmentElement, configuration });
-    }};
-}
