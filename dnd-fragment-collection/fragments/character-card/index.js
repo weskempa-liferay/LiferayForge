@@ -19,6 +19,7 @@
       if(playerclass == "warrior"){ playerclass = "fighter" }
       if(playerclass == "thief"){ playerclass = "rouge" }
       if(race == "half-elf"){ race = "elf" }
+      if(race == "high elf"){ race = "elf" }
       
       var imageName = race + "-" + playerclass + "-" + sex;
       

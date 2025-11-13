@@ -51,14 +51,15 @@ function addCharacterImage(header) {
     let playerclass = classElement.textContent.trim().toLowerCase();
     
     // Map class aliases
-    if (playerclass === 'mage') playerclass = 'wizard';
-    if (playerclass === 'sorcerer') playerclass = 'wizard';
-    if (playerclass === 'warrior') playerclass = 'fighter';
-    if (playerclass === 'thief') playerclass = 'rouge';
-    if (playerclass === 'cleric') playerclass = 'claric';
+    if (playerclass == 'mage') playerclass = 'wizard';
+    if (playerclass == 'sorcerer') playerclass = 'wizard';
+    if (playerclass == 'warrior') playerclass = 'fighter';
+    if (playerclass == 'thief') playerclass = 'rouge';
+    if (playerclass == 'cleric') playerclass = 'claric';
     
     // Map race aliases
-    if (race === 'half-elf') race = 'elf';
+    if (race == 'half-elf') race = 'elf';
+    if (race == "high elf"){ race = "elf" }
     
     const imageName = race + '-' + playerclass + '-' + sex;
     console.log('Loading character image:', imageName);
