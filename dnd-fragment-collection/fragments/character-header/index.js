@@ -3,18 +3,19 @@
  * D&D-themed character display with level progression and visual effects
  */
 
-
-console.log("testA");
+(function() {
 
 let cleanupFunctions = [];
 
 // Find the actual character header element
-const characterHeader = fragmentElement.querySelector('.character-header');
+const characterHeader = document.querySelector('.character-header');
 if (!characterHeader) {
     console.warn('Character header element not found');
+    return;
 }
 
-// Apply configuration options
+// Apply configuration options (configuration would come from Liferay if needed)
+const configuration = {};
 applyConfiguration(characterHeader, configuration);
 
 // Load character image based on attributes
@@ -28,8 +29,6 @@ const cleanup4 = setupLevelIndicatorEffects(characterHeader);
 const cleanup5 = setupResponsiveHandling(characterHeader);
 
 cleanupFunctions.push(cleanup1, cleanup2, cleanup3, cleanup4, cleanup5);
-
-//cleanupFunctions.forEach(fn => fn && fn());
 
 /**
  * Load character image based on sex, race, and class attributes
@@ -55,7 +54,6 @@ function addCharacterImage(header) {
     if (playerclass == 'sorcerer') playerclass = 'wizard';
     if (playerclass == 'warrior') playerclass = 'fighter';
     if (playerclass == 'thief') playerclass = 'rouge';
-    if (playerclass == 'cleric') playerclass = 'claric';
     
     // Map race aliases
     if (race == 'half-elf') race = 'elf';
@@ -563,3 +561,5 @@ function debounce(func, wait) {
         timeout = setTimeout(later, wait);
     };
 }
+
+})(); // End of fragment wrapper function

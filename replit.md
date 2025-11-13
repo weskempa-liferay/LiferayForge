@@ -2,7 +2,24 @@
 
 This is a D&D-themed component library and Liferay fragment reference application built with React. The project serves as a showcase and documentation tool for reusable UI components designed with a fantasy/medieval aesthetic, featuring dark browns, gold accents, and ornate styling. The application displays both standalone React components and Liferay fragment collections that can be used in Liferay portal development.
 
-## Recent Updates (October 31, 2025)
+## Recent Updates (November 13, 2025)
+
+### Critical Bug Fixes 🐛
+- **Character Header Fragment**: Fixed broken Liferay fragment initialization
+  - Restored proper IIFE pattern matching other fragments
+  - Fixed undefined `fragmentElement` error that prevented fragment from loading
+  - Added null guard to prevent errors when header element not found
+- **Cleric Image Mapping**: Corrected backwards class mapping
+  - Removed incorrect `cleric → claric` mapping (file is now correctly named `dwarf-cleric-male.png`)
+  - Cleric character portraits now load properly
+- **Race Alias Support**: Added "high elf" → "elf" mapping for both character-card and character-header
+- **DM Chat Avatar Positioning**: Fine-tuned avatar icon vertical alignment (top: 2px)
+
+### New Character Portraits
+- Added `dwarf-fighter-female.png` to portrait library
+- Updated total: 16 character portrait images
+
+## Previous Updates (October 31, 2025)
 
 ### DM Chat - Persistent Conversation System ⭐
 - **Character-based Chat History**: Each character maintains separate conversation history
