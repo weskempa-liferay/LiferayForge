@@ -1,6 +1,6 @@
 D&D Fragment Collection
-Version: v1.0.0_20251031_145026
-Built: Fri Oct 31 02:50:26 PM UTC 2025
+Version: v1.0.0_20251031_161619
+Built: Fri Oct 31 04:16:19 PM UTC 2025
 Description: D&D-themed Liferay DXP fragment collection with fantasy aesthetic
 
 Fragments included:
