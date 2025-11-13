@@ -19,6 +19,15 @@ This is a D&D-themed component library and Liferay fragment reference applicatio
 - Added `dwarf-fighter-female.png` to portrait library
 - Updated total: 16 character portrait images
 
+### New Admin Fragment 🔧
+- **Admin Data Cleaner**: Testing utility fragment for clearing test data
+  - One-click batch deletion of all Liferay Objects data
+  - Processes collections in order: Quests → Inventory Items → Player Actions → Characters
+  - Real-time status indicators and progress tracking
+  - Double confirmation prompts to prevent accidental deletion
+  - Uses Liferay.Util.fetch with automatic CSRF token handling
+  - Designed for admin/testing pages only
+
 ## Previous Updates (October 31, 2025)
 
 ### DM Chat - Persistent Conversation System ⭐

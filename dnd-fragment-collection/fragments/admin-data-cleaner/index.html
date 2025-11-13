@@ -1,0 +1,47 @@
+<div class="admin-data-cleaner">
+  <div class="admin-panel fantasy-card">
+    <div class="panel-header">
+      <h3 class="panel-title">⚠️ Admin: Clear Test Data</h3>
+      <p class="warning-text">This will permanently delete all test data from the system</p>
+    </div>
+    
+    <div class="panel-body">
+      <div class="data-collections">
+        <div class="collection-item">
+          <span class="collection-icon">📜</span>
+          <span class="collection-name">Quests</span>
+          <span class="collection-status" id="status-quests">Ready</span>
+        </div>
+        <div class="collection-item">
+          <span class="collection-icon">🎒</span>
+          <span class="collection-name">Inventory Items</span>
+          <span class="collection-status" id="status-inventory">Ready</span>
+        </div>
+        <div class="collection-item">
+          <span class="collection-icon">💬</span>
+          <span class="collection-name">Player Actions (DM Chat)</span>
+          <span class="collection-status" id="status-actions">Ready</span>
+        </div>
+        <div class="collection-item">
+          <span class="collection-icon">👤</span>
+          <span class="collection-name">Characters</span>
+          <span class="collection-status" id="status-characters">Ready</span>
+        </div>
+      </div>
+      
+      <div class="action-section">
+        <button id="clear-all-btn" class="btn-clear-all fantasy-btn">
+          <span class="btn-icon">🗑️</span>
+          <span class="btn-text">Clear All Data</span>
+        </button>
+        
+        <div class="progress-info" id="progress-info" style="display: none;">
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+          <p class="progress-text" id="progress-text">Processing...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
