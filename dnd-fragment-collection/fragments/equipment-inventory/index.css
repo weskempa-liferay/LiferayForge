@@ -314,7 +314,8 @@
 }
 
 .equipment-inventory .inventory-item .item-quantity,
-.equipment-inventory .inventory-item .item-weight {
+.equipment-inventory .inventory-item .item-weight,
+.equipment-inventory .inventory-item .item-type {
   font-family: 'Crimson Text', serif;
   font-size: 0.8rem;
   color: #A0A0A0;
