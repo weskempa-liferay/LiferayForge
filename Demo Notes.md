@@ -1,3 +1,5 @@
+Create a male human fighter named "Thorin Oakenshield"
+
 Create a level 3 male dwarven cleric with a funny name
 
 How is initiative calculated?
