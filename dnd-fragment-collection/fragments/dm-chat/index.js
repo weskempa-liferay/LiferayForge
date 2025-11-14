@@ -271,14 +271,74 @@
       chatLog.scrollTop = chatLog.scrollHeight;
     }
 
-    // Save chat history to localStorage
+    // Save chat history to localStorage with quota management
     function saveChatHistory(characterId) {
       if (!characterId) return;
       const storageKey = STORAGE_KEY_PREFIX + characterId;
+      
       try {
         localStorage.setItem(storageKey, JSON.stringify(chatHistory));
       } catch (error) {
-        console.error('Error saving chat history:', error);
+        if (error.name === 'QuotaExceededError') {
+          console.warn('LocalStorage quota exceeded. Pruning old messages...');
+          
+          // Keep only the most recent 50 messages
+          const maxMessages = 50;
+          if (chatHistory.length > maxMessages) {
+            chatHistory = chatHistory.slice(-maxMessages);
+            
+            try {
+              localStorage.setItem(storageKey, JSON.stringify(chatHistory));
+              console.log(`Chat history pruned to ${maxMessages} most recent messages`);
+            } catch (retryError) {
+              console.error('Failed to save even after pruning:', retryError);
+              // If still failing, keep only 20 messages
+              chatHistory = chatHistory.slice(-20);
+              try {
+                localStorage.setItem(storageKey, JSON.stringify(chatHistory));
+              } catch (finalError) {
+                console.error('Critical: Unable to save chat history. Clearing oldest data...');
+                // Last resort: clear this character's history
+                chatHistory = [];
+                localStorage.removeItem(storageKey);
+              }
+            }
+          } else {
+            // If already under limit, try clearing other characters' old data
+            cleanupOldChatData(characterId);
+            try {
+              localStorage.setItem(storageKey, JSON.stringify(chatHistory));
+            } catch (retryError) {
+              console.error('Failed after cleanup:', retryError);
+            }
+          }
+        } else {
+          console.error('Error saving chat history:', error);
+        }
+      }
+    }
+    
+    // Cleanup old chat data from other characters to free space
+    function cleanupOldChatData(currentCharacterId) {
+      const keysToRemove = [];
+      
+      // Find all dm_chat_ keys
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith(STORAGE_KEY_PREFIX)) {
+          const charId = key.replace(STORAGE_KEY_PREFIX, '');
+          // Don't remove current character's data
+          if (charId !== String(currentCharacterId)) {
+            keysToRemove.push(key);
+          }
+        }
+      }
+      
+      // Remove half of the oldest chat histories
+      const toRemoveCount = Math.ceil(keysToRemove.length / 2);
+      for (let i = 0; i < toRemoveCount; i++) {
+        localStorage.removeItem(keysToRemove[i]);
+        console.log(`Removed old chat data: ${keysToRemove[i]}`);
       }
     }
     

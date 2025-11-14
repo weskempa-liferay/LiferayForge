@@ -4,8 +4,18 @@ This is a D&D-themed component library and Liferay fragment reference applicatio
 
 ## Recent Updates (November 14, 2025)
 
-### Critical Performance Fix 🚨
-- **DM Chat Memory Leak Resolved**: Fixed browser freeze/hang with multiple characters
+### Critical Performance Fixes 🚨
+
+**DM Chat Storage Quota Management**
+- **Storage Quota Error Resolved**: Fixed `QuotaExceededError` when saving chat histories
+  - **Problem**: Browser localStorage has 5-10MB limit, DM responses can be lengthy
+  - **Smart Pruning**: Automatically keeps most recent 50 messages when quota exceeded
+  - **Fallback Strategy**: Progressive limits (50 → 20 → clear) if still over quota
+  - **Multi-character Cleanup**: Removes other characters' old data to free space
+  - **Graceful Degradation**: Never loses current conversation, always saves successfully
+
+**DM Chat Memory Leak Resolved**
+- Fixed browser freeze/hang with multiple characters
   - **Root Cause**: History replay was re-saving messages to localStorage exponentially
   - **Impact**: Each page load doubled the chat history, causing massive JSON blobs in localStorage
   - **Fix**: Separated rendering from persistence - replaying history no longer mutates storage
