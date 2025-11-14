@@ -129,12 +129,31 @@
     }
 
     // Add message to chat display
-    function addMessageToChat(sender, message, timestamp = null) {
+    function addMessageToChat(sender, message, timestamp = null, shouldPersist = true) {
       const messageTime = timestamp || new Date().toLocaleTimeString([], { 
         hour: '2-digit', 
         minute: '2-digit' 
       });
       
+      // Render message to DOM
+      renderMessage(sender, message, messageTime);
+      
+      // Only add to history and save if this is a new message (not a replay)
+      if (shouldPersist) {
+        const historyEntry = {
+          sender: sender,
+          message: message,
+          timestamp: messageTime
+        };
+        chatHistory.push(historyEntry);
+        
+        // Save to localStorage for persistence
+        saveChatHistory(selectedCharacterId);
+      }
+    }
+    
+    // Render a message to the DOM (without modifying history)
+    function renderMessage(sender, message, messageTime) {
       const messageElement = document.createElement('div');
       messageElement.className = `message ${sender}-message`;
       
@@ -159,31 +178,28 @@
       
       chatLog.appendChild(messageElement);
       scrollToBottom();
-      
-      // Store in history
-      const historyEntry = {
-        sender: sender,
-        message: message,
-        timestamp: messageTime
-      };
-      chatHistory.push(historyEntry);
-      
-      // Save to localStorage for persistence
-      saveChatHistory(selectedCharacterId);
     }
 
-    // Get AI DM response
+    // Track active polling interval
+    let activePollingInterval = null;
     
+    // Get AI DM response
     async function getDMResponse(userMessage) {
       isWaitingForResponse = true;
       updateSendButton();
+      
+      // Clear any existing polling interval before starting a new one
+      if (activePollingInterval) {
+        clearInterval(activePollingInterval);
+        activePollingInterval = null;
+      }
       
       try {
         // This is where OpenAI integration would be implemented
         // For now, we'll simulate an AI response
         //const response = await simulateDMResponse(userMessage);
           
-        let responseCheck = setInterval(() => {
+        activePollingInterval = setInterval(() => {
           Liferay.Util.fetch('/o/c/playeractions/'+userMessage.id, {
               method: 'GET',
               headers: {
@@ -194,7 +210,8 @@
           .then(data => {
 
             if(data.response && data.response.trim() !== "") {
-                clearInterval(responseCheck);
+                clearInterval(activePollingInterval);
+                activePollingInterval = null;
                 showLoading(false);
                 addMessageToChat('dm', data.response.trim(), new Date(data.dateModified).toLocaleTimeString([], { 
                   hour: '2-digit', 
@@ -208,7 +225,8 @@
           )
           .catch(error => {
             console.error('Error fetching DM response:', error);
-            clearInterval(responseCheck);
+            clearInterval(activePollingInterval);
+            activePollingInterval = null;
             showLoading(false);
             addMessageToChat('dm', "Apologies, adventurer. I seem to be having trouble accessing my magical knowledge at the moment. Please try your question again.");
             isWaitingForResponse = false;
@@ -266,6 +284,12 @@
     
     // Load chat history from localStorage
     function loadChatHistory(characterId) {
+      // Clear any active polling intervals when switching characters
+      if (activePollingInterval) {
+        clearInterval(activePollingInterval);
+        activePollingInterval = null;
+      }
+      
       if (!characterId) {
         // Clear chat if no character selected
         chatHistory = [];
@@ -283,6 +307,17 @@
         if (savedHistory) {
           chatHistory = JSON.parse(savedHistory);
           
+          // Deduplicate history in case of corruption (compare by timestamp + sender + message)
+          const seen = new Set();
+          chatHistory = chatHistory.filter(entry => {
+            const key = `${entry.timestamp}_${entry.sender}_${entry.message}`;
+            if (seen.has(key)) {
+              return false; // Skip duplicate
+            }
+            seen.add(key);
+            return true;
+          });
+          
           // Clear chat log and rebuild
           const welcomeMessage = chatLog.querySelector('.welcome-message');
           chatLog.innerHTML = '';
@@ -290,13 +325,13 @@
             chatLog.appendChild(welcomeMessage);
           }
           
-          // Restore all messages
+          // Restore all messages WITHOUT persisting (shouldPersist = false)
           chatHistory.forEach(entry => {
-            addMessageToChat(entry.sender, entry.message, entry.timestamp);
+            renderMessage(entry.sender, entry.message, entry.timestamp);
           });
           
-          // Remove duplicates from chatHistory array since addMessageToChat adds them
-          chatHistory = chatHistory.slice(0, chatHistory.length / 2);
+          // Save cleaned history back to localStorage
+          saveChatHistory(characterId);
           
         } else {
           // No saved history, start fresh

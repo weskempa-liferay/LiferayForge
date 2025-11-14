@@ -1,6 +1,6 @@
 D&D Fragment Collection
-Version: v1.0.0_20251114_153851
-Built: Thu Nov 14 03:38:51 PM UTC 2025
+Version: v1.0.0_20251114_155159
+Built: Thu Nov 14 03:51:59 PM UTC 2025
 Description: D&D-themed Liferay DXP fragment collection with fantasy aesthetic
 
 Complete Fragment Collection (12 Fragments):
@@ -19,6 +19,12 @@ Complete Fragment Collection (12 Fragments):
 
 Resources:
 - 20 character portrait images (race/class/gender combinations)
+
+Recent Fixes:
+- DM Chat memory leak causing browser freeze with multiple characters (CRITICAL)
+- Character header fragment initialization errors
+- Cleric portrait mapping corrections
+- UI polish for public demo readiness
 
 Each fragment includes:
 - HTML template with editable elements

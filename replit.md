@@ -2,9 +2,18 @@
 
 This is a D&D-themed component library and Liferay fragment reference application built with React. The project serves as a showcase and documentation tool for reusable UI components designed with a fantasy/medieval aesthetic, featuring dark browns, gold accents, and ornate styling. The application displays both standalone React components and Liferay fragment collections that can be used in Liferay portal development.
 
-## Recent Updates (November 13, 2025)
+## Recent Updates (November 14, 2025)
 
-### Critical Bug Fixes 🐛
+### Critical Performance Fix 🚨
+- **DM Chat Memory Leak Resolved**: Fixed browser freeze/hang with multiple characters
+  - **Root Cause**: History replay was re-saving messages to localStorage exponentially
+  - **Impact**: Each page load doubled the chat history, causing massive JSON blobs in localStorage
+  - **Fix**: Separated rendering from persistence - replaying history no longer mutates storage
+  - **Auto-cleanup**: Added deduplication logic to clean corrupted histories on load
+  - **Polling intervals**: Now properly cleared when switching characters to prevent orphaned timers
+  - **Result**: Browser performance restored, supports unlimited characters and chat history
+
+### Previous Critical Bug Fixes (November 13, 2025) 🐛
 - **Character Header Fragment**: Fixed broken Liferay fragment initialization
   - Restored proper IIFE pattern matching other fragments
   - Fixed undefined `fragmentElement` error that prevented fragment from loading
