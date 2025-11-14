@@ -1,15 +1,28 @@
 D&D Fragment Collection
-Version: v1.0.0_20251113_231419
-Built: Thu Nov 13 11:14:19 PM UTC 2025
+Version: v1.0.0_20251114_153851
+Built: Thu Nov 14 03:38:51 PM UTC 2025
 Description: D&D-themed Liferay DXP fragment collection with fantasy aesthetic
 
-Fragments included:
+Complete Fragment Collection (12 Fragments):
 - Hero Banner (Section Fragment)
 - Character Card (Component Fragment) 
+- Character Header (Component Fragment)
 - Quest Navigation (Component Fragment)
+- DM Chat (Component Fragment) - AI-powered with persistent history
+- Fantasy Footer (Section Fragment)
+- Combat Stats (Component Fragment)
+- Skills & Proficiencies (Component Fragment)
+- Equipment Inventory (Component Fragment)
+- Spells & Abilities (Component Fragment)
+- Character Journal (Component Fragment)
+- Admin Data Cleaner (Utility Fragment)
+
+Resources:
+- 20 character portrait images (race/class/gender combinations)
 
 Each fragment includes:
 - HTML template with editable elements
 - CSS styling with D&D theming
 - JavaScript for interactive features
 - Configuration options for customization
+- Integration with Liferay Objects and APIs

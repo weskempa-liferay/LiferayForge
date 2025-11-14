@@ -15,9 +15,30 @@ This is a D&D-themed component library and Liferay fragment reference applicatio
 - **Race Alias Support**: Added "high elf" → "elf" mapping for both character-card and character-header
 - **DM Chat Avatar Positioning**: Fine-tuned avatar icon vertical alignment (top: 2px)
 
-### New Character Portraits
-- Added `dwarf-fighter-female.png` to portrait library
-- Updated total: 16 character portrait images
+### Demo Polish & Improvements 🎨
+- **Quest Navigation**: Simplified UI for cleaner demo presentation
+  - Removed hardcoded quest badge (avoids showing static numbers)
+  - Fixed pagination text color (white for better visibility on dark backgrounds)
+  - Cleaned up HTML formatting
+- **Equipment Inventory**: Streamlined layout
+  - Commented out "Currently Equipped" section (focusing on inventory grid)
+  - Added Liferay drop zones for dynamic content integration
+- **Demo Notes**: Created `Demo Notes.md` with example prompts for public demonstrations
+  - Character creation examples
+  - Dice rolling demonstrations
+  - DM interaction scenarios
+
+### Expanded Character Portrait Library 🖼️
+- **New Portraits Added** (4 images):
+  - `dwarf-cleric-female.png`
+  - `elf-bard-female.png`
+  - `halfling-wizard-female.png`
+  - `halfling-wizard-male.png`
+- **Total Portrait Library**: 20 character images
+  - Dwarf: Cleric (M/F), Fighter (M/F)
+  - Elf: Bard (M/F), Druid (M/F), Rogue (M/F), Wizard (M/F)
+  - Halfling: Rogue (M/F), Wizard (M/F)
+  - Human: Fighter (M), Wizard (M)
 
 ### New Admin Fragment 🔧
 - **Admin Data Cleaner**: Testing utility fragment for clearing test data
