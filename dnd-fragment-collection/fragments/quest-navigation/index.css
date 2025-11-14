@@ -190,6 +190,12 @@
   line-height: 1;
 }
 
+#content .pagination-results,
+#content .page-item.disabled .page-link,
+#content .page-item.active .page-link {
+    color: white;
+}
+
 /* Mobile Styles */
 @media (max-width: 768px) {
   .quest-navigation .nav-toggle {
@@ -280,3 +286,4 @@
     font-size: 1.5rem;
   }
 }
+
