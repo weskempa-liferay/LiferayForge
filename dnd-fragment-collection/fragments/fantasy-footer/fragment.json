@@ -1,6 +1,7 @@
 {
   "jsPath": "index.js",
   "htmlPath": "index.html",
+  "configurationPath": "configuration.json",
   "cssPath": "index.css",
   "icon": "code",
   "name": "Fantasy Footer",

@@ -98,13 +98,13 @@
   width: 80px;
   height: 80px;
   margin: 0 auto 1.5rem;
-  background: linear-gradient(135deg, #D4AF37, #CD853F);
-  border: 3px solid #8B4513;
+  xbackground: linear-gradient(135deg, #D4AF37, #CD853F);
+  xborder: 3px solid #8B4513;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 
+  xbox-shadow: 
     0 0 20px rgba(212, 175, 55, 0.4),
     inset 0 2px 4px rgba(255, 255, 255, 0.2);
 }
