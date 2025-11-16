@@ -3,31 +3,27 @@
  * D&D-themed spell management with slot tracking, spell casting, and class features
  */
 
-export default function ({ fragmentElement, configuration }) {
-    //'use strict';
-    
-    const spellsContainer = fragmentElement.querySelector('.spells-abilities');
-    if (!spellsContainer) return () => {};
-    
-    // Initialize all interactive features
-    const cleanupFunctions = [];
-    
-    initializeSpellSlots();
-    initializeSpellCards();
-    initializeClassFeatures();
-    initializeRestTracking();
-    initializeActionButtons();
-    applyConfiguration();
-    
-    // Return cleanup function
-    return () => {
-        cleanupFunctions.forEach(cleanup => cleanup());
-    };
-    
-    /**
-     * Setup spell slot interactions
-     */
-    function initializeSpellSlots() {
+//'use strict';
+
+const spellsContainer = fragmentElement.querySelector('.spells-abilities');
+if (!spellsContainer) {
+    console.warn('Spells abilities container not found');
+}
+
+// Initialize all interactive features
+const cleanupFunctions = [];
+
+initializeSpellSlots();
+initializeSpellCards();
+initializeClassFeatures();
+initializeRestTracking();
+initializeActionButtons();
+applyConfiguration();
+
+/**
+ * Setup spell slot interactions
+ */
+function initializeSpellSlots() {
         const spellSlots = spellsContainer.querySelectorAll('.slot');
         
         spellSlots.forEach(slot => {
@@ -1198,14 +1194,4 @@ export default function ({ fragmentElement, configuration }) {
         `;
         document.head.appendChild(style);
     }
-}
-
-// Development fallback
-if (typeof window !== 'undefined' && !window.SpellsAbilitiesFragment) {
-    window.SpellsAbilitiesFragment = { init: (params) => {
-        const defaultExport = arguments.callee.constructor.toString().includes('export default') 
-            ? module.exports.default || module.exports 
-            : null;
-        if (defaultExport) return defaultExport(params);
-    }};
 }

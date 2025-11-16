@@ -3,32 +3,28 @@
  * D&D-themed skills and proficiencies with skill check rolling and proficiency management
  */
 
-export default function ({ fragmentElement, configuration }) {
-    //'use strict';
-    
-    const skillsContainer = fragmentElement.querySelector('.skills-proficiencies');
-    if (!skillsContainer) return () => {};
-    
-    // Initialize all interactive features
-    const cleanupFunctions = [];
-    
-    initializeSkillRolling();
-    initializeToolProficiencies();
-    initializeWeaponProficiencies();
-    initializeLanguages();
-    initializeExpertiseItems();
-    initializeActionButtons();
-    applyConfiguration();
-    
-    // Return cleanup function
-    return () => {
-        cleanupFunctions.forEach(cleanup => cleanup());
-    };
-    
-    /**
-     * Setup skill rolling interactions
-     */
-    function initializeSkillRolling() {
+//'use strict';
+
+const skillsContainer = fragmentElement.querySelector('.skills-proficiencies');
+if (!skillsContainer) {
+    console.warn('Skills proficiencies container not found');
+}
+
+// Initialize all interactive features
+const cleanupFunctions = [];
+
+initializeSkillRolling();
+initializeToolProficiencies();
+initializeWeaponProficiencies();
+initializeLanguages();
+initializeExpertiseItems();
+initializeActionButtons();
+applyConfiguration();
+
+/**
+ * Setup skill rolling interactions
+ */
+function initializeSkillRolling() {
         const skillItems = skillsContainer.querySelectorAll('.skill-item');
         
         skillItems.forEach(skill => {
@@ -1333,13 +1329,4 @@ export default function ({ fragmentElement, configuration }) {
         `;
         document.head.appendChild(style);
     }
-
-// Development fallback
-if (typeof window !== 'undefined' && !window.SkillsProficienciesFragment) {
-    window.SkillsProficienciesFragment = { init: (params) => {
-        const defaultExport = arguments.callee.constructor.toString().includes('export default') 
-            ? module.exports.default || module.exports 
-            : null;
-        if (defaultExport) return defaultExport(params);
-    }};
 }

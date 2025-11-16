@@ -3,32 +3,28 @@
  * D&D-themed character journal with backstory, personality, goals, sessions, and relationships
  */
 
-export default function ({ fragmentElement, configuration }) {
-    //'use strict';
-    
-    const journalContainer = fragmentElement.querySelector('.character-journal');
-    if (!journalContainer) return () => {};
-    
-    // Initialize all interactive features
-    const cleanupFunctions = [];
-    
-    initializeBackstory();
-    initializePersonality();
-    initializeGoals();
-    initializeSessionNotes();
-    initializeRelationships();
-    initializeActionButtons();
-    applyConfiguration();
-    
-    // Return cleanup function
-    return () => {
-        cleanupFunctions.forEach(cleanup => cleanup());
-    };
-    
-    /**
-     * Setup backstory interactions
-     */
-    function initializeBackstory() {
+//'use strict';
+
+const journalContainer = fragmentElement.querySelector('.character-journal');
+if (!journalContainer) {
+    console.warn('Character journal container not found');
+}
+
+// Initialize all interactive features
+const cleanupFunctions = [];
+
+initializeBackstory();
+initializePersonality();
+initializeGoals();
+initializeSessionNotes();
+initializeRelationships();
+initializeActionButtons();
+applyConfiguration();
+
+/**
+ * Setup backstory interactions
+ */
+function initializeBackstory() {
         const expandBackstoryBtn = journalContainer.querySelector('.expand-backstory-btn');
         const backstoryDetails = journalContainer.querySelector('.backstory-details');
         
@@ -847,70 +843,6 @@ export default function ({ fragmentElement, configuration }) {
         
         showNotification(`Showing ${filterValue === 'all' ? 'all' : filterValue} sessions`, 'info');
     }
-    }
-    
-    /**
-     * Show session details modal
-     */
-    function showSessionDetails(sessionEntry) {
-        const sessionNumber = sessionEntry.querySelector('.session-number').textContent;
-        const sessionDate = sessionEntry.querySelector('.session-date').textContent;
-        const sessionLocation = sessionEntry.querySelector('.session-location').textContent;
-        const sessionSummary = sessionEntry.querySelector('.session-summary').textContent;
-        
-        const overlay = createOverlay();
-        const modal = document.createElement('div');
-        modal.className = 'session-details-modal';
-        modal.innerHTML = `
-            <div class="session-details-content">
-                <h3>${sessionNumber}</h3>
-                <div class="session-meta">
-                    <div class="meta-item">
-                        <span class="meta-label">Date:</span>
-                        <span class="meta-value">${sessionDate}</span>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-label">Location:</span>
-                        <span class="meta-value">${sessionLocation}</span>
-                    </div>
-                </div>
-                <div class="session-full-summary">
-                    <h4>Session Summary</h4>
-                    <p>${sessionSummary}</p>
-                </div>
-                <div class="session-tabs">
-                    <button class="tab-btn active" data-tab="summary">Summary</button>
-                    <button class="tab-btn" data-tab="characters">Characters</button>
-                    <button class="tab-btn" data-tab="loot">Loot & XP</button>
-                    <button class="tab-btn" data-tab="notes">Notes</button>
-                </div>
-                <div class="session-tab-content">
-                    <div class="tab-content active" data-tab="summary">
-                        <textarea class="session-edit-summary" rows="6">${sessionSummary}</textarea>
-                    </div>
-                    <div class="tab-content" data-tab="characters">
-                        <p>NPCs encountered, allies gained, enemies made...</p>
-                    </div>
-                    <div class="tab-content" data-tab="loot">
-                        <p>Items acquired, experience points gained, currency earned...</p>
-                    </div>
-                    <div class="tab-content" data-tab="notes">
-                        <textarea class="session-private-notes" rows="4" placeholder="Private notes and thoughts about this session..."></textarea>
-                    </div>
-                </div>
-                <div class="session-details-actions">
-                    <button class="fantasy-btn btn-primary save-session-details">Save Changes</button>
-                    <button class="fantasy-btn btn-secondary close-modal">Close</button>
-                </div>
-            </div>
-        `;
-        
-        overlay.appendChild(modal);
-        document.body.appendChild(overlay);
-        
-        setupModalHandlers(overlay);
-        setupSessionDetailsHandlers(modal, sessionEntry);
-    }
     
     /**
      * Show relationship overview
@@ -1124,62 +1056,6 @@ export default function ({ fragmentElement, configuration }) {
     }
     
     /**
-     * Toggle session details expansion
-     */
-    function toggleSessionDetails(expandBtn) {
-        const sessionEntry = expandBtn.closest('.session-entry');
-        const sessionDetails = sessionEntry.querySelector('.session-details');
-        
-        if (sessionDetails) {
-            const isExpanded = sessionDetails.classList.contains('expanded');
-            
-            if (isExpanded) {
-                sessionDetails.classList.remove('expanded');
-                expandBtn.textContent = '⬇️';
-                expandBtn.title = 'Expand Session Details';
-            } else {
-                sessionDetails.classList.add('expanded');
-                sessionDetails.style.animation = 'sessionExpand 0.3s ease-in-out';
-                expandBtn.textContent = '⬆️';
-                expandBtn.title = 'Collapse Session Details';
-            }
-        }
-    }
-    
-    /**
-     * Filter sessions based on criteria
-     */
-    function filterSessions(filterType) {
-        const sessionEntries = journalContainer.querySelectorAll('.session-entry');
-        
-        sessionEntries.forEach(session => {
-            let shouldShow = true;
-            
-            switch (filterType) {
-                case 'recent':
-                    const sessionNumber = parseInt(session.querySelector('.session-number').textContent.replace(/\D/g, ''));
-                    const maxNumber = Math.max(...Array.from(sessionEntries).map(s => 
-                        parseInt(s.querySelector('.session-number').textContent.replace(/\D/g, ''))
-                    ));
-                    shouldShow = sessionNumber > maxNumber - 5;
-                    break;
-                case 'important':
-                    shouldShow = session.classList.contains('important') || 
-                               session.querySelector('.session-tag.important') !== null;
-                    break;
-                case 'all':
-                default:
-                    shouldShow = true;
-                    break;
-            }
-            
-            session.style.display = shouldShow ? 'block' : 'none';
-        });
-        
-        showNotification(`Filtered sessions: ${filterType}`, 'info');
-    }
-    
-    /**
      * Apply configuration settings
      */
     function applyConfiguration() {
@@ -1221,79 +1097,6 @@ export default function ({ fragmentElement, configuration }) {
             if (section) section.style.display = 'none';
         }
     }
-    
-    /**
-     * Utility functions
-     */
-    function createOverlay() {
-        const overlay = document.createElement('div');
-        overlay.style.cssText = `
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            cursor: pointer;
-        `;
-        return overlay;
-    }
-    
-    function setupModalHandlers(overlay) {
-        const closeBtn = overlay.querySelector('.close-modal');
-        if (closeBtn) {
-            closeBtn.addEventListener('click', () => {
-                document.body.removeChild(overlay);
-            });
-        }
-        
-        overlay.addEventListener('click', function(e) {
-            if (e.target === overlay) {
-                document.body.removeChild(overlay);
-            }
-        });
-        
-        // ESC key handler
-        const escHandler = function(e) {
-            if (e.key === 'Escape') {
-                if (document.body.contains(overlay)) {
-                    document.body.removeChild(overlay);
-                }
-                document.removeEventListener('keydown', escHandler);
-            }
-        };
-        document.addEventListener('keydown', escHandler);
-    }
-    
-    function setupGoalModalHandlers(modal, goalItem) {
-        const progressSlider = modal.querySelector('.progress-slider');
-        const progressDisplay = modal.querySelector('.progress-display');
-        const saveBtn = modal.querySelector('.save-goal');
-        
-        progressSlider.addEventListener('input', function() {
-            progressDisplay.textContent = this.value + '%';
-        });
-        
-        saveBtn.addEventListener('click', function() {
-            const newProgress = progressSlider.value;
-            const progressFill = goalItem.querySelector('.progress-fill');
-            const progressText = goalItem.querySelector('.progress-text');
-            
-            progressFill.style.width = newProgress + '%';
-            progressFill.style.animation = 'progressUpdate 0.5s ease-in-out';
-            progressText.textContent = newProgress + '%';
-            
-            setTimeout(() => progressFill.style.animation = '', 500);
-            
-            showNotification('Goal progress updated', 'success');
-            document.body.removeChild(modal.closest('.goal-details-modal').parentElement);
-        });
-    }
-    
     
     function setupSessionDetailsHandlers(modal, sessionEntry) {
         const tabs = modal.querySelectorAll('.tab-btn');
@@ -1472,63 +1275,6 @@ export default function ({ fragmentElement, configuration }) {
         }
     }
     
-    function showNotification(message, type = 'info') {
-        const notification = document.createElement('div');
-        notification.className = `notification ${type}`;
-        notification.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, #2d1b1b, #1a0f0f);
-            border: 2px solid ${type === 'error' ? '#DC143C' : type === 'warning' ? '#FFA500' : type === 'success' ? '#32CD32' : '#DEB887'};
-            border-radius: 8px;
-            padding: 1rem;
-            color: #F5DEB3;
-            font-family: 'Crimson Text', serif;
-            z-index: 10001;
-            max-width: 300px;
-        `;
-        notification.textContent = message;
-        
-        document.body.appendChild(notification);
-        
-        setTimeout(() => {
-            if (document.body.contains(notification)) {
-                document.body.removeChild(notification);
-            }
-        }, 3000);
-    }
-    
-    function showRelationshipOverview(relationshipItem) {
-        const name = relationshipItem.querySelector('.relationship-name').textContent;
-        showNotification(`Click the details button to manage ${name}`, 'info');
-    }
-    
-    function getPersonalityType(personalityItem) {
-        if (personalityItem.classList.contains('trait-item')) return 'Trait';
-        if (personalityItem.classList.contains('ideal-item')) return 'Ideal';
-        if (personalityItem.classList.contains('bond-item')) return 'Bond';
-        if (personalityItem.classList.contains('flaw-item')) return 'Flaw';
-        return 'Personality';
-    }
-    
-    function getNextSessionNumber() {
-        const sessions = journalContainer.querySelectorAll('.session-entry');
-        if (sessions.length === 0) return 1;
-        
-        const numbers = Array.from(sessions).map(session => {
-            const numberText = session.querySelector('.session-number').textContent;
-            return parseInt(numberText.replace(/\D/g, '')) || 0;
-        });
-        
-        return Math.max(...numbers) + 1;
-    }
-    
-    function getCurrentDate() {
-        const today = new Date();
-        return today.toISOString().split('T')[0];
-    }
-    
     function performExport(modal) {
         const format = modal.querySelector('input[name="export-format"]:checked').value;
         const sections = Array.from(modal.querySelectorAll('.section-checkboxes input:checked')).map(cb => cb.value);
@@ -1629,13 +1375,4 @@ export default function ({ fragmentElement, configuration }) {
         `;
         document.head.appendChild(style);
     }
-
-// Development fallback
-if (typeof window !== 'undefined' && !window.CharacterJournalFragment) {
-    window.CharacterJournalFragment = { init: (params) => {
-        const defaultExport = arguments.callee.constructor.toString().includes('export default') 
-            ? module.exports.default || module.exports 
-            : null;
-        if (defaultExport) return defaultExport(params);
-    }};
 }

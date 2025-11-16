@@ -3,32 +3,28 @@
  * D&D-themed combat stats with dice rolling, HP management, and ability score interactions
  */
 
-export default function ({ fragmentElement, configuration }) {
-    //'use strict';
-    
-    const combatStats = fragmentElement.querySelector('.combat-stats');
-    if (!combatStats) return () => {};
-    
-    // Initialize all interactive features
-    const cleanupFunctions = [];
-    
-    initializeAbilityScores();
-    initializeHitPointsManagement();
-    initializeDeathSaves();
-    initializeSavingThrows();
-    initializeStatCards();
-    initializeActionButtons();
-    applyConfiguration();
-    
-    // Return cleanup function
-    return () => {
-        cleanupFunctions.forEach(cleanup => cleanup());
-    };
-    
-    /**
-     * Setup ability score interactions with dice rolling
-     */
-    function initializeAbilityScores() {
+//'use strict';
+
+const combatStats = fragmentElement.querySelector('.combat-stats');
+if (!combatStats) {
+    console.warn('Combat stats container not found');
+}
+
+// Initialize all interactive features
+const cleanupFunctions = [];
+
+initializeAbilityScores();
+initializeHitPointsManagement();
+initializeDeathSaves();
+initializeSavingThrows();
+initializeStatCards();
+initializeActionButtons();
+applyConfiguration();
+
+/**
+ * Setup ability score interactions with dice rolling
+ */
+function initializeAbilityScores() {
         const abilityScores = combatStats.querySelectorAll('.ability-score');
         
         abilityScores.forEach(ability => {
@@ -774,14 +770,4 @@ export default function ({ fragmentElement, configuration }) {
         `;
         document.head.appendChild(style);
     }
-}
-
-// Development fallback
-if (typeof window !== 'undefined' && !window.CombatStatsFragment) {
-    window.CombatStatsFragment = { init: (params) => {
-        const defaultExport = arguments.callee.constructor.toString().includes('export default') 
-            ? module.exports.default || module.exports 
-            : null;
-        if (defaultExport) return defaultExport(params);
-    }};
 }

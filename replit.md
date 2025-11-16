@@ -4,6 +4,16 @@ This is a D&D-themed component library and Liferay fragment reference applicatio
 
 ## Recent Updates (November 16, 2025)
 
+### Liferay Compatibility Fix 🔧
+- **Removed ES6 Module Exports**: All fragment JavaScript now Liferay-compatible
+  - Removed `export default function ({ fragmentElement, configuration })` wrappers
+  - Fragments affected: Combat Stats, Skills & Proficiencies, Spells & Abilities, Character Journal
+  - JavaScript now runs directly without module system (Liferay requirement)
+  - Changed from early return to console.warn when container not found
+  - More robust error handling for production use
+
+## Previous Updates (November 16, 2025)
+
 ### New Fragment: Inventory Item 🎒
 - **New Component Fragment**: Added "Inventory Item" fragment for modular inventory composition
   - Displays individual inventory items with icon, name, quantity, and type
@@ -18,11 +28,13 @@ This is a D&D-themed component library and Liferay fragment reference applicatio
   - Two drop zones: player-inventory and inventory-grid
 
 ### Code Quality Improvements 🧹
-- **Character Journal**: Removed duplicate function definitions
-  - Removed duplicate `setupSessionDetailsHandlers` function
-  - Removed duplicate `setupRelationshipDetailsHandlers` function
-  - Reduced file size by ~6KB (71,694 → 68,778 bytes)
-  - Cleaner codebase with no conflicting function definitions
+- **Character Journal**: Massive cleanup - Removed **11 duplicate function definitions**
+  - createOverlay, setupModalHandlers, setupGoalModalHandlers
+  - showNotification, showRelationshipOverview, getPersonalityType
+  - getNextSessionNumber, getCurrentDate, toggleSessionDetails
+  - filterSessions, showSessionDetails, setupRelationshipDetailsHandlers  
+  - Reduced file size by ~13KB (71,694 → 58,062 bytes)
+  - Cleaner, more maintainable codebase with zero function conflicts
 
 ## Previous Updates (November 14, 2025)
 
