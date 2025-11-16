@@ -13,6 +13,7 @@ export default function ({ fragmentElement, configuration }) {
     const cleanupFunctions = [];
     
     initializeEquippedItems();
+    initializePlayerInventoryDisplay();
     initializeInventoryManagement();
     initializeCurrencyTracking();
     initializeWeaponStats();
@@ -57,7 +58,15 @@ export default function ({ fragmentElement, configuration }) {
             });
         });
     }
-    
+
+     /**
+     * Setup inventory management interactions
+     */
+    function initializePlayerInventoryDisplay() {
+        const inventoryItems = equipmentContainer.querySelectorAll('.player-inventory-item');
+
+    }
+
     /**
      * Setup inventory management interactions
      */

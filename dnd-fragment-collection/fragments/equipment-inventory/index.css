@@ -349,6 +349,10 @@
   border-left-color: #DC143C;
   border-left-width: 3px;
 }
+.equipment-inventory .inventory-item.armor {
+  border-left-color: #3f14dc;
+  border-left-width: 3px;
+}
 
 .equipment-inventory .inventory-item.consumable {
   border-left-color: #32CD32;
