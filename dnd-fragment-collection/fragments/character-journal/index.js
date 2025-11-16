@@ -913,61 +913,6 @@ export default function ({ fragmentElement, configuration }) {
     }
     
     /**
-     * Setup session details modal handlers
-     */
-    function setupSessionDetailsHandlers(modal, sessionEntry) {
-        const tabBtns = modal.querySelectorAll('.tab-btn');
-        const tabContents = modal.querySelectorAll('.tab-content');
-        const saveBtn = modal.querySelector('.save-session-details');
-        
-        // Tab switching functionality
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                const targetTab = this.dataset.tab;
-                
-                // Update active tab button
-                tabBtns.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Update active tab content
-                tabContents.forEach(content => {
-                    if (content.dataset.tab === targetTab) {
-                        content.classList.add('active');
-                    } else {
-                        content.classList.remove('active');
-                    }
-                });
-            });
-        });
-        
-        // Save session details
-        saveBtn.addEventListener('click', function() {
-            const editedSummary = sanitizeInput(modal.querySelector('.session-edit-summary').value);
-            const privateNotes = sanitizeInput(modal.querySelector('.session-private-notes').value);
-            
-            if (editedSummary) {
-                // Update the original session entry
-                const originalSummary = sessionEntry.querySelector('.session-summary');
-                if (originalSummary) {
-                    originalSummary.textContent = editedSummary;
-                }
-                
-                // Store private notes (in real app, would save to backend)
-                sessionEntry.dataset.privateNotes = privateNotes;
-                
-                showNotification('Session details updated successfully!', 'success');
-            } else {
-                showNotification('Session summary cannot be empty', 'error');
-            }
-            
-            const overlay = modal.closest('.modal-overlay');
-            if (overlay && overlay.parentNode) {
-                document.body.removeChild(overlay);
-            }
-        });
-    }
-    
-    /**
      * Show relationship overview
      */
     function showRelationshipOverview(relationshipItem) {

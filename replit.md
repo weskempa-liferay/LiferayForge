@@ -2,7 +2,14 @@
 
 This is a D&D-themed component library and Liferay fragment reference application built with React. The project serves as a showcase and documentation tool for reusable UI components designed with a fantasy/medieval aesthetic, featuring dark browns, gold accents, and ornate styling. The application displays both standalone React components and Liferay fragment collections that can be used in Liferay portal development.
 
-## Recent Updates (November 14, 2025)
+## Recent Updates (November 16, 2025)
+
+### Code Quality Improvements 🧹
+- **Character Journal**: Removed duplicate `setupSessionDetailsHandlers` function definition
+  - Kept the more complete version with delete functionality
+  - Reduced code bloat and potential conflicts
+
+## Previous Updates (November 14, 2025)
 
 ### Critical Performance Fixes 🚨
 

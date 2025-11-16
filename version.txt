@@ -1,6 +1,6 @@
 D&D Fragment Collection
-Version: v1.0.0_20251114_163104
-Built: Thu Nov 14 04:31:04 PM UTC 2025
+Version: v1.0.0_20251116_210314
+Built: Sat Nov 16 09:03:14 PM UTC 2025
 Description: D&D-themed Liferay DXP fragment collection with fantasy aesthetic
 
 Complete Fragment Collection (12 Fragments):
@@ -21,6 +21,7 @@ Resources:
 - 20 character portrait images (race/class/gender combinations)
 
 Recent Fixes:
+- Character Journal: Removed duplicate function definition (code cleanup)
 - DM Chat localStorage quota management (QuotaExceededError)
 - DM Chat memory leak causing browser freeze with multiple characters
 - Character header fragment initialization errors
