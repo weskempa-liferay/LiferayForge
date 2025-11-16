@@ -1,49 +1,15 @@
 D&D Fragment Collection
-Version: v1.0.0_20251116_221727
-Built: Sat Nov 16 10:17:27 PM UTC 2025
+Version: v1.0.0_20251116_222305
+Built: Sun Nov 16 10:23:05 PM UTC 2025
 Description: D&D-themed Liferay DXP fragment collection with fantasy aesthetic
 
-Complete Fragment Collection (13 Fragments):
+Fragments included:
 - Hero Banner (Section Fragment)
 - Character Card (Component Fragment) 
-- Character Header (Component Fragment)
 - Quest Navigation (Component Fragment)
-- DM Chat (Component Fragment) - AI-powered with persistent history
-- Fantasy Footer (Section Fragment)
-- Combat Stats (Component Fragment) ✓ Liferay-compatible JS
-- Skills & Proficiencies (Component Fragment) ✓ Liferay-compatible JS
-- Equipment Inventory (Component Fragment) - Now with drop zones
-- Inventory Item (Component Fragment) - NEW! Modular item component
-- Spells & Abilities (Component Fragment) ✓ Liferay-compatible JS
-- Character Journal (Component Fragment) ✓ Liferay-compatible JS, Cleaned
-- Admin Data Cleaner (Utility Fragment)
-
-Resources:
-- 20 character portrait images (race/class/gender combinations)
-
-Recent Changes (November 16, 2025):
-- CRITICAL: Removed ES6 module exports for Liferay compatibility
-  - Combat Stats, Skills & Proficiencies, Spells & Abilities, Character Journal
-  - JavaScript now runs directly without export wrappers
-- CLEANUP: Character Journal - Removed 11 duplicate functions (~13KB reduction)
-  - File size reduced from 71,694 to 58,062 bytes
-  - Zero function name conflicts
-- NEW: Inventory Item fragment for modular inventory composition
-- Equipment Inventory: Added Liferay drop zones for dynamic layout
-- DM Chat localStorage quota management (QuotaExceededError)
-- DM Chat memory leak fix (browser freeze with multiple characters)
-- UI polish for public demo readiness
-
-Code Quality Metrics:
-✓ Zero duplicate functions across all fragments
-✓ All fragments use plain JavaScript (no ES6 modules)
-✓ Direct execution without export/import statements
-✓ Compatible with Liferay DXP fragment engine
-✓ Proper error handling with console warnings
 
 Each fragment includes:
 - HTML template with editable elements
 - CSS styling with D&D theming
-- JavaScript for interactive features (Liferay-compatible)
+- JavaScript for interactive features
 - Configuration options for customization
-- Integration with Liferay Objects and APIs
