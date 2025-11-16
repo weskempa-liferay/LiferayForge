@@ -57,12 +57,24 @@ function initializeEquippedItems() {
  */
 function initializePlayerInventoryDisplay() {
 
+    setTimeout(() => {
+
     const inventoryItems = equipmentContainer.querySelectorAll('.individual-inventory-item');
 
     inventoryItems.forEach(item => {
-        let typeValue = item.querySelector('.item-type').querySelector('span').innerHTML.trim();
-        item.classList.add(typeValue);
+        const typeElement = item.querySelector('.item-type');
+        const span = typeElement.querySelector('span');
+        let typeValue = span.innerHTML.trim();
+
+        if(typeValue){
+            item.classList.add(typeValue);
+        }else{
+            item.classList.add("misc");
+        }
     });
+            
+    }, 250);
+    
 }
 
 /**
