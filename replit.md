@@ -18,9 +18,11 @@ This is a D&D-themed component library and Liferay fragment reference applicatio
   - Two drop zones: player-inventory and inventory-grid
 
 ### Code Quality Improvements 🧹
-- **Character Journal**: Removed duplicate `setupSessionDetailsHandlers` function definition
-  - Kept the more complete version with delete functionality
-  - Reduced code bloat and potential conflicts
+- **Character Journal**: Removed duplicate function definitions
+  - Removed duplicate `setupSessionDetailsHandlers` function
+  - Removed duplicate `setupRelationshipDetailsHandlers` function
+  - Reduced file size by ~6KB (71,694 → 68,778 bytes)
+  - Cleaner codebase with no conflicting function definitions
 
 ## Previous Updates (November 14, 2025)
 

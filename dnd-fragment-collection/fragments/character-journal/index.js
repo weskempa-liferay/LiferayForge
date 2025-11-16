@@ -1011,64 +1011,6 @@ export default function ({ fragmentElement, configuration }) {
     }
     
     /**
-     * Setup relationship details handlers
-     */
-    function setupRelationshipDetailsHandlers(modal, relationshipItem) {
-        const trustSlider = modal.querySelector('.trust-slider');
-        const trustDisplay = modal.querySelector('.trust-display');
-        const saveBtn = modal.querySelector('.save-relationship');
-        
-        // Update trust display when slider changes
-        if (trustSlider && trustDisplay) {
-            trustSlider.addEventListener('input', function() {
-                trustDisplay.textContent = this.value + '/10';
-            });
-        }
-        
-        // Save relationship changes
-        if (saveBtn) {
-            saveBtn.addEventListener('click', function() {
-                const role = sanitizeInput(modal.querySelector('.relationship-role-input').value);
-                const status = modal.querySelector('.relationship-status-select').value;
-                const note = sanitizeInput(modal.querySelector('.relationship-note-input').value);
-                const trust = trustSlider ? trustSlider.value : '5';
-                const lastInteraction = modal.querySelector('.last-interaction').value;
-                
-                if (role && note) {
-                    // Update the relationship item
-                    const roleElement = relationshipItem.querySelector('.relationship-role');
-                    const statusElement = relationshipItem.querySelector('.status-value');
-                    const noteElement = relationshipItem.querySelector('.relationship-note');
-                    
-                    if (roleElement) roleElement.textContent = role;
-                    if (statusElement) {
-                        statusElement.textContent = status.charAt(0).toUpperCase() + status.slice(1);
-                        statusElement.className = `status-value ${status}`;
-                    }
-                    if (noteElement) noteElement.textContent = note;
-                    
-                    // Update relationship item border color based on status
-                    relationshipItem.className = relationshipItem.className.replace(/\b(ally|mentor|enemy|family|neutral)\b/g, '');
-                    relationshipItem.classList.add(status);
-                    
-                    // Store additional data
-                    relationshipItem.dataset.trust = trust;
-                    relationshipItem.dataset.lastInteraction = lastInteraction;
-                    
-                    showNotification('Relationship updated successfully!', 'success');
-                } else {
-                    showNotification('Role and notes are required', 'error');
-                }
-                
-                const overlay = modal.closest('.modal-overlay');
-                if (overlay && overlay.parentNode) {
-                    document.body.removeChild(overlay);
-                }
-            });
-        }
-    }
-    
-    /**
      * Show journal editor
      */
     function showJournalEditor() {

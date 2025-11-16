@@ -1,6 +1,6 @@
 D&D Fragment Collection
-Version: v1.0.0_20251116_211316
-Built: Sat Nov 16 09:13:16 PM UTC 2025
+Version: v1.0.0_20251116_212411
+Built: Sat Nov 16 09:24:11 PM UTC 2025
 Description: D&D-themed Liferay DXP fragment collection with fantasy aesthetic
 
 Complete Fragment Collection (13 Fragments):
@@ -24,7 +24,7 @@ Resources:
 Recent Changes:
 - NEW: Inventory Item fragment for modular inventory composition
 - Equipment Inventory: Added Liferay drop zones for dynamic layout
-- Character Journal: Removed duplicate function definition (code cleanup)
+- Character Journal: Removed 2 duplicate function definitions (~6KB reduction)
 - DM Chat localStorage quota management (QuotaExceededError)
 - DM Chat memory leak causing browser freeze with multiple characters
 - Character header fragment initialization errors
