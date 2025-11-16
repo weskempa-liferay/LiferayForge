@@ -45,6 +45,7 @@ Each fragment includes configuration options for:
 - Content display preferences
 
 
+# BPMN Diagram Configuration
 
 For the BPMN diagram 'Agentic-DM-DEVCON-SECRETS.bpmn', the following secrets should be used or replaced with direct values. 
 
