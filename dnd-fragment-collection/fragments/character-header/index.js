@@ -35,9 +35,7 @@ cleanupFunctions.push(cleanup1, cleanup2, cleanup3, cleanup4, cleanup5);
  */
 function addCharacterImage(header) {
     const characterDef = header.querySelector('.character-subtitle');
-    console.log("test1");
     if (!characterDef) return;
-    console.log("test2");
     
     const sexElement = characterDef.querySelector('.character-class.sex');
     const raceElement = characterDef.querySelector('.character-class.race');
