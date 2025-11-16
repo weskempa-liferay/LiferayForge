@@ -57,17 +57,11 @@ function initializeEquippedItems() {
  */
 function initializePlayerInventoryDisplay() {
 
-        console.log("initializePlayerInventoryDisplay");
-
     const inventoryItems = equipmentContainer.querySelectorAll('.individual-inventory-item');
 
-
-        console.log(inventoryItems);
-
     inventoryItems.forEach(item => {
-        let typeValue = item.querySelector('.item-type');
-        console.log(typeValue);
-        inventoryItems.classList.add(typeValue);
+        let typeValue = item.querySelector('.item-type').querySelector('span').innerHTML.trim();
+        item.classList.add(typeValue);
     });
 }
 
