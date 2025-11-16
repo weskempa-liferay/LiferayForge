@@ -4,6 +4,19 @@ This is a D&D-themed component library and Liferay fragment reference applicatio
 
 ## Recent Updates (November 16, 2025)
 
+### New Fragment: Inventory Item 🎒
+- **New Component Fragment**: Added "Inventory Item" fragment for modular inventory composition
+  - Displays individual inventory items with icon, name, quantity, and type
+  - Can be dropped into Equipment Inventory drop zones
+  - Supports item types: weapon, armor, consumable, tool, misc
+  - Total fragments now: **13**
+
+### Equipment Inventory Enhancement 📦
+- **Added Liferay Drop Zones**: Equipment Inventory now supports dynamic composition
+  - Users can drop "Inventory Item" fragments into designated zones
+  - Enables flexible, customizable inventory layouts
+  - Two drop zones: player-inventory and inventory-grid
+
 ### Code Quality Improvements 🧹
 - **Character Journal**: Removed duplicate `setupSessionDetailsHandlers` function definition
   - Kept the more complete version with delete functionality
