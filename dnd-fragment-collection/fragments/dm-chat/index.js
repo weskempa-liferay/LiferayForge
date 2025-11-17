@@ -459,8 +459,11 @@
     
     // Format DM message with markdown-style bold support and line breaks
     function formatDMMessage(text) {
-      // First escape HTML to prevent XSS
-      let escaped = escapeHtml(text);
+      // First unescape any escaped quotes from the API response
+      let processed = text.replace(/\\"/g, '"').replace(/\\'/g, "'");
+      
+      // Then escape HTML to prevent XSS
+      let escaped = escapeHtml(processed);
       
       // Then convert **text** to <strong>text</strong>
       // Using regex to match **text** pattern (non-greedy)
