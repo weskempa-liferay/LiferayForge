@@ -196,8 +196,11 @@
 
 #content .pagination-results,
 #content .page-item.disabled .page-link,
-#content .page-item.active .page-link {
-    color: white;
+#content .page-item.active .page-link{
+    color: var(--brand-color-3) !important;
+}
+#content a {
+    color: var(--brand-color-1) !important;
 }
 
 /* Mobile Styles */
@@ -290,4 +293,3 @@
     font-size: 1.5rem;
   }
 }
-

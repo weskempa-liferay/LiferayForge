@@ -1,0 +1,71 @@
+/* Character Journal Fragment - D&D Fantasy Styling */
+
+.character-journal {
+  position: relative;
+  background: linear-gradient(135deg, #2d1b1b 0%, #1a0f0f 100%);
+  border: 3px solid #CD853F;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 1rem 0;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(205, 133, 63, 0.2);
+  overflow: hidden;
+}
+
+.character-journal .journal-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.1;
+  z-index: 1;
+}
+
+.character-journal .parchment-texture {
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(205, 133, 63, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(160, 82, 45, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(139, 69, 19, 0.2) 0%, transparent 50%);
+}
+
+/* Header */
+.character-journal .journal-header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #CD853F;
+  padding-bottom: 1rem;
+}
+
+.character-journal .journal-title {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--brand-color-1);
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
+.character-journal .journal-decoration {
+  font-size: 1.5rem;
+  opacity: 0.8;
+  color: #DEB887;
+}
+
+/* Content Layout */
+.character-journal .journal-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
